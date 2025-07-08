@@ -30,6 +30,6 @@ Here, I explore and build using:
 
 If you'd like to connect or collaborate:
 - Email: *[aprilakris@gmail.com]*
-- LinkedIn: [linkedin.com/in/yourname](https://linkedin.com/in/yourname)
+- LinkedIn: [linkedin.com/in/aprilakrismanto] (https://linkedin.com/in/aprilakrismanto)
 
 Thanks for stopping by! Feel free to explore and ⭐️ any project you find interesting.
