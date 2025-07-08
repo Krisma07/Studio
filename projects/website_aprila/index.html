@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" href="PUBLIC_URL/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>WEB APRILA</title>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+
+    <body>
+        <header>
+            <div class="logo">
+                <img src="Assets/Icon/partner.png" alt="logo" class="logo-img"/>
+                <h1 class="logo-title">APRILA X</h1>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#Jasa">JASA</a></li>
+                    <li><a href="mailto:aprilakris@gmail.com">KONTAK</a></li>
+                </ul>
+            </nav>
+            <button class="btn-cta" onclick="redirInstagram()">Follow saya</button>
+        </header>
+        <div class="container">
+            <div class="intro">
+                <p class="title">Hello, Aprila Krismanto Here!</p>
+                <p class="description">Sales Marketing at PT. Haula Sejahtera</p>
+                <img src="Assets/Foto/Aprila.jpeg" alt="Aprila" class="img-foto"/>
+            </div>
+        </div>
+        <div class="parallax">
+            <div class="tentang">
+                <p class="title">Saya adalah Sales Marketing</p>
+                <p class="description">Jualan aja dulu, kekayaan dari Allah</p>
+                <div class="mt-10">
+                    <button class="btn-cta" onclick="redirWhatsapp()">Mari Kerjasama</button>
+                </div>
+            </div>
+            <div class="container">
+                    <div class="card" id="Jasa">
+                        <div class="card-item">
+                            <img src="Assets/Icon/24 hour.png" alt="icon 1" class="icon"/>
+                            <p class="card-title">Pelayanan non-stop</p>
+                            <p class="card-description">Service 24 non-stop ketika anda membutuhkan bantuan</p>
+                        </div>
+                        <div class="card-item">
+                            <img src="Assets/Icon/hot deal.png" alt="icon 2" class="icon"/>
+                            <p class="card-title">Saya tidak mengambil margin tinggi</p>
+                            <p class="card-description">Biaya jasa yang saya berikan pasti terjamin</p>
+                        </div>
+                        <div class="card-item">
+                            <img src="Assets/Icon/rating.png" alt="icon 3" class="icon"/>
+                            <p class="card-title">684 Review</p>
+                            <p class="card-description">Mereka sangat senang dalam bekerja sama dengan saya</p>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <footer>
+            <p class="title">&copy; Aprila Krismanto Website 2025 </p>
+        </footer>
+
+        <script>
+            function redirInstagram() {
+                window.location.href = "https://instagram.com/aprila_kris"
+            }
+
+            function redirWhatsapp () {
+                window.location.href = "https://wa.me/+6285771842311"
+            }
+        </script>
+    </body>
+</html>

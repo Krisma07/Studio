@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kring - Metode Pendidikan Inovatif Korea</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #b4e4f2, #ffffff);
+        }
+
+        header {
+            background: #f2f2f2;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            position: relative;
+        }
+
+        header h1 {
+            color: #0066cc;
+            font-size: 20px;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #ffffff;
+            z-index: 999;
+            padding: 12px 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-top: 60px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1e88e5;
+            font-weight: bold;
+        }
+
+        .cta-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 12px 0;
+            font-weight: bold;
+            z-index: 999;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            background-color: #ffeb3b;
+            color: black;
+        }
+
+        .cta-banner.scrolled {
+            background-color: #2196f3;
+            color: white;
+        }
+
+        .cta-banner button {
+            margin-left: 10px;
+            background-color: transparent;
+            border: none;
+            font-weight: bold;
+            font-size: 16px;
+            color: #ffeb3b;
+            cursor: pointer;
+            animation: blink 1s infinite;
+        }
+
+        .cta-banner.scrolled button {
+            color: white;
+            animation: blink-blue 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { color: #ffeb3b; }
+            50% { color: white; }
+        }
+
+        @keyframes blink-blue {
+            0%, 100% { color: white; }
+            50% { color: #ffeb3b; }
+        }
+
+        .content {
+            padding-top: 120px;
+            padding-bottom: 80px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .main-content {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .main-content h2 {
+            font-size: 28px;
+            color: #222;
+            margin-bottom: 10px;
+        }
+
+        .main-content img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-banner {
+            background: #ffd400;
+            color: #000;
+            padding: 15px 10px;
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            margin: 20px auto;
+            width: 80%;
+            position: relative;
+        }
+
+        .cta-banner button {
+            background: #ff4db8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin-left: 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .cta-banner button:hover {
+            background: #ff3399;
+        }
+
+        .section-2 {
+            background: #e9f8ff;
+            margin-top: 40px;
+            padding: 30px 20px;
+            border-top-left-radius: 40px;
+            border-top-right-radius: 40px;
+            text-align: center;
+        }
+
+        .section-2 h3 {
+            font-size: 22px;
+            color: #333;
+        }
+
+        .section-2 h3 span {
+            color: #0077ff;
+            font-weight: bold;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .feature-box {
+            width: 180px;
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            margin: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .feature-box h4 {
+            font-size: 16px;
+            color: #0044cc;
+        }
+
+        .feature-box p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .bonus-section {
+            margin-top: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #0066cc;
+        }
+
+        .bottom-cta {
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .bottom-cta button {
+            background: #ff4db8;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .bottom-cta button:hover {
+            background: #ff3399;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="top-header">
+        Smart Learning Anak No.1 <span style="color:#0066cc">Wink</span>
+    </header>
+
+    <!-- STICKY NAV (Atas) -->
+    <nav
+        style="position: fixed; top: 0; left: 0; width: 100%; background: #ffffff; z-index: 999; padding: 12px 0; display: flex; justify-content: center; gap: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <a href="#" style="color: #1e88e5; text-decoration: none; font-weight: bold;">Matematika</a>
+        <a href="#" style="color: #1e88e5; text-decoration: none; font-weight: bold;">Bahasa Inggris/Fonik</a>
+        <a href="#" style="color: #1e88e5; text-decoration: none; font-weight: bold;">Bahasa Indonesia</a>
+    </nav>
+
+    <!-- STICKY CTA BANNER (Bawah) -->
+    <div class="cta-banner"
+        style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #ffeb3b; text-align: center; padding: 12px 0; font-weight: bold; z-index: 999; box-shadow: 0 -2px 5px rgba(0,0,0,0.1);">
+        Tanpa dipungut biaya
+        <button
+            style="margin-left: 10px; background-color: #e91e63; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer;">
+            Daftar Uji Coba Gratis
+        </button>
+    </div>
+
+    <div class="main-content">
+        <h2>Wink, Metode Pendidikan Inovatif Korea</h2>
+        <img src="https://i.imgur.com/4t91rKq.jpg" alt="Wink Education Image">
+        <!-- Ganti src dengan URL lokal jika ingin menggunakan gambar dari perangkat -->
+    </div>
+
+    <section class="section-2">
+        <p style="font-weight:bold;">Hadiahkan Wink Smart Learning Anak No.1<br>kepada Anak Anda Juga</p>
+        <div class="cta-banner" style="background:#7c3f00; color:white;">
+            Tanpa dipungut biaya
+            <button style="background:#ffd400; color:#000;">Daftar Uji Coba Gratis</button>
+        </div>
+
+        <h3>Belajar Seru Bersama Wink<br>dengan <span>Menggunakan Winkbot</span></h3>
+
+        <div class="features">
+            <div class="feature-box" style="border-top: 5px solid #0077ff;">
+                <h4>Matematika WINK</h4>
+                <p>Melatih kemampuan berpikir matematis</p>
+            </div>
+            <div class="feature-box" style="border-top: 5px solid #ff3333;">
+                <h4>Memblokir Dampak Negatif</h4>
+                <p>Tanpa perlu koneksi internet</p>
+            </div>
+            <div class="feature-box" style="border-top: 5px solid #3366ff;">
+                <h4>Bahasa Inggris WINK</h4>
+                <p>Berteman dengan Bahasa Inggris</p>
+            </div>
+            <div class="feature-box" style="border-top: 5px solid #00aa00;">
+                <h4>Pengetahuan Latar</h4>
+                <p>Pengetahuan dasar anak</p>
+            </div>
+            <div class="feature-box" style="border-top: 5px solid #ffaa00;">
+                <h4>Bahasa Indonesia WINK</h4>
+                <p>Pembelajaran bahasa ibu</p>
+            </div>
+        </div>
+        <!-- Tambahan Card Hadiah Uji Coba -->
+        <div class="gift-section" style="text-align: center; padding: 40px 20px; background: #f2fbff;">
+            <h3 style="color: #333; font-size: 20px;">
+                Daftar uji coba gratis Wink sekarang<br>
+                dan dapatkan hadiah menarik untuk anak Anda
+            </h3>
+
+            <div
+                style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; margin-top: 30px;">
+                <img src="https://i.imgur.com/y9cUeUe.jpg" alt="Poster Edukasi Alfabet"
+                    style="max-width: 250px; margin: 10px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                <img src="https://i.imgur.com/Gpq2BLr.jpg" alt="Tablet Edukasi Wink"
+                    style="max-width: 300px; margin: 10px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            </div>
+
+            <p style="font-size: 14px; color: #555; margin-top: 10px;">
+                Poster Edukasi Alfabet
+            </p>
+
+            <div class="bottom-cta" style="margin-top: 20px;">
+                <button>Siapa cepat dia dapat!<br>Daftar Uji Coba Gratis</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: 1. Metode Pembelajaran Teruji -->
+    <section class="section-method" style="background: #f9f9f9; padding: 50px 20px; text-align: center;">
+        <h2 style="font-size: 24px; color: #222; margin-bottom: 10px;">Alasan Harus Menggunakan</h2>
+        <h2 style="font-size: 26px; color: #007bff; font-weight: bold;">Smart Learning Anak No.1 Wink</h2>
+
+        <div style="background: #0039a6; color: white; margin-top: 30px; border-radius: 20px; padding: 30px 20px;">
+            <h3 style="font-size: 22px; margin-bottom: 20px;">1. Metode Pembelajaran Teruji</h3>
+            <h4 style="font-size: 18px; font-weight: normal; margin-bottom: 30px;">Metode Belajar Kelas Dunia Ada di
+                WINK:</h4>
+
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-bottom: 40px;">
+                <div style="max-width: 180px;">
+                    <img src="https://i.imgur.com/7FlcZQM.png" alt="Obama" style="width: 60px; border-radius: 50%;">
+                    <p style="font-weight: bold; margin-top: 10px;">“Pendidikan Korea luar biasa”</p>
+                    <small>Barack Obama, Mantan Presiden AS</small>
+                </div>
+                <div style="max-width: 180px;">
+                    <img src="https://i.imgur.com/S5r0eZL.png" alt="PISA Logo" style="height: 40px;">
+                    <p style="font-weight: bold; margin-top: 10px;">“Korea ranking teratas”</p>
+                    <small>Program Penilaian Siswa Internasional (PISA)</small>
+                </div>
+                <div style="max-width: 180px;">
+                    <img src="https://i.imgur.com/zV1KwWs.png" alt="UNESCO" style="height: 40px;">
+                    <p style="font-weight: bold; margin-top: 10px;">“Sistem pendidikan Korea adalah modal terbaik”</p>
+                    <small>UNESCO</small>
+                </div>
+            </div>
+
+            <h4 style="font-size: 18px; font-weight: normal; color: white;">Para ahli pendidikan pun turut mengakui:
+            </h4>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 20px;">
+                <div
+                    style="background: #1976d2; padding: 15px 20px; border-radius: 12px; color: white; max-width: 200px;">
+                    <strong>Profesor Linguistik<br>Universitas Oxford Inggris</strong>
+                    <p style="font-size: 13px; margin-top: 10px;">“Sebagai ahli bahasa, saya terkesan oleh metode
+                        pembelajaran Wink.”</p>
+                </div>
+                <div
+                    style="background: #1976d2; padding: 15px 20px; border-radius: 12px; color: white; max-width: 200px;">
+                    <strong>Guru Pengajar SD</strong>
+                    <p style="font-size: 13px; margin-top: 10px;">“Wink membuat konsentrasi meningkat bagi siswa.”</p>
+                </div>
+                <div
+                    style="background: #1976d2; padding: 15px 20px; border-radius: 12px; color: white; max-width: 200px;">
+                    <strong>Ahli Persiapan SNBT</strong>
+                    <p style="font-size: 13px; margin-top: 10px;">“Lingkungan pembelajaran Wink membentuk dasar fokus
+                        dengan efektif.”</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: 2. Metode Pembelajaran Optimal untuk Usia Dini -->
+    <section class="section-optimal" style="background: #f9f9f9; padding: 50px 20px; text-align: center;">
+        <div style="background: #2e7d32; color: white; border-radius: 20px; padding: 30px 20px;">
+            <h3 style="font-size: 22px; margin-bottom: 10px;">2. Metode Pembelajaran Optimal untuk Usia Dini</h3>
+            <p style="font-size: 18px; margin-top: 10px; font-style: italic;">Hal terpenting saat pertama kali belajar
+                adalah<br><strong>“Pengalaman belajar menyenangkan”</strong></p>
+
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 30px;">
+
+                <div style="background: #e8f5e9; border-radius: 15px; padding: 20px; max-width: 230px;">
+                    <div style="font-weight: bold; margin-bottom: 10px;">1</div>
+                    <img src="https://i.imgur.com/CkMdEbY.jpg" alt="Anak Belajar"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="margin-top: 10px;">Jika anak mengenali belajar sebagai pengalaman yang menyenangkan sedari
+                        kecil</p>
+                </div>
+
+                <div style="background: #e8f5e9; border-radius: 15px; padding: 20px; max-width: 230px;">
+                    <div style="font-weight: bold; margin-bottom: 10px;">2</div>
+                    <img src="https://i.imgur.com/TJ7wQJX.jpg" alt="Otak Anak"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="margin-top: 10px;">Kemampuan belajar otak akan berkembang dengan optimal</p>
+                </div>
+
+                <div style="background: #e3f2fd; border-radius: 15px; padding: 20px; max-width: 230px;">
+                    <div style="font-weight: bold; margin-bottom: 10px;">3</div>
+                    <img src="https://i.imgur.com/O7tMGu1.jpg" alt="Anak Senang Belajar"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="margin-top: 10px;">Keinginan belajar dan kemampuan pengendalian diri meningkat</p>
+                </div>
+
+                <div style="background: #e3f2fd; border-radius: 15px; padding: 20px; max-width: 230px;">
+                    <div style="font-weight: bold; margin-bottom: 10px;">4</div>
+                    <img src="https://i.imgur.com/c9pMezR.jpg" alt="Siswa Unggul"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="margin-top: 10px;">Sehingga daya saing belajar di masa depan pun meningkat</p>
+                </div>
+                <div class="bottom-cta" style="margin-top: 30px;">
+                    <p
+                        style="background-color: #f528a3; color: white; padding: 12px 25px; border-radius: 25px; border: none; font-size: 16px; font-weight: bold;">
+                        Wink membuat belajar menjadi menyenangkan
+                        dan meningkatkan daya saing belajar di masa depan
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: 3. 99% Orang Tua Merasa Puas -->
+    <section class="section-puas" style="background: #fff3e0; padding: 50px 20px; text-align: center;">
+        <div style="background: #a94442; color: white; border-radius: 20px; padding: 30px 20px;">
+            <h3 style="font-size: 22px; margin-bottom: 10px;">3. 99% Orang Tua Merasa Puas setelah Menggunakan Wink</h3>
+
+            <!-- Bar Chart Dummy -->
+            <div style="display: flex; justify-content: center; gap: 30px; margin-top: 30px;">
+                <div>
+                    <div style="height: 80px; width: 30px; background: #d32f2f; margin-bottom: 5px;"></div>
+                    <p style="font-size: 12px;">Tidak mencari Youtube</p>
+                </div>
+                <div>
+                    <div style="height: 120px; width: 30px; background: #1976d2; margin-bottom: 5px;"></div>
+                    <p style="font-size: 12px;">Anak menikmati proses belajar</p>
+                </div>
+                <div>
+                    <div style="height: 100px; width: 30px; background: #388e3c; margin-bottom: 5px;"></div>
+                    <p style="font-size: 12px;">Hasil belajar langsung terlihat</p>
+                </div>
+                <div>
+                    <div style="height: 70px; width: 30px; background: #f9a825; margin-bottom: 5px;"></div>
+                    <p style="font-size: 12px;">Biayanya terjangkau</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimoni -->
+        <div style="margin-top: 40px;">
+            <h4 style="color: #a94442;">Testimoni asli dari para orang tua Indonesia</h4>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 20px;">
+
+                <div
+                    style="background: #fff; border: 1px solid #f8bbd0; border-radius: 15px; padding: 15px; max-width: 230px;">
+                    <img src="https://i.imgur.com/FWSRBo2.jpg" alt="Testimoni 1"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="margin-top: 10px; font-size: 14px;">“Dapat belajar mata pelajaran yang diperlukan
+                        sekaligus dengan biaya terjangkau.”<br><strong>Ryan, 6 tahun</strong></p>
+                </div>
+
+                <div
+                    style="background: #fff; border: 1px solid #f8bbd0; border-radius: 15px; padding: 15px; max-width: 230px;">
+                    <img src="https://i.imgur.com/6YcK0nT.jpg" alt="Testimoni 2"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="margin-top: 10px; font-size: 14px;">“Dapat belajar di mana saja karena bisa diakses tanpa
+                        WiFi. Belajar jadi praktis.”<br><strong>Ayu, 5 tahun</strong></p>
+                </div>
+
+                <div
+                    style="background: #fff; border: 1px solid #f8bbd0; border-radius: 15px; padding: 15px; max-width: 230px;">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 3"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="margin-top: 10px; font-size: 14px;">“Pembelajaran lengkap dengan harga sebanding dengan
+                        satu bimbel Matematika.”<br><strong>Hayat, 6 tahun</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: 4. Perusahaan Edukasi Terpercaya No.1 -->
+    <section class="section-perusahaan" style="background: #e8eaf6; padding: 50px 20px; text-align: center;">
+        <div style="background: #303f9f; color: white; border-radius: 20px; padding: 30px 20px;">
+            <h3 style="font-size: 22px; margin-bottom: 25px;">4. Perusahaan Edukasi Terpercaya No.1</h3>
+
+            <!-- Video/Image -->
+            <div style="display: flex; justify-content: center;">
+                <div style="background: white; padding: 10px; border-radius: 15px;">
+                    <img src="https://i.imgur.com/pXnMNUX.png" alt="Danbi Edu"
+                        style="width: 300px; border-radius: 10px;">
+                    <p style="color: #ffeb3b; margin-top: 10px;"><strong>Danbi Edu</strong>, Perusahaan EduTech No.1
+                        Korea</p>
+                </div>
+            </div>
+
+            <!-- Statistik -->
+            <div
+                style="display: flex; justify-content: center; gap: 30px; margin-top: 30px; flex-wrap: wrap; color: white;">
+                <div>
+                    <h2 style="font-size: 40px;">#1</h2>
+                    <p style="font-size: 13px; max-width: 150px;">Peringkat 1 Indeks Kepuasan Konsumen selama 4 tahun
+                        berturut-turut</p>
+                </div>
+                <div>
+                    <h2 style="font-size: 40px;">97%</h2>
+                    <p style="font-size: 13px; max-width: 150px;">Kemampuan belajar pengguna meningkat 97%</p>
+                </div>
+                <div>
+                    <h2 style="font-size: 40px;">1T</h2>
+                    <p style="font-size: 13px; max-width: 150px;">Perusahaan yang mencapai penjualan 1 triliun dalam
+                        waktu singkat</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Mengenal Lebih Jauh - Peringkat #1 Wink -->
+    <section style="background: #fff3e0; padding: 50px 20px; text-align: center;">
+        <div style="background: #6d1b7b; color: white; border-radius: 20px 20px 0 0; padding: 20px;">
+            <h3 style="font-size: 22px;">Mengenal Lebih Jauh</h3>
+            <h2 style="font-size: 26px; font-weight: bold;">Peringkat #1 Wink</h2>
+        </div>
+
+        <div style="background: white; padding: 30px 20px; border-radius: 0 0 20px 20px;">
+            <h3 style="color: #333; margin-bottom: 10px;">Menyediakan alat khusus pembelajaran</h3>
+            <p style="color: #666; font-size: 14px; margin-bottom: 30px;">
+                disertai tombol yang mudah digunakan sendiri<br>
+                <strong>Keunikan belajar dengan alat khusus</strong> yang dirancang sesuai tahap perkembangan anak
+            </p>
+
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+                <!-- Card 1 -->
+                <div style="width: 180px; background: #fbe9e7; border-radius: 15px; padding: 15px;">
+                    <img src="https://i.imgur.com/bQqlMrg.png" alt="Winkbot berdiri"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="font-size: 14px; margin-top: 10px; color: #555;">Desain berdiri serta tidak mudah jatuh
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div style="width: 180px; background: #fff8e1; border-radius: 15px; padding: 15px;">
+                    <img src="https://i.imgur.com/52bZ2Uj.png" alt="Winkbot tombol"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="font-size: 14px; margin-top: 10px; color: #555;">Mudah dioperasikan sendiri oleh anak</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div style="width: 180px; background: #e1f5fe; border-radius: 15px; padding: 15px;">
+                    <img src="https://i.imgur.com/6xmiUnJ.png" alt="No Youtube"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="font-size: 14px; margin-top: 10px; color: #555;">No Youtube! Memblokir konten buruk</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div style="width: 180px; background: #f3e5f5; border-radius: 15px; padding: 15px;">
+                    <img src="https://i.imgur.com/kcDhguS.png" alt="Konten edukatif"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="font-size: 14px; margin-top: 10px; color: #555;">Dapat digunakan untuk belajar berbagai
+                        konten</p>
+                </div>
+            </div>
+
+            <!-- Video CTA -->
+            <div style="margin-top: 40px;">
+                <h4 style="color: #1e88e5; font-size: 18px; margin-bottom: 15px;">Lihat Video Pengenalan Winkbot</h4>
+                <video width="320" controls style="border-radius: 15px;">
+                    <source src="winkbot-video.mp4" type="video/mp4">
+                    Video tidak dapat diputar di browser Anda.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Konten Pembelajaran Efektif -->
+    <section style="background: #e0f7fa; padding: 50px 20px; text-align: center;">
+        <div style="background: #004d40; color: white; padding: 20px 10px; border-radius: 20px 20px 0 0;">
+            <h2 style="font-size: 24px; margin: 0;">Konten pembelajaran efektif</h2>
+            <p style="font-size: 16px; margin-top: 5px;">dioptimalkan untuk Anak</p>
+        </div>
+
+        <div style="background: white; padding: 30px 20px; border-radius: 0 0 20px 20px;">
+            <h3 style="color: #00796b; font-size: 18px; margin-bottom: 30px;">
+                Menerapkan Kualitas Konten<br><strong>Smart Learning No.1 di Korea</strong>
+            </h3>
+
+            <!-- 3 Feature Cards -->
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+                <!-- Card 1 -->
+                <div style="width: 220px; background: #f1f8e9; border-radius: 15px; padding: 15px;">
+                    <img src="https://i.imgur.com/rms7T5L.png" alt="Solusi Belajar 3 Bahasa"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="margin-top: 10px; color: #444;">Solusi belajar B. Inggris, Matematika, B. Indonesia
+                        sekaligus</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div style="width: 220px; background: #e3f2fd; border-radius: 15px; padding: 15px;">
+                    <img src="https://i.imgur.com/VcEADae.png" alt="Format Interaktif"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="margin-top: 10px; color: #444;">Berbagai format pembelajaran (animasi, gambar asli,
+                        interaktif, kuis dll.)</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div style="width: 220px; background: #fce4ec; border-radius: 15px; padding: 15px;">
+                    <img src="https://i.imgur.com/HqR8Ktw.png" alt="Konten Terbanyak"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="margin-top: 10px; color: #444;">Menyediakan konten pembelajaran digital terbanyak</p>
+                </div>
+            </div>
+
+            <!-- Subject Tags -->
+            <div style="margin-top: 30px;">
+                <span
+                    style="background: #f3e5f5; color: #6a1b9a; padding: 6px 15px; border-radius: 25px; margin: 5px; display: inline-block;">📐
+                    Matematika</span>
+                <span
+                    style="background: #e1f5fe; color: #0277bd; padding: 6px 15px; border-radius: 25px; margin: 5px; display: inline-block;">🅰️
+                    Bahasa Inggris</span>
+                <span
+                    style="background: #fff3e0; color: #ef6c00; padding: 6px 15px; border-radius: 25px; margin: 5px; display: inline-block;">🇮🇩
+                    Bahasa Indonesia</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Proses Pembelajaran Sistematis -->
+    <section style="background: #e3f2fd; padding: 50px 20px; text-align: center;">
+        <div style="background: #3f51b5; color: white; padding: 20px 10px; border-radius: 20px 20px 0 0;">
+            <h2 style="font-size: 24px; margin: 0;">Proses Pembelajaran Sistematis</h2>
+            <p style="font-size: 16px; margin-top: 5px;">menyempurnakan keterampilan</p>
+        </div>
+
+        <div style="background: white; padding: 30px 20px; border-radius: 0 0 20px 20px;">
+            <h3 style="color: #0d47a1; font-size: 18px; margin-bottom: 30px;">
+                Maksimalkan hasil belajar dengan berlatih secara mandiri<br>dan belajar dengan menyenangkan
+            </h3>
+
+            <!-- 3 Langkah Belajar -->
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+                <!-- Langkah 1 -->
+                <div style="width: 220px; background: #fffde7; border-radius: 15px; padding: 15px;">
+                    <img src="https://i.imgur.com/Ec0voPS.png" alt="Permainan Edukatif"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="margin-top: 10px; color: #444;">Dimatangkan secara menyenangkan dengan permainan edukatif.
+                    </p>
+                </div>
+
+                <!-- Langkah 2 -->
+                <div style="width: 220px; background: #e8f5e9; border-radius: 15px; padding: 15px;">
+                    <img src="https://i.imgur.com/8uacgWs.png" alt="Kuis Interaktif"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="margin-top: 10px; color: #444;">Lalu dipastikan dengan kuis untuk menguasai ilmunya.</p>
+                </div>
+
+                <!-- Langkah 3 -->
+                <div style="width: 220px; background: #ede7f6; border-radius: 15px; padding: 15px;">
+                    <img src="https://i.imgur.com/JjvS7Vv.png" alt="Latihan Menulis"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="margin-top: 10px; color: #444;">Hingga menulis langsung dengan pensil dan latihan tambahan
+                        lainnya.<br><small>*Tersedia bila diperlukan</small></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: 4X Lingkungan Belajar -->
+    <section style="background: #fff3e0; padding: 50px 20px; text-align: center;">
+        <div style="background: #ef5350; color: white; padding: 20px 10px; border-radius: 20px 20px 0 0;">
+            <h2 style="font-size: 24px; margin: 0;">Menerapkan 4X Lipat Lingkungan Belajar</h2>
+            <p style="font-size: 16px; margin-top: 5px;">untuk meningkatkan pembelajaran imersif</p>
+        </div>
+
+        <div style="background: white; padding: 40px 20px; border-radius: 0 0 20px 20px;">
+            <div style="max-width: 800px; margin: auto; position: relative;">
+                <!-- Gaya grid lingkaran -->
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+
+                    <!-- Kotak 1 -->
+                    <div style="width: 180px; background: #ffccbc; border-radius: 15px; padding: 15px;">
+                        <img src="https://i.imgur.com/N0vUR8V.png" alt="Blokir konten negatif"
+                            style="width: 100%; border-radius: 10px;">
+                        <p style="margin-top: 10px; color: #333; font-size: 14px;">Memblokir konten negatif agar fokus
+                            belajar</p>
+                    </div>
+
+                    <!-- Kotak 2 -->
+                    <div style="width: 180px; background: #ffe082; border-radius: 15px; padding: 15px;">
+                        <img src="https://i.imgur.com/jBJvO9L.png" alt="Belajar tanpa internet"
+                            style="width: 100%; border-radius: 10px;">
+                        <p style="margin-top: 10px; color: #333; font-size: 14px;">Belajar kapan pun, di mana pun tanpa
+                            perlu internet</p>
+                    </div>
+
+                    <!-- Kotak 3 -->
+                    <div style="width: 180px; background: #c8e6c9; border-radius: 15px; padding: 15px;">
+                        <img src="https://i.imgur.com/3nVRSc9.png" alt="Karakter Wink"
+                            style="width: 100%; border-radius: 10px;">
+                        <p style="margin-top: 10px; color: #333; font-size: 14px;">Belajar dengan menyenangkan bersama
+                            karakter Wink setiap hari</p>
+                    </div>
+
+                    <!-- Kotak Tengah -->
+                    <div style="width: 180px; background: #b3e5fc; border-radius: 15px; padding: 15px;">
+                        <img src="https://i.imgur.com/ohxStCr.png" alt="Alat belajar sendiri"
+                            style="width: 100%; border-radius: 10px;">
+                        <p style="margin-top: 10px; color: #333; font-size: 14px;">Membentuk keterikatan belajar dengan
+                            alat belajar milik sendiri</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Pengetahuan Latar -->
+    <section style="background: #e3f2fd; padding: 50px 20px; text-align: center;">
+        <div style="max-width: 800px; margin: auto;">
+            <h2 style="font-size: 24px; color: #0d47a1; margin-bottom: 10px;">
+                Tersedia Lengkap hingga Pengetahuan Latar
+            </h2>
+            <p style="font-size: 16px; font-weight: bold; color: #263238; margin-bottom: 5px;">
+                selain Matematika, B.Inggris, dan B.Indonesia
+            </p>
+            <p style="font-size: 15px; color: #37474f; margin-bottom: 40px;">
+                Tersedia berbagai konten pengetahuan latar <br>
+                untuk memperluas pemikiran anak tanpa biaya tambahan
+            </p>
+
+            <!-- 3 konten utama -->
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+                <!-- Box 1 -->
+                <div
+                    style="width: 220px; background: #ffffff; border-radius: 15px; padding: 15px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+                    <img src="https://i.imgur.com/3YUDyV9.png" alt="Kebiasaan baik"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="margin-top: 10px; font-size: 14px; color: #1a237e;">Membangun kebiasaan baik</p>
+                </div>
+
+                <!-- Box 2 -->
+                <div
+                    style="width: 220px; background: #ffffff; border-radius: 15px; padding: 15px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+                    <img src="https://i.imgur.com/dNzMIog.png" alt="Origami motorik halus"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="margin-top: 10px; font-size: 14px; color: #1a237e;">Origami untuk perkembangan motorik
+                        halus</p>
+                </div>
+
+                <!-- Box 3 -->
+                <div
+                    style="width: 220px; background: #ffffff; border-radius: 15px; padding: 15px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+                    <img src="https://i.imgur.com/oDRPQQI.png" alt="Animasi dongeng"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="margin-top: 10px; font-size: 14px; color: #1a237e;">Animasi dongeng pembentuk kepribadian
+                    </p>
+                </div>
+            </div>
+
+            <p style="font-size: 12px; color: #607d8b; margin-top: 30px;">
+                *Konten yang lebih beragam dapat digunakan saat terhubung ke Wi-Fi
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION: Keuntungan Uji Coba Gratis -->
+    <section style="background: #fff3e0; padding: 50px 20px;">
+        <div style="max-width: 900px; margin: auto; text-align: center;">
+            <h2 style="font-size: 24px; color: #d84315; margin-bottom: 10px;">
+                Keuntungan Mendaftar <br>
+                <span style="color: #c2185b;">Uji Coba Gratis <strong>Wink</strong></span>
+            </h2>
+
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; margin-top: 40px; gap: 30px;">
+
+                <!-- Left Column -->
+                <div style="flex: 1 1 300px; text-align: left;">
+                    <ul style="list-style: none; padding: 0; font-size: 15px; color: #4e342e;">
+                        <li style="margin-bottom: 20px;">
+                            ✅ Kesempatan belajar <strong>seluruh mata pelajaran 100% gratis!</strong>
+                        </li>
+                        <li style="margin-bottom: 20px;">
+                            ✅ Kesempatan bagi anak Anda untuk mencoba <strong>rahasia pendidikan Korea</strong>. Salah
+                            satu negara berpendidikan unggul.
+                        </li>
+                        <li style="margin-bottom: 20px;">
+                            ✅ Metode ajaib yang bisa membuat anak berhenti menonton YouTube hingga <strong>belajar atas
+                                kemauan sendiri</strong>.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Right Column -->
+                <div style="flex: 1 1 300px; text-align: left;">
+                    <ul style="list-style: none; padding: 0; font-size: 15px; color: #4e342e;">
+                        <li style="margin-bottom: 20px;">
+                            ✅ Merasakan efek pembelajaran melalui <strong>(WinkBot)</strong>, satu-satunya alat belajar
+                            yang memiliki hak paten di dunia.
+                        </li>
+                        <li style="margin-bottom: 20px;">
+                            ✅ Dan yang terpenting adalah, kesempatan bagi anak Anda untuk merasakan proses
+                            <strong>belajar yang seru dan menyenangkan!</strong>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Maskot -->
+            <div style="margin-top: 30px;">
+                <img src="https://i.imgur.com/g7X9H4Z.png" alt="Maskot Wink" style="width: 140px;">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Kapan Memulai Belajar -->
+    <section style="background: #e3f2fd; padding: 50px 20px;">
+        <div style="max-width: 900px; margin: auto; text-align: center;">
+            <h2 style="font-size: 24px; color: #0d47a1; margin-bottom: 30px;">
+                📘 Kapan dan bagaimana sebaiknya <br> memulai pembelajaran anak Anda?
+            </h2>
+
+            <div style="text-align: left; margin: 0 auto 40px auto; max-width: 720px; font-size: 15px; color: #37474f;">
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 20px;">✅ 90% otak disempurnakan saat masa kanak-kanak</li>
+                    <li style="margin-bottom: 20px;">✅ Nilai akademis pelajar kelas 3 SMP ke atas yang mulai belajar
+                        sejak sebelum usia 5 tahun mendapat 39 poin lebih tinggi</li>
+                    <li style="margin-bottom: 20px;">✅ Nilai akademis pelajar kelas 3 SMP ke atas yang dikenalkan alat
+                        digital sejak masa kanak-kanak 27% lebih tinggi</li>
+                </ul>
+                <p style="font-size: 13px; color: #607d8b;">
+                    (Laporan analisis PISA oleh Scamon Growth Curve & Global Consulting Group McKinsey / JoongAng Ilbo,
+                    Korea Educational Development Institute)
+                </p>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="background: #fff3e0; padding: 25px; border-radius: 12px; display: inline-block;">
+                <p style="font-size: 18px; color: #ef6c00; font-weight: bold;">
+                    Anak Anda berusia 3–6 tahun? <br>
+                    <span style="color: #d32f2f;">Inilah saatnya untuk mulai belajar!</span>
+                </p>
+                <a href="#daftar"
+                    style="display: inline-block; margin-top: 15px; padding: 12px 25px; background: #0288d1; color: white; font-weight: bold; border-radius: 8px; text-decoration: none;">
+                    Ayo, daftar uji coba gratis tanpa beban
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Daftar Uji Coba dan Hadiah -->
+    <section style="background: #fff8e1; padding: 50px 20px;">
+        <div style="max-width: 900px; margin: auto; text-align: center;">
+            <h2 style="font-size: 22px; color: #d84315; font-weight: bold;">
+                Daftar uji coba gratis Wink sekarang <br> dan dapatkan <span style="color: #fbc02d;">hadiah
+                    menarik</span> untuk anak Anda
+            </h2>
+
+            <div style="margin-top: 40px; display: flex; justify-content: center; flex-wrap: wrap; gap: 40px;">
+                <!-- Poster Alphabet -->
+                <div style="max-width: 250px; position: relative;">
+                    <img src="poster-alphabet.jpg" alt="Poster Alphabet"
+                        style="width: 100%; border: 2px solid #90caf9; border-radius: 8px;">
+                    <p style="color: #ab47bc; font-size: 14px; margin-top: 8px;">Dapat ditempel di dinding</p>
+                </div>
+
+                <!-- Tablet dan Hadiah -->
+                <div style="max-width: 280px; position: relative;">
+                    <img src="wink-device.jpg" alt="Wink Device" style="width: 100%; border-radius: 8px;">
+                    <div
+                        style="position: absolute; top: -15px; right: -15px; background: #f06292; color: white; font-weight: bold; padding: 10px 15px; border-radius: 50%;">
+                        ⭐ Pendaftar melonjak
+                    </div>
+                    <img src="gift-box.png" alt="Gift Box"
+                        style="width: 60px; position: absolute; bottom: -10px; right: 0;">
+                </div>
+            </div>
+
+            <!-- Tombol CTA -->
+            <a href="#daftar"
+                style="margin-top: 40px; display: inline-block; background: #039be5; color: white; padding: 14px 28px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 16px;">
+                Daftar Gratis Sekarang 🎁
+            </a>
+        </div>
+    </section>
+
+    <!-- SECTION: Ajakan Daftar -->
+    <section style="background: linear-gradient(to bottom, #ffe082, #fff3e0); padding: 50px 20px; text-align: center;">
+        <div style="max-width: 700px; margin: auto;">
+            <h2 style="color: #4e342e; font-size: 24px; font-weight: bold; margin-bottom: 10px;">
+                Pendaftar melonjak, uji coba gratis akan segera ditutup bulan ini!
+            </h2>
+            <p style="font-size: 18px; margin-bottom: 30px;">Ayo daftar sekarang!</p>
+
+            <!-- Tombol CTA -->
+            <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;">
+                <a href="#form-daftar"
+                    style="background-color: #d81b60; color: white; padding: 14px 26px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 16px;">
+                    Daftar Uji Coba Gratis
+                </a>
+                <a href="#materi"
+                    style="background-color: #0288d1; color: white; padding: 14px 26px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 16px;">
+                    Lihat Materi Pembelajaran
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Q&A Pendaftaran -->
+    <section style="background: #e1f5fe; padding: 50px 20px;">
+        <div style="max-width: 800px; margin: auto;">
+            <h2 style="text-align: center; color: #0d47a1;">Q&amp;A Pendaftaran<br><span style="color: #d32f2f;">Uji
+                    Coba Gratis Wink</span></h2>
+            <div style="margin-top: 30px;">
+                <details style="margin-bottom: 10px;">
+                    <summary
+                        style="background: #fff; padding: 15px; font-weight: bold; border-radius: 8px; cursor: pointer;">
+                        Apa yang terjadi setelah saya mendaftar uji coba gratis Wink?</summary>
+                    <p style="padding: 15px; background: #fafafa; border-radius: 0 0 8px 8px;">Tim kami akan menghubungi
+                        Jika Anda mendaftar, paket pembelajaran gratis Wink akan dikirimkan ke alamat yang Anda
+                        cantumkan dalam 3 hingga 5 hari kerja. Anda dapat mencoba Wink secara gratis selama 7 hari mulai
+                        dari hari kedatangan, dan memutuskan ingin melanjutkan penggunaan atau tidak.
+
+                        Namun, bila jumlah pendaftar membludak, jadwal masa uji coba gratis Anda dapat berubah atau
+                        disesuaikan kembali. Dalam hal ini, kami akan memberi tahu Anda terlebih dahulu..</p>
+                </details>
+
+                <details style="margin-bottom: 10px;">
+                    <summary
+                        style="background: #fff; padding: 15px; font-weight: bold; border-radius: 8px; cursor: pointer;">
+                        Apakah uji coba gratis itu benar-benar tidak berbayar?</summary>
+                    <p style="padding: 15px; background: #fafafa; border-radius: 0 0 8px 8px;">Benar, 100% gratis.
+                        Setelah masa uji coba gratis seminggu berakhir, pembayaran dapat dilakukan bila Anda memutuskan
+                        untuk terus bergabung dengan Wink.
+
+                        Meskipun Anda tidak ingin melanjutkan pembelajaran bersama Wink, biaya pengembalian alat
+                        pembelajaran yang telah Anda terima juga akan ditanggung oleh Wink, bila Anda mendaftar
+                        pengembalian dalam kurun waktu 5 hari setelah masa uji coba berakhir. Dengan begitu, seluruh
+                        proses uji coba gratis Wink 100% gratis.</p>
+                </details>
+
+                <details style="margin-bottom: 10px;">
+                    <summary
+                        style="background: #fff; padding: 15px; font-weight: bold; border-radius: 8px; cursor: pointer;">
+                        Apakah memerlukan koneksi internet untuk menggunakan Wink?</summary>
+                    <p style="padding: 15px; background: #fafafa; border-radius: 0 0 8px 8px;">Ya, koneksi internet
+                        Wink dapat digunakan tanpa koneksi internet.</p>
+                </details>
+
+                <details style="margin-bottom: 10px;">
+                    <summary
+                        style="background: #fff; padding: 15px; font-weight: bold; border-radius: 8px; cursor: pointer;">
+                        Apakah saya harus membeli alat pembelajarannya juga untuk menggunakan Wink?</summary>
+                    <p style="padding: 15px; background: #fafafa; border-radius: 0 0 8px 8px;">Alat belajar sudah
+                        termasuk dalam biaya pembelajaran, jadi Anda tidak perlu membelinya secara terpisah.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: #e0e0e0; padding: 20px; text-align: center; font-size: 14px;">
+        <div>
+            <a href="#" style="margin: 0 10px; color: #424242; text-decoration: none;">Syarat dan Ketentuan</a>
+            |
+            <a href="#" style="margin: 0 10px; color: #424242; text-decoration: none;">Bantuan</a>
+        </div>
+        <div style="margin-top: 10px; color: #757575;">
+            Copyright © 2025 <strong style="color: #1976d2;">wink</strong>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

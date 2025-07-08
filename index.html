@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV Aprila Kris</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background: linear-gradient(to bottom, #f9fafb, #edf2f7);
+    }
+
+    .pattern-bg {
+      background-image: url('https://www.toptal.com/designers/subtlepatterns/patterns/double-bubble-outline.png');
+      background-size: 200px 200px;
+      background-repeat: repeat;
+    }
+
+    .dots-bg {
+      background-image: radial-gradient(circle, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    .rotate-180 {
+      transform: rotate(180deg);
+    }
+
+    body.dark {
+      background: linear-gradient(to bottom, #1a202c, #2d3748);
+      color: #edf2f7;
+    }
+
+    body.dark .pattern-bg {
+      background-image: none;
+      background-color: #2d3748;
+    }
+
+    body.dark .dots-bg {
+      background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    }
+
+    body.dark .bg-white {
+      background-color: #2d3748 !important;
+    }
+
+    body.dark .text-gray-800 {
+      color: #edf2f7 !important;
+    }
+
+    body.dark .text-gray-600 {
+      color: #a0aec0 !important;
+    }
+
+    body.dark .text-gray-700 {
+      color: #e2e8f0 !important;
+    }
+
+    body.dark .shadow,
+    body.dark .shadow-lg,
+    body.dark .shadow-inner {
+      box-shadow: none !important;
+    }
+
+    /* Aninasi card berputar */
+    /* Efek perspektif agar rotasi terlihat */
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+
+    .card-hover {
+      transition: transform 0.6s ease;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    .card-hover:hover {
+      transform: rotateY(8deg) scale(1.02);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Untuk rotasi ke kiri */
+    .card-hover-left {
+      transition: transform 0.6s ease, box-shadow 0.3s ease;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    .card-hover-left:hover {
+      transform: rotateY(-8deg) scale(1.02);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      changeLanguage("en"); // Default language
+    });
+
+    function toggleAboutMe() {
+      const section = document.getElementById("about-section");
+      const icon = document.getElementById("toggle-icon");
+      section.classList.toggle("hidden");
+      icon.classList.toggle("rotate-180");
+    }
+
+    function changeLanguage(lang) {
+      const elements = document.querySelectorAll("[data-i18n]");
+      elements.forEach(el => {
+        try {
+          const translations = JSON.parse(el.dataset.i18n);
+          if (translations[lang]) {
+            el.innerText = translations[lang].replace(/\\n/g, "\n");
+          }
+        } catch (e) {
+          console.warn("Invalid i18n on:", el);
+        }
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      changeLanguage("en");
+
+      // Load theme from localStorage
+      if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark");
+        document.getElementById("theme-toggle").innerText = "☀️ Light";
+
+        const langSelect = document.getElementById("language-select");
+        langSelect.classList.remove("bg-white", "text-gray-800", "border-gray-300");
+        langSelect.classList.add("bg-gray-700", "text-gray-100", "border-gray-500");
+      }
+    });
+
+    function toggleDarkMode() {
+      const isDark = document.body.classList.toggle("dark");
+      const toggleBtn = document.getElementById("theme-toggle");
+      const langSelect = document.getElementById("language-select");
+
+      if (isDark) {
+        toggleBtn.innerText = "☀️ Light";
+        toggleBtn.classList.remove("border-gray-300", "text-gray-800", "bg-white");
+        toggleBtn.classList.add("border-gray-500", "text-gray-100", "bg-gray-700");
+
+        langSelect.classList.remove("border-gray-300", "text-gray-800", "bg-white");
+        langSelect.classList.add("border-gray-500", "text-gray-100", "bg-gray-700");
+      } else {
+        toggleBtn.innerText = "🌙 Dark";
+        toggleBtn.classList.remove("border-gray-500", "text-gray-100", "bg-gray-700");
+        toggleBtn.classList.add("border-gray-300", "text-gray-800", "bg-white");
+
+        langSelect.classList.remove("border-gray-500", "text-gray-100", "bg-gray-700");
+        langSelect.classList.add("border-gray-300", "text-gray-800", "bg-white");
+      }
+
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    }
+
+  </script>
+</head>
+
+<body class="font-sans leading-relaxed tracking-wide flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-white shadow p-6 relative pattern-bg">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <div class="flex items-center space-x-4">
+        <img src="foto.jpg" alt="Foto Aprila Kris"
+          class="w-16 h-16 rounded-full object-cover border-2 border-gray-300" />
+        <div>
+          <h1 class="text-3xl font-bold text-gray-800">Aprila Krismanto</h1>
+          <p class="text-gray-600 mt-1"
+            data-i18n='{"id":"Content Creator | Front-End Developer","en":"Content Creator | Front-End Developer"}'>
+            Content Creator | Front-End Developer
+          </p>
+        </div>
+      </div>
+      <div class="absolute top-6 right-6">
+        <select id="language-select" onchange="changeLanguage(this.value)" class="border-gray-300 rounded p-1 text-sm">
+          <option value="en">🇬🇧 EN</option>
+          <option value="id">🇮🇩 ID</option>
+        </select>
+        <button id="theme-toggle" onclick="toggleDarkMode()"
+          class="ml-2 border border-gray-300 rounded px-2 py-1 text-sm">
+          🌙 Dark
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Me -->
+  <section class="max-w-6xl mx-auto mt-3 px-4 dots-bg py-3 rounded-xl shadow-inner">
+    <div class="flex items-center justify-between mb-4 cursor-pointer group" onclick="toggleAboutMe()"
+      title="Click to show/hide">
+      <h2 class="text-2xl font-bold text-gray-800 transition duration-200 group-hover:text-blue-600"
+        data-i18n='{"id":"Tentang Saya","en":"About Me"}'>
+        About Me
+      </h2>
+      <svg id="toggle-icon" class="w-5 h-5 text-gray-500 group-hover:text-blue-600 transition-transform duration-300"
+        fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+
+    <div id="about-section" class="hidden">
+      <p class="text-gray-700 leading-relaxed whitespace-pre-line" data-i18n='{
+        "id": "Halo, saya Krisma. Saya bekerja sebagai Content Creator dan Front-End Developer dengan fokus membuat konten yang jelas dan antarmuka yang mudah digunakan.\\n\\nSebagai Content Creator, saya membuat cerita visual dan mengelola media sosial agar bisnis dapat terhubung lebih baik dengan pelanggan mereka.\\n\\nSebagai Front-End Developer, saya menggunakan HTML, CSS, JavaScript, dan React untuk membangun situs yang cepat, responsif, dan mudah diakses.\\n\\nSaya terbiasa bekerja secara remote, disiplin dalam mengatur waktu, dan menikmati kerja sama dengan tim dari berbagai latar belakang.\\n\\nKalau Anda mencari seseorang yang dapat membantu membuat produk digital Anda lebih menarik dan mudah digunakan, saya siap membantu.",
+        "en": "Hi, I’m Krisma — a passionate Content Creator and Front-End Developer with a creative edge and a keen eye for detail. With a strong foundation in designing user-friendly interfaces and crafting engaging digital content, I bring both technical skills and storytelling into every project I work on.\\n\\nAs a content creator, I specialize in visual storytelling, social media strategy, and branding, helping businesses connect with their audience through meaningful and impactful content.\\n\\nAs a front-end developer, I work primarily with HTML, CSS, JavaScript, and modern frameworks like React, building clean, responsive, and accessible user interfaces. I focus on creating seamless digital experiences that not only look great but also function intuitively.\\n\\nI thrive in remote environments, manage my time efficiently, and love collaborating across cultures and time zones. Whether it’s building landing pages, managing digital campaigns, or launching a new product interface — I’m ready to bring value to your team.\\n\\nLet’s build something awesome together!"
+      }'>
+        Hi, I’m Krisma...
+      </p>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section class="max-w-5xl mx-auto mt-3 px-4">
+    <h2 class="text-3xl font-bold mb-8 text-gray-800 text-center"
+      data-i18n='{"id":"Portofolio Saya","en":"My Portfolio"}'>My Portfolio</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+      <!-- Card 1 -->
+      <a href="contentcreator.html" target="_blank" class="block perspective-1000">
+        <div class="bg-white shadow-lg rounded-2xl overflow-hidden card-hover">
+          <img src="ContentCreator.jpg" alt="Content Creator" class="w-full h-56 object-cover" />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2"
+              data-i18n='{"id":"Content Creator","en":"Content Creator"}'>Content Creator</h3>
+            <p class="text-gray-600 text-base leading-relaxed" data-i18n='{
+              "id":"Membangun strategi konten dan visual branding untuk Instagram komunitas bisnis dan project pribadi frontend.",
+              "en":"Developing content strategy and visual branding for business community Instagram and frontend-related personal projects."
+            }'>
+              Developing content strategy and visual branding for business community Instagram and frontend-related
+              personal projects.
+            </p>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 2 -->
+      <a href="frontend.html" target="_blank" class="block perspective-1000">
+        <div class="bg-white shadow-lg rounded-2xl overflow-hidden card-hover-left">
+          <img src="frontend.png" alt="Front-End" class="w-full h-56 object-cover" />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2"
+              data-i18n='{"id":"Front-End Developer","en":"Front-End Developer"}'>Front-End Developer</h3>
+            <p class="text-gray-600 text-base leading-relaxed" data-i18n='{
+              "id":"Mengerjakan berbagai proyek pengembangan UI menggunakan HTML, CSS, JavaScript, dan React.",
+              "en":"Working on various UI development projects using HTML, CSS, JavaScript, and React."
+            }'>
+              Working on various UI development projects using HTML, CSS, JavaScript, and React.
+            </p>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white mt-5 py-6 shadow-inner pattern-bg">
+    <div class="max-w-6xl mx-auto text-center text-gray-600 text-sm" data-i18n='{
+      "id":"© 2025 Krisma. Semua hak dilindungi.",
+      "en":"© 2025 Krisma. All rights reserved."
+    }'>© 2025 Krisma. All rights reserved.</div>
+  </footer>
+
+</body>
+
+</html>

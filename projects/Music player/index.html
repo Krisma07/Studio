@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Music Player</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #121212;
+            color: #fff;
+            display: flex;
+            height: 100vh;
+        }
+
+        /* === Vertical Sidebar === */
+        .sidebar {
+            width: 90px;
+            background: #181818;
+            padding: 5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            border-right: 1px solid #333;
+        }
+
+        .sidebar a {
+            color: #bbb;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 0 0;
+            border-radius: 8px;
+            transition: 0.5s;
+        }
+
+        .sidebar a:hover {
+            background: #333;
+            color: #fff;
+        }
+
+        /* === Main Layout === */
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding-left: 2rem;
+            /* Tambahan jarak dari sidebar */
+        }
+
+        /* === Horizontal Navbar === */
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #1e1e1e;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #333;
+        }
+
+        .menu-bar {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #1db954;
+        }
+
+        .search-bar {
+            flex: 1;
+            margin: 0 2rem;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 8px 12px;
+            border-radius: 20px;
+            border: none;
+            background: #333;
+            color: white;
+        }
+
+        /* === Content Area === */
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .player {
+            background: #282828;
+            padding: 30px;
+            border-radius: 20px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+        }
+
+        .cover {
+            width: 100%;
+            height: 300px;
+            background: #444;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            background-image: url('cover1.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        h2#title {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .controls button {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #1db954;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .controls button:hover {
+            transform: scale(1.2);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: #444;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            width: 0%;
+            background: #1db954;
+        }
+
+        /* tab rekomendasi */
+        .recommendation-section {
+            margin-top: 20px;
+        }
+
+        .recommendation-section h2 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .recommendation-row {
+            display: flex;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            gap: 15px;
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        .recommendation-row::-webkit-scrollbar {
+            display: none;
+            /* Chrome */
+        }
+
+        .card {
+            min-width: 80px;
+            /* atau gunakan 6rem */
+            height: 30px;
+            /* sedikit lebih tinggi agar nyaman */
+            padding: 0 10px;
+            /* jarak kiri-kanan dari teks */
+            background: #1db954;
+            color: #fff;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            background: #17a34a;
+        }
+
+        /* content music */
+        .playlist-section {
+            margin-top: 40px;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .playlist-row {
+            display: flex;
+            gap: 130px;
+            /* Ini yang mengatur jarak antar card */
+            overflow-x: auto;
+            padding-bottom: 10px;
+            scrollbar-width: thin;
+            scrollbar-color: #666 transparent;
+        }
+
+        .playlist-row::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .playlist-row::-webkit-scrollbar-thumb {
+            background-color: #666;
+            border-radius: 10px;
+        }
+
+        .playlist-card {
+            min-width: 140px;
+            max-width: 140px;
+            text-align: center;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        .playlist-card img {
+            width: 180%;
+            height: 180px;
+            border-radius: 8px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .playlist-card p {
+            font-size: 1rem;
+            color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Sidebar Vertikal -->
+    <div class="sidebar">
+        <a href="#">🏠 Home</a>
+        <a href="#">🔍 Explore</a>
+        <a href="#">🎵 Library</a>
+    </div>
+
+    <!-- Konten Utama -->
+    <div class="main">
+        <!-- Navbar Horizontal -->
+        <div class="topbar">
+            <div class="menu-bar">☰</div>
+            <div class="logo">Aprila playlist</div>
+            <div class="search-bar">
+                <input type="text" placeholder="Cari lagu, artis, album..." />
+            </div>
+        </div>
+
+        <div class="recommendation-section">
+            <h2>Rekomendasi Mood</h2>
+            <div class="recommendation-row">
+                <div class="card">Feel Good</div>
+                <div class="card">Relax</div>
+                <div class="card">Commute</div>
+                <div class="card">Energize</div>
+                <div class="card">Sad</div>
+                <div class="card">Romance</div>
+                <div class="card">Workout</div>
+                <div class="card">Party</div>
+                <div class="card">Sleep</div>
+                <div class="card">Focus</div>
+            </div>
+        </div>
+
+        <!-- Content 1 -->
+        <div class="playlist-section">
+            <h2 class="section-title">Pop Indonesia '00-an</h2>
+            <div class="playlist-row">
+                <!-- Item Playlist -->
+                <div class="playlist-card">
+                    <img src="peterpan1.jpg" alt="Album 1" />
+                    <p>Sheila on 7 - Dan</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="peterpan2.jpg" alt="Album 2" />
+                    <p>Padi - Kasih Tak Sampai</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="peterpan3.jpg" alt="Album 3" />
+                    <p>Ungu - Demi Waktu</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="maherzain1.jpg" alt="Album 4" />
+                    <p>Letto - Sebelum Cahaya</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="maherzain2.jpg" alt="Album 5" />
+                    <p>Seventeen - Jaga Slalu Hatimu</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="maherzain3.jpg" alt="Album 6" />
+                    <p>D'Masiv - Merindukanmu</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="nisasabyan1.jpg" alt="Album 7" />
+                    <p>Samsons - Kenangan Terindah</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="nisasabyan2.jpg" alt="Album 8" />
+                    <p>Gigi - 11 Januari</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="nisasabyan3.jpg" alt="Album 9" />
+                    <p>Rossa - Tegar</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="peterpan1.jpg" alt="Album 10" />
+                    <p>Ari Lasso - Hampa</p>
+                </div>
+            </div>
+        </div>
+        <!-- Content 2 -->
+        <div class="playlist-section">
+            <h2 class="section-title">Pop Indonesia '90-an</h2>
+            <div class="playlist-row">
+                <!-- Item Playlist -->
+                <div class="playlist-card">
+                    <img src="nisasabyan1.jpg" alt="Album 1" />
+                    <p>Sheila on 7 - Dan</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="nisasabyan2.jpg" alt="Album 2" />
+                    <p>Padi - Kasih Tak Sampai</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="nisasabyan3.jpg" alt="Album 3" />
+                    <p>Ungu - Demi Waktu</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="maherzain1.jpg" alt="Album 4" />
+                    <p>Letto - Sebelum Cahaya</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="maherzain2.jpg" alt="Album 5" />
+                    <p>Seventeen - Jaga Slalu Hatimu</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="maherzain3.jpg" alt="Album 6" />
+                    <p>D'Masiv - Merindukanmu</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="peterpan1.jpg" alt="Album 7" />
+                    <p>Samsons - Kenangan Terindah</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="peterpan2.jpg" alt="Album 8" />
+                    <p>Gigi - 11 Januari</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="peterpan3.jpg" alt="Album 9" />
+                    <p>Rossa - Tegar</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="nisasabyan1.jpg" alt="Album 10" />
+                    <p>Ari Lasso - Hampa</p>
+                </div>
+            </div>
+        </div>
+        <!-- Content 3 -->
+        <div class="playlist-section">
+            <h2 class="section-title">Featured playlist</h2>
+            <div class="playlist-row">
+                <!-- Item Playlist -->
+                <div class="playlist-card">
+                    <img src="maherzain1.jpg" alt="Album 1" />
+                    <p>Sheila on 7 - Dan</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="maherzain2.jpg" alt="Album 2" />
+                    <p>Padi - Kasih Tak Sampai</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="maherzain3.jpg" alt="Album 3" />
+                    <p>Ungu - Demi Waktu</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="peterpan1.jpg" alt="Album 4" />
+                    <p>Letto - Sebelum Cahaya</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="peterpan2.jpg" alt="Album 5" />
+                    <p>Seventeen - Jaga Slalu Hatimu</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="peterpan3.jpg" alt="Album 6" />
+                    <p>D'Masiv - Merindukanmu</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="nisasabyan1.jpg" alt="Album 7" />
+                    <p>Samsons - Kenangan Terindah</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="nisasabyan2.jpg" alt="Album 8" />
+                    <p>Gigi - 11 Januari</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="nisasabyan3.jpg" alt="Album 9" />
+                    <p>Rossa - Tegar</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="nisasabyan3.jpg" alt="Album 10" />
+                    <p>Ari Lasso - Hampa</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const audio = document.getElementById('audio');
+        const playBtn = document.getElementById('play');
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+        const progress = document.getElementById('progress');
+        const progressContainer = document.querySelector('.progress-container');
+        const title = document.getElementById('title');
+        const cover = document.querySelector('.cover');
+
+        const songs = [
+            { name: "Lagu 1", file: "lagu1.mp3", cover: "cover1.jpg" },
+            { name: "Lagu 2", file: "lagu2.mp3", cover: "cover2.jpg" },
+            { name: "Lagu 3", file: "lagu3.mp3", cover: "cover3.jpg" }
+        ];
+
+        let songIndex = 0;
+
+        function loadSong(song) {
+            title.innerText = song.name;
+            audio.src = song.file;
+            cover.style.backgroundImage = `url('${song.cover}')`;
+        }
+
+        function playSong() {
+            audio.play();
+            playBtn.textContent = '⏸️';
+        }
+
+        function pauseSong() {
+            audio.pause();
+            playBtn.textContent = '▶️';
+        }
+
+        playBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                playSong();
+            } else {
+                pauseSong();
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            songIndex = (songIndex - 1 + songs.length) % songs.length;
+            loadSong(songs[songIndex]);
+            playSong();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            songIndex = (songIndex + 1) % songs.length;
+            loadSong(songs[songIndex]);
+            playSong();
+        });
+
+        audio.addEventListener('timeupdate', () => {
+            const progressPercent = (audio.currentTime / audio.duration) * 100;
+            progress.style.width = `${progressPercent}%`;
+        });
+
+        progressContainer.addEventListener('click', (e) => {
+            const width = progressContainer.clientWidth;
+            const clickX = e.offsetX;
+            audio.currentTime = (clickX / width) * audio.duration;
+        });
+
+        loadSong(songs[songIndex]);
+    </script>
+</body>
+
+</html>

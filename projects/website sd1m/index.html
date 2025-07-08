@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SD1M - Semesta Digital 1 Miliar</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background-color: #212121;
+      padding: 20px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      background: linear-gradient(to right, #00bcd4, #2196f3);
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 18px;
+    }
+
+    .section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .section h3 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 30px;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      width: 280px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h4 {
+      margin-top: 0;
+      color: #2196f3;
+    }
+
+    .card p {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .cta-buttons {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .btn {
+      background-color: #2196f3;
+      color: white;
+      padding: 12px 24px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .btn:hover {
+      background-color: #1976d2;
+    }
+
+    footer {
+      background-color: #212121;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>SD1MClub</h1>
+    <nav>
+      <a href="#profil">Tentang</a>
+      <a href="#bidang">Bidang</a>
+      <a href="#kontak">Kontak</a>
+      <a href="kontenplan.html" target="_blank">Konten Plan</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h2>Sumber Daya 1 Manusia</h2>
+    <p>Membangun masa depan bersama</p>
+    <p>Sendiri kita berkarya, Bersama kita Berdaya</p>
+    <div class="cta-buttons">
+      <button class="btn" onclick="window.open('kontenplan.html', '_blank')">📋 Lihat Konten Plan Instan</button>
+    </div>
+  </div>
+
+  <section class="section" id="profil">
+    <h3>Profil SD1M</h3>
+    <p style="text-align: center; max-width: 700px; margin: auto;">
+      SD1M adalah proyek digital dan finansial yang dibangun oleh Aprila bersama pasangan hidupnya untuk menjemput
+      rezeki 1 miliar lewat jalan-jalan baik: coding, trading, dan menjadi content creator. Visi ini akan tumbuh seiring
+      waktu, dengan branding kuat di online dan offline.
+    </p>
+  </section>
+
+  <section class="section" id="bidang">
+    <h3>Fokus Awal SD1M</h3>
+    <div class="cards">
+      <div class="card">
+        <h4>💻 Fullstack Web Developer</h4>
+        <p>Membangun fondasi digital dengan proyek coding yang bisa ditampilkan dan dimonetisasi.</p>
+      </div>
+      <div class="card">
+        <h4>📈 Trading</h4>
+        <p>Mempelajari strategi market, membangun portofolio dan literasi keuangan digital bersama keluarga.</p>
+      </div>
+      <div class="card">
+        <h4>📹 Content Creator</h4>
+        <p>Menebar value, membangun audiens, dan mengedukasi lewat konten yang mengedukasi & inspiratif.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="kontak">
+    <h3>Hubungi Kami</h3>
+    <div class="cta-buttons">
+      <button class="btn" onclick="window.open('https://wa.me/6285771842311', '_blank')">WhatsApp</button>
+      <button class="btn" onclick="window.open('https://instagram.com/aprila_kris', '_blank')">Instagram</button>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 SD1M by Aprila Krismanto
+  </footer>
+
+</body>
+
+</html>

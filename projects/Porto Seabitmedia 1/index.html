@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Juice Generation</title>
+    <link rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+
+        .navbar {
+            background: white;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .navbar .top-bar {
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .navbar .logo {
+            text-align: center;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .navbar nav {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .navbar nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        .hero {
+            background: url('hero-image.jpg') center/cover no-repeat;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 48px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+        }
+
+        .menus {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .menu-icons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .menu-icons .item {
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 40px 10px;
+            background: #f9f9f9;
+        }
+
+        .feature {
+            width: 30%;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .view-menu {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .view-menu button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+        .about {
+            display: flex;
+            justify-content: space-around;
+            padding: 40px 20px;
+        }
+
+        .about-item {
+            width: 30%;
+            text-align: center;
+        }
+
+        .about-item button {
+            margin-top: 10px;
+            padding: 8px 16px;
+        }
+
+        .newsletter {
+            background: #eee;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .newsletter input {
+            padding: 10px;
+            width: 300px;
+            max-width: 80%;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin: 10px 0;
+        }
+
+        .footer-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .socials span {
+            margin: 0 5px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="top-bar">
+            <a href="#">CAREERS</a>
+            <a href="#">GIFT CARDS</a>
+            <a href="#">ORDER NOW</a>
+            <div class="cart">🛒 (0)</div>
+        </div>
+        <div class="logo">🍃 Juice Generation</div>
+        <nav>
+            <a href="#">Menu</a>
+            <a href="#">Nutrition</a>
+            <a href="#">Locations</a>
+            <a href="#">Cooler Cleanse</a>
+            <a href="#">Shop</a>
+        </nav>
+    </header>
+
+    <!-- Hero Image -->
+    <section class="hero">
+        <h1>PHARMACY</h1>
+    </section>
+
+    <!-- Menus Section -->
+    <section class="menus">
+        <h2>Menus & More</h2>
+        <div class="menu-icons">
+            <div class="item">🥤<p>Fresh Juices</p>
+            </div>
+            <div class="item">🍹<p>Smoothies</p>
+            </div>
+            <div class="item">🧃<p>Cold-Pressed</p>
+            </div>
+            <div class="item">🍓<p>Açaí Bowls</p>
+            </div>
+            <div class="item">🥗<p>Vegan 4 Lunch</p>
+            </div>
+            <div class="item">☕<p>Juice Farmacy</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Boxes -->
+    <section class="features">
+        <div class="feature">🍎<p>Locally Grown</p>
+        </div>
+        <div class="feature">🏪<p>Now Open</p>
+        </div>
+        <div class="feature">🐑<p>Giving Back</p>
+        </div>
+    </section>
+
+    <div class="view-menu">
+        <button>View Our Menu</button>
+    </div>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="about-item">
+            <h3>About Us</h3>
+            <p>Get the story behind Juice Generation’s mission.</p>
+            <button>Learn More</button>
+        </div>
+        <div class="about-item">
+            <h3>Careers</h3>
+            <p>Find out how to juice up your career.</p>
+            <button>Learn More</button>
+        </div>
+        <div class="about-item">
+            <h3>Our Book</h3>
+            <p>100 recipes. The ultimate juicing guide.</p>
+            <button>Learn More</button>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <h3>Newsletter</h3>
+        <input type="email" placeholder="Enter your email address">
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="socials">
+            <p>Connect:</p>
+            <span>🔵</span>
+            <span>📘</span>
+            <span>📸</span>
+            <span>▶️</span>
+        </div>
+        <div class="footer-links">
+            <a href="#">About Us</a>
+            <a href="#">Cooler Cleanse</a>
+            <a href="#">FAQ</a>
+            <a href="#">Press</a>
+            <a href="#">Giving Back</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <p>&copy; 2025 Juice Generation. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

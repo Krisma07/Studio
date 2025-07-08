@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontend Portfolio - Aprila Kris</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 font-sans leading-relaxed tracking-wide flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md p-4">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <h1 class="text-xl font-bold text-gray-800">Aprila Krismanto</h1>
+            <a href="index.html" class="text-blue-500 hover:underline text-sm">← Back to Home</a>
+        </div>
+    </nav>
+
+    <!-- Description -->
+    <section class="max-w-4xl mx-auto mt-10 px-4 text-center">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">Front-End Projects</h2>
+        <p class="text-gray-700 text-base leading-relaxed">
+            As a front-end developer, I work primarily with HTML, CSS, JavaScript, and modern frameworks like React,
+            building
+            clean, responsive, and accessible user interfaces. I focus on creating seamless digital experiences that not
+            only
+            look great but also function intuitively.
+        </p>
+    </section>
+
+    <!-- Judul Utama 1 beginer -->
+    <div>
+        <section class="max-w-6xl mx-auto mt-12 px-4 text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Beginner Project</h2>
+        </section>
+
+        <section class="max-w-6xl mx-auto mt-4 px-4 relative">
+            <!-- Tombol Geser -->
+            <button onclick="scrollCards(-1)"
+                class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white shadow-md rounded-full p-2 z-10 hover:bg-gray-200">
+                &#8592;
+            </button>
+            <button onclick="scrollCards(1)"
+                class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white shadow-md rounded-full p-2 z-10 hover:bg-gray-200">
+                &#8594;
+            </button>
+
+            <!-- Container Card -->
+            <div id="cardContainer" class="flex overflow-x-auto space-x-4 scroll-smooth py-4 px-2">
+
+                <!-- Card 1 v -->
+                <a href="projects/website sd1m/index.html" target="_blank"
+                    class="flex-none w-64 bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition duration-300">
+                    <div class="overflow-hidden">
+                        <img src="projects/website sd1m/image1.png" alt="Website Project"
+                            class="w-full h-36 object-cover transform transition-transform duration-300 hover:scale-125">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Website SD1M</h3>
+                        <p class="text-sm text-gray-600">A modern landing page built with TailwindCSS and React.</p>
+                    </div>
+                </a>
+
+                <!-- Card 2 v -->
+                <a href="projects/website_aprila/index.html" target="_blank"
+                    class="flex-none w-64 bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition duration-300">
+                    <div class="overflow-hidden">
+                        <img src="projects/website_aprila/image1.jpeg" alt="Website Project"
+                            class="w-full h-36 object-cover transform transition-transform duration-300 hover:scale-125">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Website Aprila</h3>
+                        <p class="text-sm text-gray-600">A modern landing page built with TailwindCSS and React.</p>
+                    </div>
+                </a>
+
+                <!-- Card 3 v --> 
+                <a href="projects/SESI 3-Cuy University/index.html" target="_blank"
+                    class="flex-none w-64 bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition duration-300">
+                    <div class="overflow-hidden">
+                        <img src="projects/SESI 3-Cuy University/image1.jpeg" alt="Website Project"
+                            class="w-full h-36 object-cover transform transition-transform duration-300 hover:scale-125">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Cuy University</h3>
+                        <p class="text-sm text-gray-600">A modern landing page built with TailwindCSS and React.</p>
+                    </div>
+                </a>
+
+                <!-- Card 4 -->
+                <a href="https://example.com/project1" target="_blank"
+                    class="flex-none w-64 bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition duration-300">
+                    <div class="overflow-hidden">
+                        <img src="https://source.unsplash.com/600x350/?website,design" alt="Website Project"
+                            class="w-full h-36 object-cover transform transition-transform duration-300 hover:scale-125">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Blog Website</h3>
+                        <p class="text-sm text-gray-600">A modern landing page built with TailwindCSS and React.</p>
+                    </div>
+                </a>
+
+                <!-- Card 5 -->
+                <a href="https://example.com/project1" target="_blank"
+                    class="flex-none w-64 bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition duration-300">
+                    <div class="overflow-hidden">
+                        <img src="https://source.unsplash.com/600x350/?website,design" alt="Website Project"
+                            class="w-full h-36 object-cover transform transition-transform duration-300 hover:scale-125">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Timer/Stopwatch</h3>
+                        <p class="text-sm text-gray-600">A modern landing page built with TailwindCSS and React.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Script Geser -->
+        <style>
+            #cardContainer::-webkit-scrollbar {
+                display: none;
+            }
+
+            #cardContainer {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        </style>
+
+        <script>
+            window.addEventListener('DOMContentLoaded', () => {
+                const container = document.getElementById('cardContainer');
+                const originalCards = Array.from(container.children);
+                const totalCards = originalCards.length;
+
+                // Simpan lebar kartu satuan (gunakan card pertama)
+                const cardWidth = originalCards[0].offsetWidth + 16; // 16 = space-x-4
+
+                // Clone ke depan dan belakang
+                originalCards.forEach(card => {
+                    container.appendChild(card.cloneNode(true)); // akhir
+                    container.insertBefore(card.cloneNode(true), container.firstChild); // awal
+                });
+
+                // Scroll ke tengah
+                container.scrollLeft = totalCards * cardWidth;
+
+                // Fungsi scroll
+                window.scrollCards = function (direction) {
+                    container.scrollBy({
+                        left: direction * cardWidth,
+                        behavior: 'smooth'
+                    });
+                }
+
+                // Reset scroll saat mencapai ujung
+                container.addEventListener('scroll', () => {
+                    const maxScrollLeft = container.scrollWidth - container.clientWidth;
+                    if (container.scrollLeft <= 0) {
+                        container.scrollLeft = totalCards * cardWidth;
+                    } else if (container.scrollLeft >= maxScrollLeft - cardWidth) {
+                        container.scrollLeft = totalCards * cardWidth - container.clientWidth;
+                    }
+                });
+
+                // Auto scroll
+                setInterval(() => {
+                    scrollCards(1);
+                }, 3000);
+            });
+        </script>
+    </div>
+    <!-- Judul Utama 1 END -->
+
+    <!-- Judul Utama 2 intermediate-->
+    <div>
+        <section class="max-w-6xl mx-auto mt-12 px-4 text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Intermediate Project</h2>
+        </section>
+
+        <section class="max-w-6xl mx-auto mt-4 px-4 relative">
+            <!-- Tombol Geser -->
+            <button onclick="scrollCards2(-1)"
+                class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white shadow-md rounded-full p-2 z-10 hover:bg-gray-200">
+                &#8592;
+            </button>
+            <button onclick="scrollCards2(1)"
+                class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white shadow-md rounded-full p-2 z-10 hover:bg-gray-200">
+                &#8594;
+            </button>
+
+            <!-- Container Card -->
+            <div id="cardContainer2" class="flex overflow-hidden space-x-4 scroll-smooth py-4 px-2">
+                <!-- Card 1 v -->
+                <a href="projects/Web PT Rantisia/index.html" target="_blank"
+                    class="flex-none w-64 bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition duration-300">
+                    <div class="overflow-hidden">
+                        <img src="projects/Web PT Rantisia/image1.jpeg" alt="Website Project"
+                            class="w-full h-36 object-cover transform transition-transform duration-300 hover:scale-125">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Web PT. RDP</h3>
+                        <p class="text-sm text-gray-600">A modern landing page built with TailwindCSS and React.</p>
+                    </div>
+                </a>
+
+                <!-- Card 2 v -->
+                <a href="projects/Compro Haula/Index.html" target="_blank"
+                    class="flex-none w-64 bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition duration-300">
+                    <div class="overflow-hidden">
+                        <img src="projects/Compro Haula/image1.jpeg" alt="Dashboard Project"
+                            class="w-full h-36 object-cover transform transition-transform duration-300 hover:scale-125">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Web PT. Haula</h3>
+                        <p class="text-sm text-gray-600">Dashboard with Chart.js and Tailwind.</p>
+                    </div>
+                </a>
+
+                <!-- Card 3 v -->
+                <a href="projects/ecomerce product/Index.html" target="_blank"
+                    class="flex-none w-64 bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition duration-300">
+                    <div class="overflow-hidden">
+                        <img src="projects/ecomerce product/image1.jpeg" alt="Website Project"
+                            class="w-full h-36 object-cover transform transition-transform duration-300 hover:scale-125">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Ecomerce Produk</h3>
+                        <p class="text-sm text-gray-600">A modern landing page built with TailwindCSS and React.</p>
+                    </div>
+                </a>
+
+                <!-- Card 4 v -->
+                <a href="projects/To Do List/index.html" target="_blank"
+                    class="flex-none w-64 bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition duration-300">
+                    <div class="overflow-hidden">
+                        <img src="projects/To Do List/image1.jpeg" alt="Website Project"
+                            class="w-full h-36 object-cover transform transition-transform duration-300 hover:scale-125">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Simple To Do List</h3>
+                        <p class="text-sm text-gray-600">A modern landing page built with TailwindCSS and React.</p>
+                    </div>
+                </a>
+
+                <!-- Card 5 v -->
+                <a href="projects/website sd1m/kontenplan.html" target="_blank"
+                    class="flex-none w-64 bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition duration-300">
+                    <div class="overflow-hidden">
+                        <img src="projects/website sd1m/kontenplan1.jpeg" alt="Website Project"
+                            class="w-full h-36 object-cover transform transition-transform duration-300 hover:scale-125">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Konten Planer</h3>
+                        <p class="text-sm text-gray-600">A modern landing page built with TailwindCSS and React.</p>
+                    </div>
+                </a>
+
+                <!-- Card 6 -->
+                <a href="https://example.com/project1" target="_blank"
+                    class="flex-none w-64 bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition duration-300">
+                    <div class="overflow-hidden">
+                        <img src="https://source.unsplash.com/600x350/?website,design" alt="Website Project"
+                            class="w-full h-36 object-cover transform transition-transform duration-300 hover:scale-125">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Task Management App </h3>
+                        <p class="text-sm text-gray-600">A modern landing page built with TailwindCSS and React.</p>
+                    </div>
+                </a>
+                <!-- Tambahkan lebih banyak card sesuai keinginan -->
+            </div>
+        </section>
+
+        <!-- Script Geser -->
+        <script>
+            const container2 = document.getElementById('cardContainer2');
+            const cards2 = container2.children;
+            const totalCards2 = cards2.length;
+
+            for (let i = 0; i < totalCards2; i++) {
+                const cloneFirst2 = cards2[i].cloneNode(true);
+                const cloneLast2 = cards2[totalCards2 - 1 - i].cloneNode(true);
+                container2.appendChild(cloneFirst2);
+                container2.insertBefore(cloneLast2, container2.firstChild);
+            }
+
+            const cardWidth2 = cards2[0].offsetWidth + 16;
+            container2.scrollLeft = totalCards2 * cardWidth2;
+
+            function scrollCards2(direction) {
+                container2.scrollBy({
+                    left: direction * cardWidth2,
+                    behavior: 'smooth'
+                });
+            }
+
+            container2.addEventListener('scroll', () => {
+                const maxScrollLeft2 = container2.scrollWidth - container2.clientWidth;
+                if (container2.scrollLeft <= 0) {
+                    container2.scrollLeft = totalCards2 * cardWidth2;
+                } else if (container2.scrollLeft >= maxScrollLeft2) {
+                    container2.scrollLeft = totalCards2 * cardWidth2 - container2.clientWidth;
+                }
+            });
+
+            setInterval(() => {
+                scrollCards2(1);
+            }, 3000);
+        </script>
+    </div>
+    <!-- Judul Utama 2 END -->
+
+    <!-- Judul Utama 3 advance-->
+    <div>
+        <section class="max-w-6xl mx-auto mt-12 px-4 text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Advanced Project</h2>
+        </section>
+
+        <section class="max-w-6xl mx-auto mt-4 px-4 relative">
+            <!-- Tombol Geser -->
+            <button onclick="scrollCards3(-1)"
+                class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white shadow-md rounded-full p-2 z-10 hover:bg-gray-200">
+                &#8592;
+            </button>
+            <button onclick="scrollCards3(1)"
+                class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white shadow-md rounded-full p-2 z-10 hover:bg-gray-200">
+                &#8594;
+            </button>
+
+            <!-- Container Card -->
+            <div id="cardContainer3" class="flex overflow-hidden space-x-4 scroll-smooth py-4 px-2">
+                <!-- Card 1 v -->
+                <a href="projects/loker.id/index.html" target="_blank"
+                    class="flex-none w-64 bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition duration-300">
+                    <div class="overflow-hidden">
+                        <img src="projects/loker.id/image1.jpeg" alt="Advanced Project"
+                            class="w-full h-36 object-cover transform transition-transform duration-300 hover:scale-125">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Web Loker.id</h3>
+                        <p class="text-sm text-gray-600">Advanced app with speech-to-text and voice command
+                            functionality.</p>
+                    </div>
+                </a>
+
+                <!-- Card 2 v -->
+                <a href="projects/to do list (motion)/index.html" target="_blank"
+                    class="flex-none w-64 bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition duration-300">
+                    <div class="overflow-hidden">
+                        <img src="projects/to do list (motion)/image1.jpeg" alt="Advanced Project"
+                            class="w-full h-36 object-cover transform transition-transform duration-300 hover:scale-125">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-1">To Do List - Notion</h3>
+                        <p class="text-sm text-gray-600">Advanced app with speech-to-text and voice command
+                            functionality.</p>
+                    </div>
+                </a>
+
+                <!-- Card  -->
+                <a href="https://example.com/projectA" target="_blank"
+                    class="flex-none w-64 bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition duration-300">
+                    <div class="overflow-hidden">
+                        <img src="https://source.unsplash.com/600x350/?app,technology" alt="Advanced Project"
+                            class="w-full h-36 object-cover transform transition-transform duration-300 hover:scale-125">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Online Learning platform</h3>
+                        <p class="text-sm text-gray-600">Advanced app with speech-to-text and voice command
+                            functionality.</p>
+                    </div>
+                </a>
+
+                <!-- Card  -->
+                <a href="https://example.com/projectA" target="_blank"
+                    class="flex-none w-64 bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition duration-300">
+                    <div class="overflow-hidden">
+                        <img src="https://source.unsplash.com/600x350/?app,technology" alt="Advanced Project"
+                            class="w-full h-36 object-cover transform transition-transform duration-300 hover:scale-125">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Music Streaming Service</h3>
+                        <p class="text-sm text-gray-600">Advanced app with speech-to-text and voice command
+                            functionality.</p>
+                    </div>
+                </a>
+                <!-- Tambahkan lebih banyak card jika diinginkan -->
+            </div>
+        </section>
+
+        <!-- Script Geser -->
+        <script>
+            const container3 = document.getElementById('cardContainer3');
+            const originalCards3 = Array.from(container3.children); // Hindari live collection
+            const totalOriginal3 = originalCards3.length;
+
+            // Cloning awal dan akhir
+            originalCards3.forEach(card => {
+                const clone = card.cloneNode(true);
+                container3.appendChild(clone);
+            });
+
+            originalCards3.slice().reverse().forEach(card => {
+                const clone = card.cloneNode(true);
+                container3.insertBefore(clone, container3.firstChild);
+            });
+
+            const cardWidth3 = originalCards3[0].offsetWidth + 16;
+            container3.scrollLeft = totalOriginal3 * cardWidth3;
+
+            function scrollCards3(direction) {
+                container3.scrollBy({
+                    left: direction * cardWidth3,
+                    behavior: 'smooth'
+                });
+            }
+
+            container3.addEventListener('scroll', () => {
+                const maxScrollLeft3 = container3.scrollWidth - container3.clientWidth;
+                if (container3.scrollLeft <= 0) {
+                    container3.scrollLeft = totalOriginal3 * cardWidth3;
+                } else if (container3.scrollLeft >= maxScrollLeft3) {
+                    container3.scrollLeft = totalOriginal3 * cardWidth3 - container3.clientWidth;
+                }
+            });
+
+            // Autoplay carousel
+            let autoScroll3 = setInterval(() => {
+                scrollCards3(1);
+            }, 3000);
+
+            // Optional: Pause saat hover
+            container3.addEventListener('mouseenter', () => clearInterval(autoScroll3));
+            container3.addEventListener('mouseleave', () => {
+                autoScroll3 = setInterval(() => scrollCards3(1), 3000);
+            });
+        </script>
+    </div>
+    <!-- Judul Utama 3 END -->
+
+
+    <!-- Footer -->
+    <footer class="bg-white mt-12 py-6 shadow-inner">
+        <div class="max-w-6xl mx-auto text-center text-gray-600 text-sm">
+            © 2025 Krisma. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+
+</html>

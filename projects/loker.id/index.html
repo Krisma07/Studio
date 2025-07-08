@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Cari dan pasang lowongan kerja dengan mudah di LokerPro.id. Temukan pekerjaan impianmu di berbagai kategori." />
+    <title>LokerPro.id - Portal Lowongan Kerja</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Navbar -->
+    <header class="bg-white shadow sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-6">
+                <div class="text-2xl font-bold text-blue-600">LokerPro.id</div>
+                <nav class="flex space-x-6 text-sm font-medium">
+                    <a href="#" class="hover:text-blue-600 border-b-2 border-blue-600">Cari Loker</a>
+                    <a href="#" class="hover:text-blue-600">Pasang Loker</a>
+                    <a href="#" class="hover:text-blue-600">Tips Loker</a>
+                </nav>
+            </div>
+            <div class="flex space-x-6 text-sm font-medium">
+                <a href="#" class="hover:text-blue-600">Registrasi / Masuk</a>
+                <a href="#" class="hover:text-blue-600">Untuk Perusahaan</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero section -->
+    <section class="relative bg-gray-200 h-[500px] flex items-center justify-start">
+        <img src="https://images.unsplash.com/photo-1581092160615-b7e130e47b0e?w=1600&q=80" alt="Ilustrasi dunia kerja"
+            class="absolute inset-0 w-full h-full object-cover opacity-50" loading="lazy">
+        <div class="relative z-10 max-w-7xl mx-auto px-4 w-full sm:w-3/4 md:w-1/2">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold text-gray-700 mb-4">Cari Kerja <span class="text-blue-600">#makin
+                        mudah</span> pake LokerPro.id</h2>
+                <form action="#" method="GET">
+                    <input type="text" name="keyword" placeholder="Masukkan kata kunci"
+                        class="w-full border border-gray-300 rounded px-4 py-2 mb-4" />
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <select name="lokasi" class="w-full border border-gray-300 rounded px-4 py-2">
+                            <option disabled selected>Cari lokasi</option>
+                            <option>Jakarta</option>
+                            <option>Bandung</option>
+                            <option>Surabaya</option>
+                        </select>
+                        <select name="kategori" class="w-full border border-gray-300 rounded px-4 py-2">
+                            <option disabled selected>Cari kategori</option>
+                            <option>IT</option>
+                            <option>Pendidikan</option>
+                            <option>Pemasaran</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full">Cari
+                        Lowongan</button>
+                </form>
+                <div class="mt-4">
+                    <p class="text-sm text-gray-600 font-medium mb-1">Paling sering dicari :</p>
+                    <div class="flex flex-wrap gap-2 text-sm">
+                        <!-- Gunakan button atau <a> untuk aksesibilitas -->
+                        <button class="bg-gray-100 px-3 py-1 rounded-full hover:bg-blue-100">Administrasi</button>
+                        <button class="bg-gray-100 px-3 py-1 rounded-full hover:bg-blue-100">Guru</button>
+                        <button class="bg-gray-100 px-3 py-1 rounded-full hover:bg-blue-100">Driver</button>
+                        <button class="bg-gray-100 px-3 py-1 rounded-full hover:bg-blue-100">IT Support</button>
+                        <button class="bg-gray-100 px-3 py-1 rounded-full hover:bg-blue-100">Accounting Finance</button>
+                        <button class="bg-gray-100 px-3 py-1 rounded-full hover:bg-blue-100">Content Creator</button>
+                        <button class="bg-gray-100 px-3 py-1 rounded-full hover:bg-blue-100">Fresh Graduate</button>
+                        <button class="bg-gray-100 px-3 py-1 rounded-full hover:bg-blue-100">Penjualan</button>
+                        <button class="bg-gray-100 px-3 py-1 rounded-full hover:bg-blue-100">Konstruksi</button>
+                        <button class="bg-gray-100 px-3 py-1 rounded-full hover:bg-blue-100">Digital Marketing</button>
+                        <button class="bg-gray-100 px-3 py-1 rounded-full hover:bg-blue-100">Desain Grafis</button>
+                        <button class="bg-gray-100 px-3 py-1 rounded-full hover:bg-blue-100">Komunikasi
+                            Pemasaran</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <!-- Sidebar Kategori -->
+        <aside class="lg:col-span-1">
+            <h2 class="text-xl font-semibold mb-4">Kategori Pekerjaan</h2>
+            <ul class="space-y-2">
+                <li><a href="#" class="text-blue-600 hover:underline">IT & Software</a></li>
+                <li><a href="#" class="text-blue-600 hover:underline">Desain Grafis</a></li>
+                <li><a href="#" class="text-blue-600 hover:underline">Pendidikan</a></li>
+                <li><a href="#" class="text-blue-600 hover:underline">Pemasaran</a></li>
+                <li><a href="#" class="text-blue-600 hover:underline">Administrasi</a></li>
+            </ul>
+        </aside>
+
+        <!-- Job Listings -->
+        <section class="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            <!-- Reusable job card (bisa nanti jadi loop) -->
+            <div class="bg-white rounded-lg shadow p-4">
+                <h3 class="font-semibold text-lg">Front-End Developer</h3>
+                <p class="text-sm text-gray-600">PT Teknologi Maju</p>
+                <p class="text-sm text-gray-500">Jakarta - 3 Juni 2025</p>
+            </div>
+            <div class="bg-white rounded-lg shadow p-4">
+                <h3 class="font-semibold text-lg">Front-End Developer</h3>
+                <p class="text-sm text-gray-600">PT Teknologi Maju</p>
+                <p class="text-sm text-gray-500">Jakarta - 3 Juni 2025</p>
+            </div>
+            <div class="bg-white rounded-lg shadow p-4">
+                <h3 class="font-semibold text-lg">Content Writer</h3>
+                <p class="text-sm text-gray-600">CV Kreatif Nusantara</p>
+                <p class="text-sm text-gray-500">Bandung - 4 Juni 2025</p>
+            </div>
+            <div class="bg-white rounded-lg shadow p-4">
+                <h3 class="font-semibold text-lg">Digital Marketing</h3>
+                <p class="text-sm text-gray-600">Startup Digital</p>
+                <p class="text-sm text-gray-500">Surabaya - 1 Juni 2025</p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-4">
+                <h3 class="font-semibold text-lg">Guru TK</h3>
+                <p class="text-sm text-gray-600">Sekolah Cerdas Bangsa</p>
+                <p class="text-sm text-gray-500">Depok - 5 Juni 2025</p>
+            </div>
+            <div class="bg-white rounded-lg shadow p-4">
+                <h3 class="font-semibold text-lg">UI/UX Designer</h3>
+                <p class="text-sm text-gray-600">Agensi Kreatif ID</p>
+                <p class="text-sm text-gray-500">Yogyakarta - 2 Juni 2025</p>
+            </div>
+            <div class="bg-white rounded-lg shadow p-4">
+                <h3 class="font-semibold text-lg">Admin Marketplace</h3>
+                <p class="text-sm text-gray-600">Toko Online Jaya</p>
+                <p class="text-sm text-gray-500">Bekasi - 3 Juni 2025</p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-4">
+                <h3 class="font-semibold text-lg">Customer Service</h3>
+                <p class="text-sm text-gray-600">Perusahaan ABC</p>
+                <p class="text-sm text-gray-500">Semarang - 5 Juni 2025</p>
+            </div>
+            <div class="bg-white rounded-lg shadow p-4">
+                <h3 class="font-semibold text-lg">Accounting Staff</h3>
+                <p class="text-sm text-gray-600">PT Finansial Sejahtera</p>
+                <p class="text-sm text-gray-500">Tangerang - 4 Juni 2025</p>
+            </div>
+            <div class="bg-white rounded-lg shadow p-4">
+                <h3 class="font-semibold text-lg">HR Generalist</h3>
+                <p class="text-sm text-gray-600">PT Sumber Daya Manusia</p>
+                <p class="text-sm text-gray-500">Jakarta - 1 Juni 2025</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white shadow mt-8 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-4 gap-8 text-sm text-gray-700">
+            <div>
+                <h3 class="text-xl font-bold text-blue-600 mb-2">LokerPro.id</h3>
+                <p class="text-gray-600">LokerPro.id adalah situs lowongan kerja berbasis software yang fokus
+                    mempermudah pencarian kerja dan proses rekrutmen.</p>
+                <div class="flex space-x-4 mt-4">
+                    <a href="#" aria-label="Facebook"><i data-feather="facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i data-feather="twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i data-feather="linkedin"></i></a>
+                    <a href="#" aria-label="Instagram"><i data-feather="instagram"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="font-semibold mb-2">Perusahaan</h4>
+                <ul class="space-y-1">
+                    <li><a href="#" class="hover:underline">Tentang kami</a></li>
+                    <li><a href="#" class="hover:underline">Hubungi Kami</a></li>
+                    <li><a href="#" class="hover:underline">Pusat bantuan</a></li>
+                    <li><a href="#" class="hover:underline">Kebijakan privasi</a></li>
+                    <li><a href="#" class="hover:underline">Syarat & Ketentuan</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-semibold mb-2">Pencari kerja</h4>
+                <ul class="space-y-1">
+                    <li><a href="#" class="hover:underline">Registrasi pencari kerja</a></li>
+                    <li><a href="#" class="hover:underline">Buat resume online</a></li>
+                    <li><a href="#" class="hover:underline">Cari lowongan kerja</a></li>
+                    <li><a href="#" class="hover:underline">Remote jobs</a></li>
+                    <li><a href="#" class="hover:underline">Jobs alert</a></li>
+                    <li><a href="#" class="hover:underline">Tips loker</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-semibold mb-2">Untuk Perusahaan</h4>
+                <ul class="space-y-1">
+                    <li><a href="#" class="hover:underline">Registrasi perusahaan</a></li>
+                    <li><a href="#" class="hover:underline">Pasang loker</a></li>
+                    <li><a href="#" class="hover:underline">Produk & Layanan</a></li>
+                    <li><a href="#" class="hover:underline">Harga</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center py-4 text-gray-500 text-sm">
+            &copy; 2025 LokerPro.id. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+    </script>
+
+</body>
+
+</html>

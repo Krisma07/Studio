@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-Do List Harian</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1,
+    h2 {
+      color: #4CAF50;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .day-section {
+      margin-bottom: 30px;
+    }
+
+    .day-section h3 {
+      margin-top: 20px;
+      color: #333;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+    }
+
+    li {
+      margin-bottom: 10px;
+      padding: 8px;
+      background: #f0f0f0;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    li.completed .task-content span {
+      text-decoration: line-through;
+      color: gray;
+    }
+
+    .task-content {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: space-between;
+    }
+
+    .task-buttons {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+
+    .task-detail {
+      font-size: 14px;
+      color: #555;
+    }
+
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      padding: 5px 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    button.delete {
+      background: #ff5c5c;
+    }
+
+    button.delete:hover {
+      background: #e04c4c;
+    }
+
+    input[type="text"],
+    input[type="date"] {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      flex-grow: 1;
+    }
+
+    .input-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+      align-items: center;
+    }
+
+    #rekomendasiContainer {
+      margin-top: 20px;
+    }
+
+    .rekomendasi-item {
+      background: #e6ffe6;
+      padding: 8px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .rekomendasi-item.clicked {
+      background: #cceccc;
+      cursor: default;
+    }
+
+    #taskStats {
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>📝 To-Do List Harian</h1>
+
+  <div id="taskStats"></div>
+
+  <div class="input-row">
+    <label for="datePicker">📅 Pilih Tanggal:</label>
+    <input type="date" id="datePicker">
+  </div>
+
+  <div class="input-row">
+    <input type="text" id="taskInput" placeholder="Tulis tugas baru...">
+    <button onclick="addTaskFromInput()">Tambah Tugas</button>
+    <button onclick="toggleRekomendasi()">Daftar Rekomendasi</button>
+  </div>
+
+  <div id="taskListContainer"></div>
+
+  <div id="rekomendasiContainer" style="display:none">
+    <h2>📋 Rekomendasi Tugas</h2>
+    <p>Klik untuk menambahkan ke daftar tugas utama.</p>
+    <div id="rekomendasiList"></div>
+  </div>
+
+  <script>
+    const taskInput = document.getElementById('taskInput');
+    const taskListContainer = document.getElementById('taskListContainer');
+    const rekomendasiList = document.getElementById('rekomendasiList');
+    const rekomendasiContainer = document.getElementById('rekomendasiContainer');
+    const taskStats = document.getElementById('taskStats');
+    const datePicker = document.getElementById('datePicker');
+
+    const motivasiLevel = [
+      { min: 100, msg: "Kerja bagus! Semua tugas selesai! 🎉" },
+      { min: 75, msg: "Hampir selesai! Sedikit lagi! 💪" },
+      { min: 50, msg: "Semangat! Kamu sudah menyelesaikan setengahnya. ✨" },
+      { min: 20, msg: "Kerjakan tugasmu! Masih banyak yang bisa diselesaikan. 🚀" },
+      { min: 0, msg: "Ayo mulai sekarang. Sedikit demi sedikit! 😅" }
+    ];
+
+    const rekomendasi = [
+      "Buat konten Instagram edukatif", "Follow-up klien PAUD", "Canvassing ke sekolah baru",
+      "Review materi public speaking", "Latihan podcast 10 menit", "Upload konten TDA hari ini",
+      "Kirim katalog produk via WA", "Evaluasi penjualan harian", "Baca buku 10 halaman",
+      "Meditasi 10 menit", "Update database customer", "Kirim testimoni ke calon klien",
+      "Buat script live jualan", "Tonton video motivasi", "Rancang konten minggu depan",
+      "Posting story tentang produk", "DM calon customer baru", "Ikut kelas Zoom pengembangan diri",
+      "Revisi caption Instagram", "Cek stok produk", "Foto produk baru", "Buat jadwal posting 1 minggu",
+      "Kirim ucapan ke customer lama", "Pelajari fitur baru di Canva", "Buat template konten viral",
+      "Sisihkan waktu untuk olahraga", "Menulis jurnal harian", "Riset PAUD baru di Google Maps",
+      "Ngonten bareng teman TDA", "Visualisasi target 10T Kak Apri 🚀"
+    ];
+
+    let selectedDate = new Date().toISOString().split('T')[0];
+    datePicker.value = selectedDate;
+
+    let tasksByDate = JSON.parse(localStorage.getItem('tasksByDate')) || {};
+
+    function saveTasks() {
+      localStorage.setItem('tasksByDate', JSON.stringify(tasksByDate));
+    }
+
+    function getMotivasi(percent) {
+      return motivasiLevel.find(level => percent >= level.min).msg;
+    }
+
+    function renderStats() {
+      const tasks = tasksByDate[selectedDate] || [];
+      const total = tasks.length;
+      const done = tasks.filter(t => t.done).length;
+
+      if (total === 0) {
+        taskStats.textContent = "Belum ada tugas untuk tanggal ini. Yuk tambahkan satu!";
+        return;
+      }
+
+      const percent = Math.round((done / total) * 100);
+      const message = getMotivasi(percent);
+      taskStats.textContent = `📊 Progres: ${done} dari ${total} tugas selesai (${percent}%) — ${message}`;
+    }
+
+    function renderTasks() {
+      taskListContainer.innerHTML = '';
+      const dayTasks = tasksByDate[selectedDate] || [];
+
+      const section = document.createElement('div');
+      section.className = 'day-section';
+
+      const header = document.createElement('h3');
+      header.textContent = `Tugas untuk ${selectedDate}`;
+      section.appendChild(header);
+
+      const ul = document.createElement('ul');
+
+      dayTasks.forEach((task, index) => {
+        const li = document.createElement('li');
+        if (task.done) li.classList.add('completed');
+
+        const content = document.createElement('div');
+        content.className = 'task-content';
+
+        const span = document.createElement('span');
+        span.textContent = task.text;
+        span.onclick = () => {
+          task.done = !task.done;
+          saveTasks();
+          renderTasks();
+        };
+        content.appendChild(span);
+
+        const buttons = document.createElement('div');
+        buttons.className = 'task-buttons';
+
+        const detailBtn = document.createElement('button');
+        detailBtn.textContent = '➕ Rincian';
+        detailBtn.onclick = e => {
+          e.stopPropagation();
+          const newDetail = prompt('Masukkan atau ubah rincian tugas:', task.detail || '');
+          if (newDetail !== null) {
+            task.detail = newDetail;
+            saveTasks();
+            renderTasks();
+          }
+        };
+
+        const editBtn = document.createElement('button');
+        editBtn.textContent = '✏️ Edit';
+        editBtn.onclick = e => {
+          e.stopPropagation();
+          const newText = prompt('Edit teks tugas:', task.text);
+          if (newText !== null) {
+            task.text = newText;
+            saveTasks();
+            renderTasks();
+          }
+        };
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'Hapus';
+        deleteBtn.classList.add('delete');
+        deleteBtn.onclick = e => {
+          e.stopPropagation();
+          if (confirm('Yakin ingin menghapus tugas ini?')) {
+            dayTasks.splice(index, 1);
+            if (dayTasks.length === 0) delete tasksByDate[selectedDate];
+            saveTasks();
+            renderTasks();
+          }
+        };
+
+        buttons.appendChild(detailBtn);
+        buttons.appendChild(editBtn);
+        buttons.appendChild(deleteBtn);
+
+        const detailDiv = document.createElement('div');
+        detailDiv.className = 'task-detail';
+        detailDiv.textContent = task.detail || 'Tidak ada rincian.';
+
+        content.appendChild(buttons);
+        li.appendChild(content);
+        li.appendChild(detailDiv);
+        ul.appendChild(li);
+      });
+
+      section.appendChild(ul);
+      taskListContainer.appendChild(section);
+      renderStats();
+    }
+
+    function addTask(text) {
+      if (!tasksByDate[selectedDate]) tasksByDate[selectedDate] = [];
+      tasksByDate[selectedDate].push({ text, done: false });
+      saveTasks();
+      renderTasks();
+    }
+
+    function addTaskFromInput() {
+      const task = taskInput.value.trim();
+      if (!task) return;
+      addTask(task);
+      taskInput.value = '';
+    }
+
+    function toggleRekomendasi() {
+      rekomendasiContainer.style.display = rekomendasiContainer.style.display === 'none' ? 'block' : 'none';
+    }
+
+    datePicker.addEventListener('change', e => {
+      selectedDate = e.target.value;
+      renderTasks();
+    });
+
+    rekomendasi.forEach(task => {
+      const div = document.createElement('div');
+      div.className = 'rekomendasi-item';
+      div.textContent = task;
+      div.onclick = () => addTask(task);
+      rekomendasiList.appendChild(div);
+    });
+
+    renderTasks();
+  </script>
+</body>
+
+</html>

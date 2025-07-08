@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website Coway Sederhana</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            /* Penting: pastikan tidak ada margin bawaan */
+        }
+
+        /* Navbar Horizontal */
+        .navbar-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #0055a5;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links li {
+            cursor: pointer;
+            color: #333;
+            transition: color 0.5s;
+        }
+
+        .nav-links li:hover {
+            color: #0055a5;
+        }
+
+        .cta-btn {
+            padding: 0.5rem 1rem;
+            background: #0055a5;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            background: #003f7f;
+        }
+
+        .cta-btn-desktop {
+            display: inline-block;
+            margin-left: 2rem;
+            padding: 0.5rem 1rem;
+            background: #0055a5;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .cta-btn-desktop:hover {
+            background: #003f7f;
+        }
+
+        @media (max-width: 768px) {
+            .cta-btn-desktop {
+                display: none;
+            }
+        }
+
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            border-radius: 2px;
+        }
+
+        /* Mobile Dropdown Menu */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 70px;
+            right: 20px;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            z-index: 99;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mobile-menu li {
+            color: #333;
+            cursor: pointer;
+        }
+
+        .mobile-menu li:hover {
+            color: #0055a5;
+        }
+
+        /* Navbar Vertikal */
+        .navbar-vertical {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .navbar-vertical a {
+            background: #0055a5;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            text-align: center;
+            width: 40px;
+            height: 40px;
+            line-height: 20px;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero-slider {
+            margin-top: 0;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 0 !important;
+                margin-top: 0 !important;
+            }
+
+            .hero-slider {
+                margin-top: 0;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        .slider-container {
+            overflow: hidden;
+            width: 100%;
+            background: #fff;
+        }
+
+        .slider-track {
+            display: flex;
+            gap: 40px;
+            animation: scroll 30s linear infinite;
+        }
+
+        .slider-item {
+            flex: 0 0 auto;
+            text-align: center;
+        }
+
+        .slider-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Duplikat track untuk loop tak terbatas */
+        .slider-track-wrapper {
+            display: flex;
+        }
+
+        /* loop untuk bagian produk di bawah */
+        .slider-container {
+            overflow: hidden;
+            width: 100%;
+            background: #fff;
+        }
+
+        .slider-track {
+            display: flex;
+            gap: 40px;
+            animation: scroll 30s linear infinite;
+        }
+
+        .slider-item {
+            flex: 0 0 auto;
+            text-align: center;
+        }
+
+        .slider-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Duplikat track untuk loop tak terbatas */
+        .slider-track-wrapper {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar Horizontal -->
+    <header>
+        <nav class="navbar-top">
+            <div class="logo">coway</div>
+            <ul class="nav-links">
+                <li>Produk</li>
+                <li>Servis</li>
+                <li>Berita</li>
+                <li>Tentang Kami</li>
+                <li>Lokasi</li>
+                <li>Mitra Coway</li>
+            </ul>
+            <button class="cta-btn-desktop">Pesan Sekarang</button>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li>Produk</li>
+                <li>Servis</li>
+                <li>Berita</li>
+                <li>Tentang Kami</li>
+                <li>Lokasi</li>
+                <li>Mitra Coway</li>
+            </ul>
+            <button class="cta-btn">Pesan Sekarang</button>
+        </div>
+    </header>
+
+    <!-- Navbar Vertikal -->
+    <div class="navbar-vertical">
+        <a href="https://wa.me/6281234567890" target="_blank">📱</a>
+        <a href="tel:+6281234567890">📞</a>
+        <a href="#">💬</a>
+    </div>
+
+    <!-- Hero / Slideshow 1 -->
+    <section class="hero-slider" id="slider-products">
+        <div class="slide active">
+            <img src="coway 1.png" alt="Produk 1" />
+        </div>
+        <div class="slide">
+            <img src="coway 2.png" alt="Produk 2" />
+        </div>
+        <div class="slide">
+            <img src="coway 3.png" alt="Produk 3" />
+        </div>
+        <div class="slide">
+            <img src="coway 4.png" alt="Produk 4" />
+        </div>
+    </section>
+
+    <!-- Hero Section: Teks Promosi -->
+    <section style="text-align: center; margin-top: 100px;">
+        <h2 style="color: #0055a5;">UPGRADE KUALITAS AIR DAN UDARAMU, UBAH HIDUPMU</h2>
+        <h4>Setiap rumah berhak untuk mendapatkan spesialis. Coway hadir memberikan udara dan air minum murni yang
+            berkualitas.</h4>
+    </section>
+
+    <!-- Gambar Promosi -->
+    <section class="hero-slider" id="slider-promosi">
+        <div class="slide active"><img src="slidebar2.gif" alt="Promo 1" /></div>
+        <div class="slide"><img src="slidebar2.gif" alt="Promo 2" /></div>
+        <div class="slide"><img src="slidebar2.gif" alt="Promo 3" /></div>
+    </section>
+
+    <!-- Teks Produk -->
+    <section style="text-align: center; padding: 40px 20px;">
+        <h2>OUR PRODUCTS</h2>
+    </section>
+
+    <!-- Gambar Produk Coway (Slider Loop) -->
+
+    <section class="slider-container">
+        <div class="slider-track-wrapper">
+            <div class="slider-track" id="slider-track">
+                <!-- Isi duplikat agar looping tampak seamless -->
+                <!-- Pertama -->
+                <div class="slider-item"><img src="breeze.png" alt="Breeze">
+                    <p>BREEZE</p>
+                </div>
+                <div class="slider-item"><img src="neoplus.png" alt="Neo Plus">
+                    <p>NEO PLUS</p>
+                </div>
+                <div class="slider-item"><img src="lombok.png" alt="Lombok">
+                    <p>LOMBOK</p>
+                </div>
+                <div class="slider-item"><img src="cinnamon.png" alt="Cinnamon">
+                    <p>CINNAMON</p>
+                </div>
+                <div class="slider-item"><img src="coway-cristal-ice.png" alt="Coway Kristal Ice">
+                    <p>KRISTAL ICE</p>
+                </div>
+                <div class="slider-item"><img src="core.png" alt="Core">
+                    <p>CORE</p>
+                </div>
+                <div class="slider-item"><img src="cartridge.png" alt="Cardridge">
+                    <p>CARDRIDGE</p>
+                </div>
+                <div class="slider-item"><img src="noble.png" alt="Noble">
+                    <p>NOBLE</p>
+                </div>
+                <div class="slider-item"><img src="ombak.png" alt="Ombak">
+                    <p>OMBAK</p>
+                </div>
+                <div class="slider-item"><img src="poe 23a.png" alt="POE 23A">
+                    <p>POE 23A</p>
+                </div>
+                <div class="slider-item"><img src="storm.png" alt="Storm">
+                    <p>STORM</p>
+                </div>
+                <div class="slider-item"><img src="villaem2.png" alt="Villaem II">
+                    <p>VILLAEM II</p>
+                </div>
+                <div class="slider-item"><img src="villaem3.png" alt="Villaem III">
+                    <p>VILLAEM III</p>
+                </div>
+
+                <!-- Duplikat lagi -->
+                <div class="slider-item"><img src="breeze.png" alt="Breeze">
+                    <p>BREEZE</p>
+                </div>
+                <div class="slider-item"><img src="neoplus.png" alt="Neo Plus">
+                    <p>NEO PLUS</p>
+                </div>
+                <div class="slider-item"><img src="lombok.png" alt="Lombok">
+                    <p>LOMBOK</p>
+                </div>
+                <div class="slider-item"><img src="cinnamon.png" alt="Cinnamon">
+                    <p>CINNAMON</p>
+                </div>
+                <div class="slider-item"><img src="coway-cristal-ice.png" alt="Coway Kristal Ice">
+                    <p>KRISTAL ICE</p>
+                </div>
+                <div class="slider-item"><img src="core.png" alt="Core">
+                    <p>CORE</p>
+                </div>
+                <div class="slider-item"><img src="cartridge.png" alt="Cardridge">
+                    <p>CARDRIDGE</p>
+                </div>
+                <div class="slider-item"><img src="noble.png" alt="Noble">
+                    <p>NOBLE</p>
+                </div>
+                <div class="slider-item"><img src="ombak.png" alt="Ombak">
+                    <p>OMBAK</p>
+                </div>
+                <div class="slider-item"><img src="poe 23a.png" alt="POE 23A">
+                    <p>POE 23A</p>
+                </div>
+                <div class="slider-item"><img src="storm.png" alt="Storm">
+                    <p>STORM</p>
+                </div>
+                <div class="slider-item"><img src="villaem2.png" alt="Villaem II">
+                    <p>VILLAEM II</p>
+                </div>
+                <div class="slider-item"><img src="villaem3.png" alt="Villaem III">
+                    <p>VILLAEM III</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Logo Sertifikasi -->
+    <section style="text-align: center; padding: 20px;">
+        <h2>CERTIFICATES & AWARDS</h2>
+        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; padding-top: 20px;">
+            <img src="logo1.png" alt="logo1" style="height: 40px;">
+            <img src="logo2.png" alt="logo2" style="height: 40px;">
+            <img src="logo3.png" alt="logo3" style="height: 40px;">
+            <img src="logo4.png" alt="logo4" style="height: 40px;">
+            <img src="logo5.png" alt="logo1" style="height: 40px;">
+            <img src="logo6.png" alt="logo2" style="height: 40px;">
+            <img src="logo7.png" alt="logo3" style="height: 40px;">
+            <img src="logo8.png" alt="logo4" style="height: 40px;">
+            <img src="logo9.png" alt="logo1" style="height: 40px;">
+            <img src="logo10.png" alt="logo2" style="height: 40px;">
+            <img src="logo11.png" alt="logo3" style="height: 40px;">
+            <img src="logo12.png" alt="logo4" style="height: 40px;">
+            <img src="logo13.png" alt="logo2" style="height: 40px;">
+            <img src="logo14.png" alt="logo3" style="height: 40px;">
+            <img src="logo15.jpeg" alt="logo4" style="height: 40px;">
+            <!-- Tambahkan hingga 15 logo sesuai kak Krisma punya -->
+        </div>
+    </section>
+
+    <script>
+        function setupSlider(containerSelector, interval = 5000) {
+            let current = 0;
+            const slides = document.querySelectorAll(`${containerSelector} .slide`);
+            if (slides.length === 0) return;
+            setInterval(() => {
+                slides[current].classList.remove("active");
+                current = (current + 1) % slides.length;
+                slides[current].classList.add("active");
+            }, interval);
+        }
+
+        // Inisialisasi dua slider terpisah
+        setupSlider("#slider-products", 5000);
+        setupSlider("#slider-promosi", 6000);
+
+        // hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.style.display =
+                mobileMenu.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Optional: hide mobile menu on outside click
+        document.addEventListener('click', function (e) {
+            if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.style.display = 'none';
+            }
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer style="background: #f1f1f1; padding: 20px; text-align: center; font-size: 14px;">
+        <p><a href="#">KEBIJAKAN PRIVASI</a> | <a href="#">KARIR</a> | careline@coway.id</p>
+        <p>PT. COWAY INTERNATIONAL INDONESIA © 2025. ALL RIGHTS RESERVED.</p>
+    </footer>
+</body>
+
+</html>

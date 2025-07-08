@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SD1M - Content Plan September 2024</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #273c75;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .header-logo {
+            font-size: 20px;
+            font-weight: bold;
+            padding: 10px 20px;
+            background-color: white;
+            color: #273c75;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+
+        .header-title {
+            flex: 1;
+            text-align: center;
+        }
+
+        .header-title h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .header-title p {
+            margin: 5px 0 0;
+            font-size: 14px;
+        }
+
+
+        h1 {
+            margin: 0;
+        }
+
+        .filter,
+        .controls {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        select,
+        input[type="text"],
+        input[type="time"],
+        input[type="date"] {
+            padding: 8px;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f1f1f1;
+        }
+
+        td[contenteditable] {
+            background-color: #fdfdfd;
+        }
+
+        td input {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .controls-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .control-item {
+            flex: 1 1 300px;
+            max-width: 33%;
+            text-align: center;
+        }
+
+        .control-item label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .control-item select,
+        .control-item button {
+            width: 100%;
+            padding: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .controls-wrapper>div {
+            flex: 1 1 200px;
+            text-align: center;
+        }
+
+        .controls-wrapper label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .controls-wrapper select,
+        .controls-wrapper button {
+            width: 100%;
+            max-width: 100%;
+            padding: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .filter select {
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .filter,
+        .controls,
+        .recommendation {
+            flex: 1 1 300px;
+            text-align: center;
+        }
+
+        .controls button,
+        .recommendation button {
+            padding: 10px 20px;
+            font-size: 14px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        /* untuk bagian rekomendasi konten plan */
+        .recommendation-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .recommendation-cards button {
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 8px;
+            border: none;
+            background-color: #f1f1f1;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .recommendation-cards button:hover {
+            background-color: #dcdcdc;
+        }
+
+        /* sticky header tabel */
+        thead th {
+            position: sticky;
+            top: 0;
+            background-color: #f1f1f1;
+            z-index: 2;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Tombol tambah baris mengambang */
+        #floatingAddBtn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            background-color: #273c75;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        #floatingAddBtn:hover {
+            background-color: #1d2e60;
+        }
+
+        /* tombol filter bulan */
+        .month-filter {
+            flex: 1 1 300px;
+            text-align: center;
+        }
+
+        .month-filter select {
+            width: 100%;
+            max-width: 300px;
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        /* untuk menyalin isi konten plan */
+        .export button {
+            background-color: #44bd32;
+            color: white;
+        }
+
+        .export button:hover {
+            background-color: #2ecc71;
+        }
+
+        /* warna card 3 tombol */
+        .controls-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .control-card {
+            flex: 1 1 220px;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .control-card label {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .control-card select,
+        .control-card button {
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* warna spesifik tombol */
+        .control-card select {
+            background-color: #f9f9f9;
+        }
+
+        .rekom-btn {
+            background-color: #fbc531;
+            border: none;
+            color: #2f3640;
+            font-weight: bold;
+        }
+
+        .rekom-btn:hover {
+            background-color: #f1c40f;
+        }
+
+        .export-card button {
+            background-color: #44bd32;
+            color: white;
+            font-weight: bold;
+            border: none;
+        }
+
+        .export-card button:hover {
+            background-color: #2ecc71;
+        }
+
+        /* FULLSCREEN MODAL untuk rekomendasi konten */
+        .rekomendasi-fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 999;
+            overflow-y: auto;
+            padding: 40px 20px;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .rekomendasi-fullscreen h2 {
+            margin-bottom: 10px;
+        }
+
+        .rekomendasi-fullscreen .recommendation-cards {
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 900px;
+            gap: 12px;
+        }
+
+        .rekomendasi-fullscreen .recommendation-cards button {
+            flex: 1 1 200px;
+        }
+
+        /* Tombol tutup modal */
+        #tutupRekom {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background-color: #e84118;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            font-size: 14px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        #tutupRekom:hover {
+            background-color: #c23616;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-logo">SD1M</div>
+        <div class="header-title">
+            <h1>Konten Plan</h1>
+            <p>Bikin kontenmu jadi lebih sat set dan siap pakai</p>
+        </div>
+    </header>
+
+
+    <div class="controls-wrapper">
+        <div class="control-card">
+            <label for="filterKategori">Filter Kategori</label>
+            <select id="filterKategori" onchange="filterTable()">
+                <option value="All">Semua</option>
+                <option value="Parenting">Parenting</option>
+                <option value="Edukasi">Edukasi</option>
+                <option value="Quotes">Quotes</option>
+                <option value="Motivasi">Motivasi</option>
+                <option value="Tips">Tips</option>
+                <option value="Kegiatan">Kegiatan</option>
+            </select>
+        </div>
+
+        <div class="control-card">
+            <label for="filterBulan">Filter Bulan</label>
+            <select id="filterBulan" onchange="filterBulan()">
+                <option value="All">Semua</option>
+                <option value="01">Januari</option>
+                <option value="02">Februari</option>
+                <option value="03">Maret</option>
+                <option value="04">April</option>
+                <option value="05">Mei</option>
+                <option value="06">Juni</option>
+                <option value="07">Juli</option>
+                <option value="08">Agustus</option>
+                <option value="09">September</option>
+                <option value="10">Oktober</option>
+                <option value="11">November</option>
+                <option value="12">Desember</option>
+            </select>
+        </div>
+
+        <div class="control-card">
+            <label>&nbsp;</label>
+            <button class="rekom-btn" onclick="toggleRekomendasi()">💡 Rekomendasi Konten Plan</button>
+            <div id="rekomendasiFullscreen" class="rekomendasi-fullscreen">
+                <button id="tutupRekom" onclick="toggleRekomendasi()">Tutup ✖</button>
+                <h2>Pilih Rekomendasi Konten Plan</h2>
+                <div class="recommendation-cards" id="rekomendasiKategori">
+                    <button onclick="tambahRekomendasiKategori('MakananKhasDaerah')">Makanan Khas Daerah</button>
+                    <button onclick="tambahRekomendasiKategori('FrozenStreetFood')">Frozen Street Food</button>
+                    <button onclick="tambahRekomendasiKategori('BentoAnak')">Bento Anak</button>
+                    <button onclick="tambahRekomendasiKategori('DessertModernTradisional')">Dessert Modern
+                        Tradisional</button>
+                    <button onclick="tambahRekomendasiKategori('KopiLiteran')">Kopi Literan</button>
+                    <button onclick="tambahRekomendasiKategori('PlannerInteraktifPDF')">Planner Interaktif PDF</button>
+                    <button onclick="tambahRekomendasiKategori('TemplateKontenStory')">Template Konten Story</button>
+                    <button onclick="tambahRekomendasiKategori('KelasFotoProdukHP')">Kelas Foto Produk HP</button>
+                    <button onclick="tambahRekomendasiKategori('MembershipTipsJualan')">Membership Tips Jualan</button>
+                    <button onclick="tambahRekomendasiKategori('ToolkitBisnisRumahan')">Toolkit Bisnis Rumahan</button>
+                    <button onclick="tambahRekomendasiKategori('BusyBookCustom')">Busy Book Custom</button>
+                    <button onclick="tambahRekomendasiKategori('PuzzleProfesiLokal')">Puzzle Profesi Lokal</button>
+                    <button onclick="tambahRekomendasiKategori('CraftKitHariBesar')">Craft Kit Hari Besar</button>
+                    <button onclick="tambahRekomendasiKategori('BoardgameEkonomiAnak')">Boardgame Ekonomi Anak</button>
+                    <button onclick="tambahRekomendasiKategori('StrategiJualanOnline')">Strategi Jualan Online</button>
+                    <button onclick="tambahRekomendasiKategori('BrandingVisualBisnis')">Branding Visual Bisnis</button>
+                    <button onclick="tambahRekomendasiKategori('KontenEdukatifInteraktif')">Konten Edukatif
+                        Interaktif</button>
+                    <button onclick="tambahRekomendasiKategori('KomunitasCeritaUMKM')">Komunitas Cerita UMKM</button>
+                    <button onclick="tambahRekomendasiKategori('ToolsResourceUMKM')">ToolsResourceUMKM</button>
+                    <button onclick="tambahRekomendasiKategori('Komunitas Bisnis')">Komunitas Bisnis</button>
+                    <!-- tombol-tombol rekomendasi -->
+                </div>
+            </div>
+        </div>
+
+        <div class="control-card export-card">
+            <label>&nbsp;</label>
+            <button onclick="salinKontenPlan()">📋 Salin ke Clipboard</button>
+        </div>
+        <button id="floatingAddBtn" onclick="tambahBaris()">➕</button>
+    </div>
+
+    <!-- Datalist: Dropdown yang bisa ditambah -->
+    <datalist id="kategoriList">
+        <option value="Parenting">
+        <option value="Edukasi">
+        <option value="Quotes">
+        <option value="Motivasi">
+        <option value="Tips">
+        <option value="Kegiatan">
+    </datalist>
+
+    <datalist id="ownerList">
+        <option value="Marketing Haula">
+        <option value="Admin SD1M">
+        <option value="Tim Konten">
+        <option value="Freelancer">
+    </datalist>
+
+    <datalist id="statusList">
+        <option value="Draft">
+        <option value="Review">
+        <option value="Published">
+        <option value="Scheduled">
+        <option value="Pending Approval">
+    </datalist>
+
+    <table id="contentTable">
+        <thead>
+            <tr>
+                <th>Tanggal</th>
+                <th>Waktu</th>
+                <th>Kategori</th>
+                <th>Judul / Isi</th>
+                <th>Caption</th>
+                <th>Hashtag</th>
+                <th>Owner</th>
+                <th>Status</th>
+                <th>Referensi</th>
+                <th>Notes</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr data-kategori="Parenting">
+                <td><input type="date" value="2024-09-02"></td>
+                <td><input type="time" value="10:00"></td>
+                <td><input list="kategoriList" value="Parenting"></td>
+                <td contenteditable="true">Ga Ada Waktu dengan Anak? Simak Konten Ini Bagaimana Caranya</td>
+                <td contenteditable="true" class="caption">Sudah saatnya memasuki bulan September, Ayah dan Bunda!
+                    Yuk, luangkan waktu bersama anak meski sibuk!</td>
+                <td contenteditable="true">#parentinganak #parentingindonesia #tipsparenting</td>
+                <td><input list="ownerList" value="Marketing Haula"></td>
+                <td><input list="statusList" value="Published"></td>
+                <td contenteditable="true">Unifam</td>
+                <td contenteditable="true">Carousel Feed</td>
+                <td><button onclick="hapusBaris(this)">🗑</button></td>
+            </tr>
+            <tr data-kategori="Edukasi">
+                <td><input type="date" value="2024-09-03"></td>
+                <td><input type="time" value="10:00"></td>
+                <td><input list="kategoriList" value="Edukasi"></td>
+                <td contenteditable="true">Yura, Aku Galau Karena Aku Masih Bingung dengan Gaya Belajarku</td>
+                <td contenteditable="true" class="caption">Apakah Ayah dan Bunda masih suka bingung dengan gaya belajar
+                    anak?
+                    Kenali tipe Multiple Intelligence yuk!</td>
+                <td contenteditable="true">#parentinganak #parentingindonesia #tipsparenting</td>
+                <td><input list="ownerList" value="Marketing Haula"></td>
+                <td><input list="statusList" value="Published"></td>
+                <td contenteditable="true">Halodoc</td>
+                <td contenteditable="true">Carousel Feed</td>
+                <td><button onclick="hapusBaris(this)">🗑</button></td>
+            </tr>
+            <tr data-kategori="Edukasi">
+                <td><input type="date" value="2024-09-04"></td>
+                <td><input type="time" value="10:00"></td>
+                <td><input list="kategoriList" value="Edukasi"></td>
+                <td contenteditable="true">Emang Boleh Anak Balita Diberikan Susu UHT?</td>
+                <td contenteditable="true" class="caption">Boleh kok, asalkan anak Ayah dan Bunda sudah berusia 1 tahun
+                    ke atas!
+                    Simak tips lengkapnya di sini.</td>
+                <td contenteditable="true">#parentinganak #parentingindonesia #tipsparenting</td>
+                <td><input list="ownerList" value="Marketing Haula"></td>
+                <td><input list="statusList" value="Published"></td>
+                <td contenteditable="true">Alodokter</td>
+                <td contenteditable="true">Reels</td>
+                <td><button onclick="hapusBaris(this)">🗑</button></td>
+            </tr>
+            <tr data-kategori="Parenting">
+                <td><input type="date" value="2024-09-05"></td>
+                <td><input type="time" value="10:00"></td>
+                <td><input list="kategoriList" value="Parenting"></td>
+                <td contenteditable="true">Yuk Simak Jenis-Jenis Pola Asuh Orang Tua!</td>
+                <td contenteditable="true" class="caption">Orang tua mana yang tidak ingin memberikan yang terbaik?
+                    Kenali pola asuh agar tepat sasaran.</td>
+                <td contenteditable="true">#parentinganak #parentingindonesia #tipsparenting</td>
+                <td><input list="ownerList" value="Marketing Haula"></td>
+                <td><input list="statusList" value="Published"></td>
+                <td contenteditable="true">Fimela</td>
+                <td contenteditable="true">Carousel Feed</td>
+                <td><button onclick="hapusBaris(this)">🗑</button></td>
+            </tr>
+            <tr data-kategori="Quotes">
+                <td><input type="date" value="2024-09-06"></td>
+                <td><input type="time" value="10:00"></td>
+                <td><input list="kategoriList" value="Quotes"></td>
+                <td contenteditable="true">Jadilah Bunga Matahari</td>
+                <td contenteditable="true" class="caption">Adakalanya kita letih dalam perjalanan kehidupan.
+                    Tapi seperti bunga matahari, lihatlah selalu pada cahaya.</td>
+                <td contenteditable="true">#quote #katakatamotivasi #quotesparenting #quoteoftheday</td>
+                <td><input list="ownerList" value="Marketing Haula"></td>
+                <td><input list="statusList" value="Published"></td>
+                <td contenteditable="true">-</td>
+                <td contenteditable="true">Reels</td>
+                <td><button onclick="hapusBaris(this)">🗑</button></td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <script>
+        function filterTable() {
+            const filter = document.getElementById("filterKategori").value;
+            const rows = document.querySelectorAll("#contentTable tbody tr");
+            rows.forEach(row => {
+                const kategori = row.querySelector("td:nth-child(3) input")?.value || "";
+                if (filter === "All" || filter === kategori) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        }
+
+        function tambahBaris() {
+            const tbody = document.querySelector("#contentTable tbody");
+            const row = document.createElement("tr");
+
+            row.innerHTML = `
+        <td><input type="date"></td>
+        <td><input type="time"></td>
+        <td><input list="kategoriList" onblur="cekKategoriBaru(this)"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td><input list="ownerList"></td>
+        <td><input list="statusList"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td><button onclick="hapusBaris(this)">🗑</button></td>
+    `;
+
+            tbody.appendChild(row);
+        }
+
+
+        // ✅ Fungsi cek dan tambah kategori baru
+        function cekKategoriBaru(input) {
+            const kategoriBaru = input.value.trim();
+            if (!kategoriBaru) return;
+
+            const datalist = document.getElementById("kategoriList");
+            const filterSelect = document.getElementById("filterKategori");
+
+            const sudahAdaDatalist = Array.from(datalist.options).some(opt => opt.value === kategoriBaru);
+            if (!sudahAdaDatalist) {
+                const option = document.createElement("option");
+                option.value = kategoriBaru;
+                datalist.appendChild(option);
+            }
+
+            const sudahAdaFilter = Array.from(filterSelect.options).some(opt => opt.value === kategoriBaru);
+            if (!sudahAdaFilter) {
+                const option = document.createElement("option");
+                option.value = kategoriBaru;
+                option.textContent = kategoriBaru;
+                filterSelect.appendChild(option);
+            }
+        }
+
+        // hapus baris
+        function hapusBaris(button) {
+            const row = button.closest("tr");
+            row.remove();
+        }
+
+        function tambahRekomendasi() {
+            const dataRekomendasi = [
+                { kategori: "FnB", judul: "Menu Favorit Minggu Ini", caption: "Cobain menu andalan kita minggu ini, pasti nagih!", hashtag: "#fnb #kuliner", notes: "Post Reels Makan" },
+                { kategori: "FnB", judul: "Behind The Scene Dapur", caption: "Yuk intip dapur rahasia kita!", hashtag: "#fnb #bts", notes: "Video Story" },
+                { kategori: "FnB", judul: "Promo Spesial Weekend", caption: "Diskon 20% hanya Sabtu-Minggu!", hashtag: "#promo #kuliner", notes: "Feed Promo" },
+                { kategori: "Produk Digital", judul: "Tips Gunakan Produk Digital Kami", caption: "Cara praktis manfaatkan fitur unggulan!", hashtag: "#produkdigital #tips", notes: "Carousel Tips" },
+                { kategori: "Produk Digital", judul: "Testimoni Pelanggan", caption: "Dengarkan langsung dari pengguna kami!", hashtag: "#review #feedback", notes: "Video Testimoni" },
+                { kategori: "Produk Fisik", judul: "Unboxing Produk Baru", caption: "Lihat isi paketnya, keren banget!", hashtag: "#unboxing #produkfisik", notes: "Reels Unboxing" },
+                { kategori: "Produk Fisik", judul: "Cara Merawat Produk", caption: "Simak tips agar produk awet tahan lama.", hashtag: "#tipsperawatan #produk", notes: "Post Edukasi" }
+            ];
+
+            const tbody = document.querySelector("#contentTable tbody");
+
+            dataRekomendasi.forEach(data => {
+                const row = document.createElement("tr");
+                row.setAttribute("data-kategori", data.kategori);
+
+                row.innerHTML = `
+            <td><input type="date"></td>
+            <td><input type="time"></td>
+            <td><input list="kategoriList" value="${data.kategori}" onblur="cekKategoriBaru(this)"></td>
+            <td contenteditable="true">${data.judul}</td>
+            <td contenteditable="true">${data.caption}</td>
+            <td contenteditable="true">${data.hashtag}</td>
+            <td><input list="ownerList"></td>
+            <td><input list="statusList"></td>
+            <td contenteditable="true">-</td>
+            <td contenteditable="true">${data.notes}</td>
+            <td><button onclick="hapusBaris(this)">🗑</button></td>
+        `;
+
+                tbody.appendChild(row);
+                cekKategoriBaru(row.querySelector('td:nth-child(3) input'));
+            });
+        }
+
+        // tambah rekomendasi
+        function toggleRekomendasi() {
+            const panel = document.getElementById("rekomendasiFullscreen");
+            panel.style.display = (panel.style.display === "none" || panel.style.display === "") ? "flex" : "none";
+        }
+
+
+        function tambahRekomendasiKategori(kategori) {
+            const dataRekomendasi = {
+                "MakananKhasDaerah": [
+                    { kategori: "Menu", judul: "Eksplorasi Rasa Nusantara", caption: "Cita rasa khas dari berbagai daerah kini hadir dalam kemasan praktis! Nikmati sensasi kuliner tradisional tanpa ribet.", hashtag: "#makanankhas #kulinerindonesia #oleholeh #masakantradisional", notes: "Feed Menu" },
+                    { kategori: "Behind The Scene", judul: "Dapur Makanan Khas", caption: "Lihat proses pembuatan makanan khas dari dapur kami. Semua dibuat dengan resep warisan turun-temurun!", hashtag: "#kulinerindonesia #bts #masakantradisional #produkhalal", notes: "Story Video" },
+                    { kategori: "Promo", judul: "Diskon Spesial Rasa Lokal", caption: "Dapatkan potongan harga untuk pembelian makanan khas favoritmu minggu ini. Promo hanya berlaku 3 hari!", hashtag: "#promo #makanankhas #kulinerlokal #rasaasli", notes: "Feed Promo" },
+                    { kategori: "Testimoni", judul: "Cerita Pelanggan Setia", caption: "Simak testimoni pelanggan yang jatuh cinta sama cita rasa lokal kemasan kami. Bikin nostalgia katanya!", hashtag: "#testimoni #makanannostalgia #kulinerdaerah #pelangganbahagia", notes: "Carousel Review" },
+                    { kategori: "Tim", judul: "Pahlawan Dapur Daerah", caption: "Kenalan dengan tim dapur kami yang meracik resep daerah dengan cinta. Tanpa mereka, tak akan ada rasa otentik!", hashtag: "#teamdapur #makanankhas #kulinertradisional #dapurcerita", notes: "Story" },
+                    { kategori: "Resep", judul: "Resep Sambal Khas Daerah", caption: "Coba resep sambal favorit dari tim dapur kami. Cocok banget buat pendamping lauk apa aja!", hashtag: "#resepdaerah #sambalkhas #kulinerpedas #masakdirumah", notes: "Reels Masak" },
+                    { kategori: "Live", judul: "Live Masak Makanan Daerah", caption: "Yuk masak bareng makanan khas Jawa Barat di sesi live kita minggu ini. Ada giveaway juga loh!", hashtag: "#livemasak #makanankhas #giveawaymasak #chefdaerah", notes: "Live IG" }
+                ],
+                "FrozenStreetFood": [
+                    { kategori: "Menu", judul: "Frozen Cemilan Favorit", caption: "Cireng, otak-otak, dan bakso goreng beku siap digoreng kapan aja kamu mau. Praktis dan enak!", hashtag: "#frozenfood #streetfoodindo #cemilanrumahan #praktismasak", notes: "Feed Menu" },
+                    { kategori: "Behind The Scene", judul: "Produksi Frozen Food", caption: "Lihat langsung gimana makanan frozen favoritmu diproses dengan standar higienis!", hashtag: "#produksimakanan #btsfrozen #dapursteril #makanpraktis", notes: "Video Story" },
+                    { kategori: "Promo", judul: "Diskon Bundle Otak-Otak + Cireng", caption: "Beli bundle hemat frozen otak-otak dan cireng hari ini aja. Yuk borong!", hashtag: "#promo #bundlehemat #cemilanenak #jualanfrozen", notes: "Feed Promo" },
+                    { kategori: "Testimoni", judul: "Review Frozen Jajanan", caption: "Lihat pendapat mereka yang udah coba frozen street food kita. Mana yang jadi favoritmu?", hashtag: "#testimoni #jajananviral #frozenenak #reviewjujur", notes: "Carousel" },
+                    { kategori: "Tim", judul: "Tim Packing & Produksi", caption: "Kenalan dengan tim packing kita yang cekatan dan teliti. Setiap kemasan kami pastikan berkualitas!", hashtag: "#teamfrozen #packingteam #kerjakeras #dapurramah", notes: "Story" },
+                    { kategori: "Resep", judul: "Cara Goreng Otak-Otak Tanpa Meledak", caption: "Tips goreng otak-otak biar nggak meledak dan tetap kriuk! Simak caranya di video ini ya!", hashtag: "#resepjajanan #frozenresep #tipsdapur #cemilanrumahan", notes: "Reels Masak" },
+                    { kategori: "Live", judul: "Live Masak Cireng Isi Pedas", caption: "Masak bareng kita di live IG! Kali ini bikin cireng isi pedas ala kaki lima!", hashtag: "#livemasak #cirengpedas #frozenfood #masakbareng", notes: "Live IG" }
+                ],
+                "BentoAnak": [
+                    { kategori: "Menu", judul: "Bento Karakter Favorit Anak", caption: "Bikin bekal sekolah makin seru dan sehat dengan bento karakter lucu. Si kecil pasti lahap!", hashtag: "#bentoanak #bekalanak #idebekal #masakseru", notes: "Feed Menu" },
+                    { kategori: "Behind The Scene", judul: "Proses Dekorasi Bento", caption: "Yuk intip gimana kami membentuk karakter lucu di setiap bento. Detailnya bikin gemes!", hashtag: "#btsbento #hiasanbekal #bekalmurah #bentoide", notes: "Video Story" },
+                    { kategori: "Promo", judul: "Paket Langganan Bento 5 Hari", caption: "Mau hemat & praktis? Coba paket langganan bento 5 hari. Lebih murah & bebas repot!", hashtag: "#promo #paketbento #langgananmurah #bekalanak", notes: "Feed Promo" },
+                    { kategori: "Testimoni", judul: "Anak Lahap Makan!", caption: "Lihat reaksi anak-anak yang semangat makan karena bentuk bento yang lucu banget!", hashtag: "#testimonianak #bentolucu #bekalfavorit #anakcerdas", notes: "Carousel" },
+                    { kategori: "Tim", judul: "Tim Kreatif Bento", caption: "Tim kreatif kami selalu punya ide baru untuk bento anak. Inovatif dan penuh cinta!", hashtag: "#teamkreasi #bentocreative #bekalanakunik #karyaanak", notes: "Story" },
+                    { kategori: "Resep", judul: "Resep Nasi Pelangi Bento", caption: "Buat nasi pelangi sehat untuk bento si kecil. Tanpa pewarna buatan ya!", hashtag: "#resepbento #nasipelangi #bekalsehat #masakdirumah", notes: "Reels" },
+                    { kategori: "Live", judul: "Live Dekorasi Bento Karakter", caption: "Ikuti live kita sambil bikin bento karakter bareng! Ada tips cepat dekorasi juga!", hashtag: "#livemasak #bentokarakter #bekalanakunik #tipsmasak", notes: "Live IG" }
+                ],
+                "DessertModernTradisional": [
+                    { kategori: "Menu", judul: "Klepon Boba & Lapis Cheesecake", caption: "Gabungan cita rasa klasik & modern dalam satu gigitan. Coba menu dessert fusion kita!", hashtag: "#dessertindonesia #jajananmodern #kulinermodern #inovasimakanan", notes: "Feed Menu" },
+                    { kategori: "Behind The Scene", judul: "Proses Buat Dessert Fusion", caption: "Simak proses pembuatan lapis cheesecake dan klepon dengan twist modern!", hashtag: "#btsdessert #inovasirasa #dessertfusion #masaktradisional", notes: "Video Story" },
+                    { kategori: "Promo", judul: "Dessert Combo Spesial Minggu Ini", caption: "Dapatkan combo dessert unik dengan harga spesial hanya minggu ini!", hashtag: "#promo #dessertunik #cemilankekinian #rasaistimewa", notes: "Feed Promo" },
+                    { kategori: "Testimoni", judul: "Mereka Suka Inovasi Kita!", caption: "Para pelanggan gak nyangka klepon bisa seenak ini! Lihat review mereka!", hashtag: "#testimoni #dessertviral #jajananhits #reviewkita", notes: "Carousel" },
+                    { kategori: "Tim", judul: "Tim Dessert Kreatif", caption: "Ide-ide manis lahir dari tim pastry kami. Kreativitas tanpa batas!", hashtag: "#timdessert #kreatifbanget #chefpastry #desserttim", notes: "Story" },
+                    { kategori: "Resep", judul: "Cara Bikin Lapis Cheesecake", caption: "Cobain resep lapis legit yang diberi twist cream cheese, gampang banget kok!", hashtag: "#resepmodern #lapischeesecake #masakmanis #dessertgampang", notes: "Reels" },
+                    { kategori: "Live", judul: "Live Buat Klepon Boba", caption: "Kita live bikin klepon isi boba! Mau tau rahasianya biar meletus di mulut? Ikutan ya!", hashtag: "#livemasak #kleponboba #dessertfusion #masakbareng", notes: "Live IG" }
+                ],
+                "KopiLiteran": [
+                    { kategori: "Menu", judul: "Cold Brew Favorit Mingguan", caption: "Kopi literan andalan kami hadir lagi! Siap nemenin kerja atau santai di rumah.", hashtag: "#kopiliteran #coldbrewcoffee #kopikita #kopisusu", notes: "Feed Menu" },
+                    { kategori: "Behind The Scene", judul: "Brew Kopi Ala Barista", caption: "Intip cara barista kami menyiapkan cold brew yang nikmat dan segar!", hashtag: "#btskedai #kopisegar #baristaindonesia #kopibrew", notes: "Video Story" },
+                    { kategori: "Promo", judul: "Beli 2 Gratis 1", caption: "Spesial minggu ini, beli 2 kopi literan gratis 1. Stok terbatas, buruan ya!", hashtag: "#promo #kopigratis #kopilangganan #bundlingdeal", notes: "Feed Promo" },
+                    { kategori: "Testimoni", judul: "Pelanggan Setia Cold Brew", caption: "Lihat kenapa mereka selalu repeat order kopi literan kami!", hashtag: "#testimonikopi #kopicinta #langganankopi #repeatorder", notes: "Carousel" },
+                    { kategori: "Tim", judul: "Tim Brew & Packing", caption: "Tim handal kami meracik kopi dan packing dengan teliti agar tetap fresh sampai rumah kamu.", hashtag: "#teamkopi #baristakreatif #packingkopi #kopilokal", notes: "Story" },
+                    { kategori: "Resep", judul: "Cold Brew DIY di Rumah", caption: "Cobain sendiri resep cold brew simple ala rumahan!", hashtag: "#resepkopi #coldbrewdirumah #kopigampang #kopirumahan", notes: "Reels" },
+                    { kategori: "Live", judul: "Live Bareng Barista", caption: "Ngopi santai sambil tanya-tanya langsung ke barista kita. Siap-siap kejutan giveaway juga ya!", hashtag: "#livemasak #ngopibareng #kopiliteranlive #baristalive", notes: "Live IG" }
+                ],
+                "PlannerInteraktifPDF": [
+                    { kategori: "Produk", judul: "Planner Interaktif untuk Produktivitas", caption: "Susun hari-harimu dengan planner PDF interaktif yang praktis & estetik. Cocok buat pebisnis, pelajar, maupun ibu rumah tangga!", hashtag: "#digitalplanner #pdfplanner #productivitytools #plannerideas", notes: "Feed Produk" },
+                    { kategori: "Tutorial", judul: "Cara Pakai Planner PDF", caption: "Baru pakai planner digital? Tenang, ini panduan singkat cara pakainya di HP & tablet!", hashtag: "#plannerideas #digitalguide #pdfplanner #produktivitas", notes: "Story Tutorial" },
+                    { kategori: "Promo", judul: "Promo Bundle Planner + Bonus", caption: "Beli planner sekarang dapat bonus stiker digital lucu! Promo terbatas cuma sampai akhir minggu.", hashtag: "#promo #pdfplanner #bundleplanner #plannerbonus", notes: "Feed Promo" },
+                    { kategori: "Testimoni", judul: "Pakai Planner Ini Bikin Rajin!", caption: "Lihat testimoni real pengguna planner kami yang merasa hidupnya makin rapi dan terarah!", hashtag: "#testimoni #planneruser #digitalplanner #realreview", notes: "Carousel Review" },
+                    { kategori: "Behind The Scene", judul: "Desain Planner Dibuat dengan Cinta", caption: "Intip proses kreatif pembuatan planner interaktif dari tim desain kami!", hashtag: "#desainplanner #canvaprocess #pdftools #behindplanner", notes: "Reels BTS" },
+                    { kategori: "Tips", judul: "Tips Maksimalkan Planner", caption: "Gak cuma nulis to-do list, planner ini juga bisa bantu kamu refleksi harian. Simak tipsnya!", hashtag: "#plannerideas #plannerhack #produktivitas #pdfroutine", notes: "Story Tips" },
+                    { kategori: "Live", judul: "Live Setup Planner Bareng", caption: "Yuk bareng-bareng setting planner mingguan kita di sesi live. Sambil sharing goal mingguan juga!", hashtag: "#livestudy #setupplanner #plannerbareng #produktivitaslive", notes: "Live IG" }
+                ],
+
+                "TemplateKontenStory": [
+                    { kategori: "Produk", judul: "Template Story Jualan Siap Pakai", caption: "Desain kece, tinggal edit! Cocok buat kamu yang jualan dan pengen konten lebih rapi dan menarik.", hashtag: "#canvatemplate #templatejualan #kontenjualan #desainstory", notes: "Feed Produk" },
+                    { kategori: "Tutorial", judul: "Cara Edit Template di Canva", caption: "Baru mulai pakai Canva? Tenang, ini cara gampang edit template jualan di HP!", hashtag: "#canvaeasy #templateedit #kontengampang #canvatemplate", notes: "Video Story" },
+                    { kategori: "Promo", judul: "Diskon Template Story 50%", caption: "Spesial hari ini aja! Semua template story diskon 50%, buruan sebelum harga naik!", hashtag: "#promo #desaintemplate #jualanmudah #diskontemplate", notes: "Feed Promo" },
+                    { kategori: "Testimoni", judul: "Pelanggan Suka Desain Ini", caption: "Lihat desain story jualan mereka setelah pakai template kita. Profesional dan bikin laku!", hashtag: "#testimoni #templatejualansukses #desainstoryjualan #hasilnyata", notes: "Carousel" },
+                    { kategori: "Behind The Scene", judul: "Proses Desain Template", caption: "Simak proses kreatif pembuatan template dari tim desain kami, semua berdasarkan kebutuhan jualan UMKM!", hashtag: "#btsdesain #canvaprocess #digitaltools #kontenstory", notes: "Reels" },
+                    { kategori: "Tips", judul: "Tips Kombinasi Warna Story", caption: "Warna juga penting dalam desain. Ini dia tips kombinasi warna biar story jualan makin eye-catching!", hashtag: "#desaintips #warnastory #templatejualan #kontenmenarik", notes: "Story" },
+                    { kategori: "Live", judul: "Live Edit Bareng Template Story", caption: "Ikut live kita dan belajar bareng edit template story jualan, biar konten makin kece!", hashtag: "#livedesain #canvaediting #kontenjualanlive #storytemplate", notes: "Live IG" }
+                ],
+
+                "KelasFotoProdukHP": [
+                    { kategori: "Kelas", judul: "Kelas Online Foto Produk dengan HP", caption: "Belajar cara foto produk estetik hanya dengan HP! Cocok buat pemula dan UMKM.", hashtag: "#fotoproduk #kelasonline #fotohpmurah #fotobrand", notes: "Feed Info Kelas" },
+                    { kategori: "Testimoni", judul: "Mereka Bisa Foto Estetik Sekarang!", caption: "Sebelumnya gelap dan blur, sekarang bisa foto produk seperti brand mahal! Yuk lihat hasilnya!", hashtag: "#testimoni #fotoprodukhasil #kelasfotohp #brandlook", notes: "Carousel" },
+                    { kategori: "Behind The Scene", judul: "Suasana Belajar Seru", caption: "Kelasnya gak boring! Seru dan interaktif, bisa tanya jawab langsung juga!", hashtag: "#kelasfotoproduk #kelasonlineinteraktif #belajarfoto #btskelas", notes: "Story" },
+                    { kategori: "Tips", judul: "Tips Angle Foto Produk", caption: "Mau foto produk makin menarik? Ini beberapa angle favorit yang selalu bikin laku!", hashtag: "#fototips #anglefoto #produkestetik #fotobrand", notes: "Reels Tips" },
+                    { kategori: "Promo", judul: "Diskon Kelas Foto HP 30%", caption: "Promo pendaftaran kelas foto HP, hemat 30% untuk pendaftar minggu ini!", hashtag: "#promo #kelasfotoproduk #diskonkursus #fotomurah", notes: "Feed Promo" },
+                    { kategori: "Live", judul: "Live Foto Produk Bareng Mentor", caption: "Ikuti live demo foto produk pakai HP, langsung bareng mentornya!", hashtag: "#livefoto #fotodenganhp #kelasonline #fotoproduk", notes: "Live IG" },
+                    { kategori: "Inspirasi", judul: "Before-After Foto Produk", caption: "Perbandingan hasil sebelum & sesudah ikut kelas. Bikin percaya diri jualan!", hashtag: "#beforeafterfoto #fotoinspirasi #kelasfotoproduk #hasilfoto", notes: "Carousel Feed" }
+                ],
+
+                "MembershipTipsJualan": [
+                    { kategori: "Produk", judul: "Gabung Membership Tips Harian", caption: "Setiap hari dapat ide jualan dan tips praktis biar kamu gak kehabisan konten & semangat!", hashtag: "#tipjualan #idekontenjualan #jualansetiaphari #tipsbisnis", notes: "Feed Produk" },
+                    { kategori: "Testimoni", judul: "Member Dapat Insight Baru!", caption: "Testimoni dari para member yang terbantu banget dengan konten tips jualan harian!", hashtag: "#testimonibisnis #tipsjualanharian #inspirasijualan #memberhappy", notes: "Carousel" },
+                    { kategori: "Behind The Scene", judul: "Proses Riset Konten Harian", caption: "Intip cara tim kami meriset konten & tips jualan berdasarkan tren terkini!", hashtag: "#btskonten #timkreatif #risetjualan #trendingtips", notes: "Story" },
+                    { kategori: "Promo", judul: "Harga Spesial Member Baru", caption: "Gabung sekarang dan dapat harga spesial untuk akses 30 hari penuh tips & template!", hashtag: "#promo #membershipjualan #hargahemat #langgananjualan", notes: "Feed Promo" },
+                    { kategori: "Tips", judul: "Tips Jualan Tanpa Stok", caption: "Gak punya stok barang? Tenang, kamu tetap bisa jualan. Ini caranya!", hashtag: "#tipjualan #jualanonline #dropshiptips #jualanmudah", notes: "Reels Tips" },
+                    { kategori: "Live", judul: "Live Sharing Ide Jualan", caption: "Yuk ngobrol santai di live sambil diskusi ide jualan yang bisa kamu mulai dari rumah!", hashtag: "#livejualan #ngobrolbisnis #tipsjualanlive #idejualanlive", notes: "Live IG" },
+                    { kategori: "Inspirasi", judul: "Jadwal Posting Harian", caption: "Berbagi inspirasi konten jualan selama 7 hari biar gak bingung posting apa!", hashtag: "#idekontenjualan #kontenharian #tipsjualan #jualanjadwal", notes: "Carousel" }
+                ],
+
+                "ToolkitBisnisRumahan": [
+                    { kategori: "Produk", judul: "Toolkit Lengkap UMKM Rumahan", caption: "Semua yang kamu butuhkan buat mulai jualan dari rumah ada di sini. Lengkap dan gampang dipakai!", hashtag: "#bisnisrumahan #toolkitbisnis #bisnismudah #usaharumahan", notes: "Feed Produk" },
+                    { kategori: "Tutorial", judul: "Cara Pakai Toolkit", caption: "Gak ribet! Cuma butuh HP dan niat buat mulai bisnis pakai toolkit ini!", hashtag: "#toolkittips #usahakecil #bisnismudah #panduanjualan", notes: "Video Story" },
+                    { kategori: "Promo", judul: "Bonus Template Jualan!", caption: "Beli toolkit hari ini dapat bonus template desain story jualan!", hashtag: "#promo #toolkitjualan #bonusdesain #bisnisstarterkit", notes: "Feed Promo" },
+                    { kategori: "Testimoni", judul: "Toolkit Bikin Jualan Lebih Mudah", caption: "Mereka udah buktiin, jualan jadi lebih gampang & rapi setelah pakai toolkit ini!", hashtag: "#testimoni #bisnissimple #jualanmudah #kitabisnis", notes: "Carousel" },
+                    { kategori: "Behind The Scene", judul: "Isi Toolkit Apa Aja?", caption: "Yuk bongkar satu-satu isi toolkit biar kamu makin yakin!", hashtag: "#isikitabisnis #dalamtoolkit #produkdigital #jualandirumah", notes: "Reels" },
+                    { kategori: "Tips", judul: "Cara Mulai Usaha dengan Modal Minim", caption: "Tips dari toolkit kami buat kamu yang mau usaha tapi modal terbatas!", hashtag: "#tipmodal #bisnisminim #usaharumahan #kitajualan", notes: "Story Tips" },
+                    { kategori: "Live", judul: "Live Setup Bisnis Pakai Toolkit", caption: "Ikutan live sambil kita bareng-bareng setting toolkit dan mulai bisnis dari nol!", hashtag: "#livesetup #toolkitlive #bisnisdarihp #jualandigital", notes: "Live IG" }
+                ],
+                "BusyBookCustom": [
+                    { kategori: "Produk", judul: "Busy Book Custom Nama Anak", caption: "Mainan edukatif seru yang bisa dicustom dengan nama anak sendiri. Belajar sambil main jadi makin spesial!", hashtag: "#busybook #mainananak #belajarsambilmain #anakedukatif", notes: "Feed Produk" },
+                    { kategori: "Behind The Scene", judul: "Proses Jahit Busy Book", caption: "Lihat bagaimana setiap lembar busy book dijahit dengan teliti dan penuh cinta!", hashtag: "#mainananak #btsproduksi #busybook #handmadeedukatif", notes: "Reels BTS" },
+                    { kategori: "Promo", judul: "Diskon Spesial Custom Nama", caption: "Pesan sekarang dan dapat diskon 15% untuk busy book dengan nama anakmu!", hashtag: "#promo #customnama #mainanedukatif #hadiahanak", notes: "Feed Promo" },
+                    { kategori: "Testimoni", judul: "Anak Jadi Suka Belajar!", caption: "Lihat testimoni dari para orang tua yang anaknya makin semangat belajar pakai busy book ini!", hashtag: "#testimonianak #mainanedukatif #busybook #reviewmainan", notes: "Carousel" },
+                    { kategori: "Tips", judul: "Cara Maksimalkan Busy Book", caption: "Tips seru bermain bersama anak menggunakan busy book agar momen bonding lebih bermakna!", hashtag: "#tipbermain #busybook #mainananak #bondinganak", notes: "Story Tips" },
+                    { kategori: "Live", judul: "Live Review Busy Book", caption: "Yuk lihat langsung isi busy book dan tanya jawab seputar pemesanannya di live nanti!", hashtag: "#livelook #livebusybook #mainaninteraktif #tanyajawab", notes: "Live IG" },
+                    { kategori: "Inspirasi", judul: "Desain Busy Book Unik", caption: "Intip beberapa desain busy book unik dan lucu yang pernah kami buat untuk customer!", hashtag: "#inspirasianak #customedukatif #busybook #kreatifanak", notes: "Carousel" }
+                ],
+
+                "PuzzleProfesiLokal": [
+                    { kategori: "Produk", judul: "Puzzle Profesi Lokal", caption: "Kenalkan profesi lokal Indonesia sejak dini dengan puzzle kayu edukatif yang menarik!", hashtag: "#mainanedukatif #puzzleanak #profesianak #belajarmenyenangkan", notes: "Feed Produk" },
+                    { kategori: "Behind The Scene", judul: "Proses Produksi Puzzle", caption: "Lihat bagaimana puzzle ini dibuat dari bahan kayu berkualitas dan ilustrasi penuh warna!", hashtag: "#btsmainan #puzzleprofesi #mainankayu #profesianak", notes: "Reels BTS" },
+                    { kategori: "Promo", judul: "Paket Bundling Puzzle Profesi", caption: "Beli 3 puzzle profesi, gratis 1 mini puzzle karakter! Yuk lengkapi koleksimu!", hashtag: "#promo #puzzlebundling #mainanedukatif #hadiahanak", notes: "Feed Promo" },
+                    { kategori: "Testimoni", judul: "Anak Tertarik dengan Profesi Baru!", caption: "Simak reaksi anak-anak saat mengenal profesi seperti petani, nelayan, dan guru lewat puzzle!", hashtag: "#testimonipuzzle #profesianak #mainanedukatif #puzzleanak", notes: "Carousel" },
+                    { kategori: "Tips", judul: "Tips Bermain Puzzle Bareng Anak", caption: "Pentingnya mendampingi anak bermain puzzle untuk melatih fokus dan motorik!", hashtag: "#tipbermain #puzzleedukasi #mainananak #bondinganak", notes: "Story Tips" },
+                    { kategori: "Live", judul: "Live Puzzle Profesi Unboxing", caption: "Ikuti unboxing puzzle profesi lokal bareng si kecil, plus sharing manfaatnya!", hashtag: "#liveunboxing #puzzleprofesi #mainanedukatif #liveanak", notes: "Live IG" },
+                    { kategori: "Inspirasi", judul: "Koleksi Profesi Unik", caption: "Cek inspirasi puzzle profesi dari berbagai daerah Indonesia!", hashtag: "#inspirasiprofesi #puzzleanak #mainanlokal #edukasianak", notes: "Carousel Feed" }
+                ],
+
+                "MainanSensorikAlam": [
+                    { kategori: "Produk", judul: "Mainan Sensorik dari Bahan Alam", caption: "Mainan sensorik berbahan natural untuk eksplorasi aman dan menyenangkan. Cocok untuk anak usia dini!", hashtag: "#mainansensorik #toyanak #naturaltoys #mainanorganik", notes: "Feed Produk" },
+                    { kategori: "Behind The Scene", judul: "Pilih Bahan Aman & Organik", caption: "Kami pastikan bahan mainan sensorik ini aman, bebas racun, dan ramah lingkungan!", hashtag: "#mainanorganik #btspilihanbahan #toyalami #mainanaman", notes: "Reels BTS" },
+                    { kategori: "Promo", judul: "Diskon Bundling Mainan Sensorik", caption: "Nikmati paket hemat beli 2 gratis 1 mainan sensorik pilihan!", hashtag: "#promo #mainanorganik #sensorikbundle #hadiahanak", notes: "Feed Promo" },
+                    { kategori: "Testimoni", judul: "Anak Lebih Tenang & Fokus", caption: "Mainan sensorik ini membantu anak lebih fokus, terutama yang aktif dan sensitif!", hashtag: "#testimonisensorik #mainanedukatif #mainanorganik #anaksensori", notes: "Carousel" },
+                    { kategori: "Tips", judul: "Cara Bermain Sensorik", caption: "Manfaatkan waktu bermain sensorik untuk melatih sentuhan dan konsentrasi si kecil!", hashtag: "#tipbermain #mainansensorik #toyalami #edukasianak", notes: "Story Tips" },
+                    { kategori: "Live", judul: "Live Demo Mainan Sensorik", caption: "Simak langsung cara penggunaan mainan sensorik dan sesi tanya jawab dengan psikolog anak!", hashtag: "#livesensorik #mainansensorik #psikologanak #toyanak", notes: "Live IG" },
+                    { kategori: "Inspirasi", judul: "Kombinasi Mainan Sensorik", caption: "Gabungkan sensorik play dengan aktivitas lain seperti outdoor play dan story telling!", hashtag: "#inspirasibermain #sensorikplay #naturaltoys #idekreatif", notes: "Carousel" }
+                ],
+
+                "CraftKitHariBesar": [
+                    { kategori: "Produk", judul: "Craft Kit Tema Hari Besar", caption: "Bikin momen spesial seperti Ramadhan, Natal, atau Hari Kemerdekaan lebih seru dengan craft kit DIY!", hashtag: "#craftkit #kegiatananak #diykids #kreativitasanak", notes: "Feed Produk" },
+                    { kategori: "Behind The Scene", judul: "Persiapan Paket DIY Kit", caption: "Setiap kit kami rancang untuk jadi aktivitas menyenangkan bareng keluarga. Yuk intip isinya!", hashtag: "#btspaket #diykitanak #craftkit #kegiatanrumahan", notes: "Reels BTS" },
+                    { kategori: "Promo", judul: "Spesial Paket Craft Lebaran", caption: "Diskon spesial untuk craft kit tema lebaran, cocok buat hadiah edukatif anak!", hashtag: "#promo #craftkitspesial #lebarananak #kreatifdirumah", notes: "Feed Promo" },
+                    { kategori: "Testimoni", judul: "Anak Antusias DIY", caption: "Anak-anak senang banget bisa bikin dekorasi sendiri untuk hari besar mereka. Simak testimoni lengkapnya!", hashtag: "#testimonicraft #anakkreatif #diykit #kitainspiratif", notes: "Carousel" },
+                    { kategori: "Tips", judul: "Tips Main DIY Bareng Anak", caption: "Yuk manfaatkan waktu libur untuk quality time dengan DIY kit ini!", hashtag: "#tipbermain #craftkit #diyanak #liburanedukatif", notes: "Story Tips" },
+                    { kategori: "Live", judul: "Live DIY Dekor Hari Besar", caption: "Ikuti live kami dan bikin dekorasi tema hari besar bersama-sama!", hashtag: "#livediy #craftkitlive #kreatifbareng #liveanakkreatif", notes: "Live IG" },
+                    { kategori: "Inspirasi", judul: "Hasil Craft Kit Anak-anak", caption: "Karya anak-anak ini bikin kita bangga! Simak hasil DIY mereka dari kit kami!", hashtag: "#inspirasianak #diyhasil #kreativitasanak #craftideaanak", notes: "Carousel" }
+                ],
+
+                "BoardgameEkonomiAnak": [
+                    { kategori: "Produk", judul: "Boardgame Edukasi Ekonomi Anak", caption: "Kenalkan konsep uang, transaksi, dan usaha lewat boardgame edukatif ini!", hashtag: "#boardgameanak #edukasianak #mainansambilbelajar #ekonomianak", notes: "Feed Produk" },
+                    { kategori: "Behind The Scene", judul: "Desain Game Ramah Anak", caption: "Kami mendesain boardgame ini dengan ilustrasi lucu dan aturan yang mudah dipahami!", hashtag: "#btsgame #edukasianak #desainedukatif #boardgamelokal", notes: "Reels BTS" },
+                    { kategori: "Promo", judul: "Diskon Paket Belajar Ekonomi", caption: "Paket boardgame + buku aktivitas ekonomi anak, diskon 20% minggu ini!", hashtag: "#promo #boardgameedukatif #diskonanak #paketedukasi", notes: "Feed Promo" },
+                    { kategori: "Testimoni", judul: "Anak Belajar Transaksi", caption: "Orang tua senang karena anak mulai paham konsep jual beli dan menabung sejak kecil!", hashtag: "#testimoniboardgame #edukasianak #ekonomidini #mainanpintar", notes: "Carousel" },
+                    { kategori: "Tips", judul: "Tips Bermain Boardgame", caption: "Cara seru main boardgame ini bareng keluarga di malam minggu!", hashtag: "#tipmain #boardgameanak #keluargaseru #mainanmalam", notes: "Story Tips" },
+                    { kategori: "Live", judul: "Live Demo Boardgame Ekonomi", caption: "Saksikan demo langsung cara main game ekonomi anak ini, plus sesi tanya jawab!", hashtag: "#liveboardgame #edukasiekonomi #anakmain #mainedukatif", notes: "Live IG" },
+                    { kategori: "Inspirasi", judul: "Boardgame + Aktivitas Pendukung", caption: "Tambahkan aktivitas pendamping setelah main boardgame, seperti menghitung uang saku dan menulis wishlist!", hashtag: "#inspirasibermain #edukasianak #mainandigital #kegiatanekonomi", notes: "Carousel" }
+                ],
+                "StrategiJualanOnline": [
+                    { kategori: "Edukasi", judul: "Riset Pasar Produk UMKM dengan Google Trends", caption: "Cari tahu cara cek tren produk lewat Google Trends biar jualanmu makin tepat sasaran!", hashtag: "#risetpasar #googletrends #strategijualan #UMKMcerdas", notes: "Feed Edukasi" },
+                    { kategori: "Tips", judul: "Cara Optimalkan Bio & Feed Instagram Bisnismu", caption: "Bio dan feed Instagram itu etalase tokomu, yuk optimalkan tampilannya biar makin menarik!", hashtag: "#instagramUMKM #bioinstagram #tokoonline #tipsjualan", notes: "Carousel Tips" },
+                    { kategori: "Waspada", judul: "7 Kesalahan Penjual Online Pemula (dan Solusinya)", caption: "Jangan ulangi kesalahan umum ini saat jualan online—pelajari solusinya juga ya!", hashtag: "#jualanpemula #tipsUMKM #kesalahanjualan #bisnisonline", notes: "Carousel Edukasi" },
+                    { kategori: "Copywriting", judul: "Bikin CTA yang Bikin Orang Langsung Order", caption: "CTA (ajakan beli) yang kuat bisa bikin konversi naik drastis. Yuk, belajar bikin yang tepat!", hashtag: "#calltoaction #copywritingjualan #tipsjualan #jualanlancar", notes: "Feed Copywriting" },
+                    { kategori: "Pricing", judul: "Strategi Harga Bersaing Tapi Tetap Untung", caption: "Gimana caranya pasang harga kompetitif tapi bisnis tetap cuan? Cek strateginya di sini!", hashtag: "#strategiharga #jualanuntung #UMKMpintar #bisnismurah", notes: "Feed Edukasi" },
+                    { kategori: "Story", judul: "Cara Buat Konten Story yang Closing-nya Cepet", caption: "Story IG bukan cuma buat update doang—ini cara bikin story yang bisa langsung closing!", hashtag: "#storyjualan #kontenpenjualan #closingcepat #jualandigital", notes: "Story Edukasi" },
+                    { kategori: "Psikologi Marketing", judul: "Teknik Scarcity: Bikin Produkmu Cepat Habis", caption: "Pakai teknik scarcity buat naikin urgency beli. Ini cara pakenya biar ga lebay!", hashtag: "#scarcitymarketing #jualanhabis #psikologimarketing #UMKMtrik", notes: "Feed Tips" }
+                ],
+                "BrandingVisualBisnis": [
+                    { kategori: "Branding", judul: "Pentingnya Logo dan Warna dalam Identitas UMKM", caption: "Logo & warna bukan cuma estetika—mereka bagian penting dari branding bisnismu!", hashtag: "#logobisnis #brandingUMKM #warnabrand #identitasvisual", notes: "Feed Edukasi" },
+                    { kategori: "Visual", judul: "Cara Foto Produk Pakai HP yang Menjual", caption: "Foto kece bisa dari HP aja! Ini trik biar hasil foto produkmu keliatan profesional.", hashtag: "#fotoprodukUMKM #jualanvisual #fotonarik #fotohp", notes: "Carousel Tips" },
+                    { kategori: "Desain", judul: "Canva 101: Desain Feed & Story Profesional", caption: "Belajar desain feed dan story kekinian cuma dengan Canva? Bisa banget!", hashtag: "#canvaUMKM #desainstory #feedprofesional #bisniskreatif", notes: "Reels Tutorial" },
+                    { kategori: "Template", judul: "Template Branding Kit untuk Bisnismu", caption: "Mau branding lebih konsisten? Gunakan template kit yang siap pakai ini!", hashtag: "#brandingkit #templateUMKM #visualbrand #kitbranding", notes: "Feed Downloadable" },
+                    { kategori: "Behind The Brand", judul: "Behind the Brand: Ceritakan Perjalanan Bisnismu", caption: "Bikin audiens makin dekat dengan ceritamu—kenalkan perjalanan di balik brandmu!", hashtag: "#ceritabrand #UMKMstory #perjalananbisnis #brandingkamu", notes: "Carousel Personal" },
+                    { kategori: "Moodboard", judul: "Moodboard Visual Buat UMKM Estetik", caption: "Moodboard bisa jadi panduan gaya visual brand kamu. Ini contohnya!", hashtag: "#moodboardUMKM #visualestetik #bisnismood #brandstyle", notes: "Story Visual" },
+                    { kategori: "Rebranding", judul: "Rebranding: Kapan Waktu yang Tepat dan Bagaimana Caranya?", caption: "Rebranding bukan berarti gagal—pelajari kapan & bagaimana cara lakukannya!", hashtag: "#rebrandingUMKM #brandrefresh #strategibrand #UMKMnextlevel", notes: "Feed Strategi" }
+                ],
+                "KontenEdukatifInteraktif": [
+                    { kategori: "Mini Course", judul: "Mini Course Gratis untuk Pelanggan Setia", caption: "Reward pelangganmu dengan mini course gratis seputar produk atau bisnis!", hashtag: "#minicourseUMKM #belajardigital #kontenedukatif #pelangganbahagia", notes: "Feed Promo Edukasi" },
+                    { kategori: "Interaktif", judul: "Kuis Interaktif: Seberapa Kenal Kamu dengan Produk Kami?", caption: "Bikin kuis di story buat lihat seberapa kenal audiens sama produkmu. Seru!", hashtag: "#kuisproduk #storyinteraktif #edukasiproduk #mainbarengaudiens", notes: "Story Interaktif" },
+                    { kategori: "Polling", judul: "Polling Story: Minta Pendapat Audiens tentang Produk Baru", caption: "Libatkan followers dalam pengembangan produk lewat polling seru di story!", hashtag: "#pollingstory #ideproduk #feedbackaudiens #UMKMaktif", notes: "Story Polling" },
+                    { kategori: "Tips", judul: "Tips Harian Jualan Konsisten di WhatsApp Story", caption: "Story WA bisa jadi senjata ampuh jualan! Ini tips konsisten tiap hari update-nya.", hashtag: "#jualanWA #storyWA #tipsjualanmudah #UMKMonWA", notes: "Story Tips" },
+                    { kategori: "Freebie", judul: "Ebook Gratis: Panduan Foto Produk di Rumah", caption: "Download e-book gratis berisi panduan lengkap foto produk cuma dari rumah!", hashtag: "#ebookgratis #fotoprodukrumahan #panduanUMKM #fotocuan", notes: "Feed Freebie" },
+                    { kategori: "Worksheet", judul: "Worksheet Bisnis: Cek Kesiapanmu Buka Toko Online", caption: "Isi worksheet ini dulu sebelum buka toko online, biar siap 100%!", hashtag: "#worksheetUMKM #persiapantoko #bisnisonline #UMKMplan", notes: "Carousel Downloadable" },
+                    { kategori: "Challenge", judul: "Kolaborasi Challenge 30 Hari Bareng UMKM Lain", caption: "Gabung challenge kolaborasi untuk saling dukung dan tambah exposure!", hashtag: "#challengeUMKM #kolaborasibisnis #UMKMsupport #30harichallenge", notes: "Feed Komunitas" }
+                ],
+                "KomunitasCeritaUMKM": [
+                    { kategori: "Cerita", judul: "Kisah UMKM yang Bangkit Pasca Pandemi", caption: "Dari terpuruk jadi sukses—ini kisah inspiratif UMKM pasca pandemi!", hashtag: "#ceritaUMKM #bangkitdarinol #UMKMinspiratif #bisnispasca", notes: "Feed Cerita" },
+                    { kategori: "Testimoni", judul: "Cerita Pelanggan Setia: 'Kenapa Saya Pilih Produk Ini'", caption: "Testimoni real dari pelanggan setia yang jatuh hati sama produk kita!", hashtag: "#testimoniUMKM #pelangganpuas #ceritapelanggan #reviewjujur", notes: "Carousel Testimoni" },
+                    { kategori: "Behind The Scene", judul: "Behind The Scene: Proses Produksi Usaha Rumahan", caption: "Intip proses produksi handmade dari dapur usaha rumahan kami!", hashtag: "#btsproduksi #usaharumahan #produklokal #ceritabisnis", notes: "Reels BTS" },
+                    { kategori: "Tim", judul: "Meet The Team: Siapa Dibalik Brand Ini?", caption: "Kenalin tim keren yang bikin brand ini jalan terus tiap hari!", hashtag: "#timUMKM #brandpeople #kenalintim #ceritaperjalanan", notes: "Story Tim" },
+                    { kategori: "Kampanye", judul: "Kampanye Support Lokal: Ajakan Dukung Teman UMKM", caption: "Yuk dukung sesama pelaku UMKM lewat kampanye support lokal!", hashtag: "#supportlokal #dukungUMKM #kampanyeUMKM #temanUMKM", notes: "Feed Aksi" },
+                    { kategori: "Kolaborasi", judul: "Kolaborasi UMKM Lokal Bikin Produk Spesial", caption: "Hasil kolaborasi dua UMKM ini bikin produk unik yang cuma tersedia terbatas!", hashtag: "#kolaborasiUMKM #produkkolaborasi #lokalbisa #UMKMbersatu", notes: "Feed Kolaborasi" },
+                    { kategori: "Testimoni Jujur", judul: "Testimoni Real Tanpa Dibayar: Apa Kata Mereka?", caption: "Dengerin pendapat jujur pelanggan tanpa endorsement, pure dari hati!", hashtag: "#testimonireal #reviewtanpabayar #kepercayaanUMKM #feedbackjujur", notes: "Carousel Review" }
+                ],
+                "ToolsResourceUMKM": [
+                    { kategori: "Toolkit", judul: "Toolkit Bisnis Digital (Gratis & Berbayar)", caption: "List lengkap toolkit digital yang wajib dimiliki pelaku UMKM di era sekarang!", hashtag: "#toolUMKM #digitaltools #UMKMmodern #bisnismudah", notes: "Feed List" },
+                    { kategori: "Template", judul: "Template Caption & Story Harian", caption: "Gak perlu mikir tiap hari—pakai template ini untuk caption dan story harian!", hashtag: "#templatekonten #UMKMcontent #captionenak #storysiap", notes: "Feed Downloadable" },
+                    { kategori: "Aplikasi", judul: "List Aplikasi Keuangan untuk UMKM", caption: "Kelola keuangan makin gampang dengan aplikasi-aplikasi ini!", hashtag: "#aplikasikeuangan #UMKMcerdas #bisnisteratur #uangUMKM", notes: "Feed Rekomendasi" },
+                    { kategori: "Planner", judul: "Planner PDF Interaktif Khusus Pebisnis", caption: "Download planner PDF ini untuk bantu atur target, konten, dan catatan harianmu!", hashtag: "#plannerUMKM #bisnisontrack #interaktifplanner #PDFUMKM", notes: "Downloadable" },
+                    { kategori: "Spreadsheet", judul: "Spreadsheet Pencatatan Modal & Omzet", caption: "Template spreadsheet buat catatan modal, omzet, dan keuntungan usahamu!", hashtag: "#spreadsheetUMKM #catatanusaha #keuangansederhana #UMKMexcel", notes: "Feed Tools" },
+                    { kategori: "Platform Belajar", judul: "Platform untuk Belajar Bisnis Gratis", caption: "Bingung mulai belajar bisnis dari mana? Ini daftar platform gratis yang bisa kamu coba!", hashtag: "#belajarbisnis #UMKMbelajar #platformgratis #bisnisonline", notes: "Carousel Edukasi" },
+                    { kategori: "Kalender Konten", judul: "Kalender Konten 30 Hari Buat Jualan Online", caption: "Bikin konten tiap hari lebih mudah dengan kalender konten ini!", hashtag: "#kalenderkonten #kontenjualan #ideharian #UMKMplanner", notes: "Feed Downloadable" }
+                ],
+                "Komunitas Bisnis": [
+                    {
+                        kategori: "Networking",
+                        judul: "Tips Membangun Relasi Bisnis",
+                        caption: "Relasi adalah aset terbesar dalam dunia bisnis. Simak tips membangun koneksi yang kuat dan berkelanjutan agar usahamu tumbuh bersama jaringan yang solid!",
+                        hashtag: "#komunitasbisnis #networking #tipsbisnis",
+                        notes: "Carousel Edukasi"
+                    },
+                    {
+                        kategori: "Event",
+                        judul: "Highlight Acara Kopdar Pebisnis",
+                        caption: "Kopdar komunitas kemarin seru banget! Banyak insight baru, kolaborasi, dan cerita inspiratif. Cek dokumentasinya di sini!",
+                        hashtag: "#kopdarbisnis #komunitas #event",
+                        notes: "Reels Dokumentasi"
+                    },
+                    {
+                        kategori: "Motivasi",
+                        judul: "Kata-Kata Motivasi Pebisnis",
+                        caption: "Bisnis bukan hanya soal untung rugi. Ini tentang mimpi, ketekunan, dan semangat pantang menyerah. Simak kutipan inspiratif berikut ini!",
+                        hashtag: "#bisnismuda #motivasibisnis #pebisnispemula",
+                        notes: "Quotes Feed"
+                    },
+                    {
+                        kategori: "Member",
+                        judul: "Profil Anggota Minggu Ini",
+                        caption: "Kenalan yuk dengan member komunitas kita yang satu ini! Beliau sudah menjalankan bisnis lebih dari 5 tahun dan aktif membagikan ilmu ke sesama.",
+                        hashtag: "#profilanggota #komunitasinspiratif #bisnisherbal",
+                        notes: "Slide Carousel"
+                    },
+                    {
+                        kategori: "Sharing",
+                        judul: "Cerita Sukses Member",
+                        caption: "Berawal dari reseller kecil, sekarang omset ratusan juta. Simak perjalanan member komunitas kita yang membuktikan mimpi itu bisa diraih!",
+                        hashtag: "#ceritasukses #komunitasbisnis #kisahinspiratif",
+                        notes: "Video Cerita"
+                    },
+                    {
+                        kategori: "Ajakan",
+                        judul: "Gabung Komunitas Bisnis SD1M",
+                        caption: "Kamu pebisnis pemula atau ingin upgrade bisnis? Yuk gabung ke komunitas bisnis SD1M dan dapatkan bimbingan, relasi, dan dukungan nyata!",
+                        hashtag: "#gabungkomunitas #bisnissd1m #pebisnispemula",
+                        notes: "Feed Promosi"
+                    },
+                    {
+                        kategori: "Live",
+                        judul: "Live Sharing Strategi Bisnis",
+                        caption: "Jangan lewatkan live eksklusif bareng mentor komunitas kita! Strategi, QnA, dan ilmu daging buat kamu yang ingin bisnisnya naik level!",
+                        hashtag: "#livebisnis #strategibisnis #komunitasonline",
+                        notes: "Live IG"
+                    }
+                ]
+            };
+
+            const data = dataRekomendasi[kategori];
+            const tbody = document.querySelector("#contentTable tbody");
+
+            data.forEach(item => {
+                const row = document.createElement("tr");
+                row.setAttribute("data-kategori", item.kategori);
+
+                row.innerHTML = `
+            <td><input type="date"></td>
+            <td><input type="time"></td>
+            <td><input list="kategoriList" value="${item.kategori}" onblur="cekKategoriBaru(this)"></td>
+            <td contenteditable="true">${item.judul}</td>
+            <td contenteditable="true">${item.caption}</td>
+            <td contenteditable="true">${item.hashtag}</td>
+            <td><input list="ownerList"></td>
+            <td><input list="statusList"></td>
+            <td contenteditable="true">-</td>
+            <td contenteditable="true">${item.notes}</td>
+            <td><button onclick="hapusBaris(this)">🗑</button></td>
+        `;
+
+                tbody.appendChild(row);
+                cekKategoriBaru(row.querySelector('td:nth-child(3) input'));
+            });
+        }
+
+        function filterBulan() {
+            const bulanTerpilih = document.getElementById("filterBulan").value;
+            const rows = document.querySelectorAll("#contentTable tbody tr");
+
+            rows.forEach(row => {
+                const inputTanggal = row.querySelector("td:nth-child(1) input");
+                const tanggal = inputTanggal?.value;
+                if (!tanggal) return row.style.display = "none";
+
+                const bulan = tanggal.split("-")[1]; // Format: YYYY-MM-DD
+                if (bulanTerpilih === "All" || bulan === bulanTerpilih) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        }
+
+        // untuk dapat menyalin isi konten plan
+        function salinKontenPlan() {
+            const table = document.getElementById("contentTable");
+            let data = [];
+
+            // ambil header
+            const headers = Array.from(table.querySelectorAll("thead th")).map(th => th.innerText.trim());
+            data.push(headers.join("\t"));
+
+            // ambil data isi tabel
+            const rows = table.querySelectorAll("tbody tr");
+            rows.forEach(row => {
+                const cells = row.querySelectorAll("td");
+                const rowData = Array.from(cells).map(cell => {
+                    const input = cell.querySelector("input");
+                    if (input) {
+                        return input.value.trim();
+                    } else {
+                        return cell.innerText.trim();
+                    }
+                });
+                data.push(rowData.join("\t"));
+            });
+
+            // gabungkan jadi teks dan salin
+            const finalText = data.join("\n");
+            navigator.clipboard.writeText(finalText).then(() => {
+                alert("✅ Konten plan berhasil disalin! Silakan paste di Google Sheets.");
+            }).catch(err => {
+                alert("❌ Gagal menyalin konten.");
+                console.error(err);
+            });
+        }
+
+        // Tambahkan event listener ke semua input kategori yg sudah ada
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll('td:nth-child(3) input[list="kategoriList"]').forEach(input => {
+                input.addEventListener('blur', function () {
+                    cekKategoriBaru(this);
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>

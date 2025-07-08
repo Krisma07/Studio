@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SD1M - Sekolah Bisnis 1 Milyar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- Header -->
+    <header class="flex justify-between items-center px-6 py-4 bg-white shadow-md fixed top-0 left-0 right-0 z-50">
+        <!-- Logo -->
+        <a href="/" class="flex items-center space-x-3">
+            <img src="/logo-sd1m.png" alt="Logo SD1M" class="w-10 h-10 object-contain" />
+            <div class="flex flex-col items-center leading-tight">
+                <h1 class="text-lg font-bold text-gray-800">SD1M</h1>
+                <p class="text-sm text-gray-500">Sekolah Digital 1 Milyar</p>
+            </div>
+        </a>
+
+        <!-- Navigasi -->
+        <nav class="flex space-x-6 pr-12"> <!-- Dikasih jarak kanan -->
+            <button onclick="openCard('eduCard')" class="text-gray-700 hover:text-blue-600 font-medium">Mainan Edukasi</button>
+            <button onclick="openCard('cowayCard')" class="text-gray-700 hover:text-blue-600 font-medium">Coway</button>
+            <button onclick="openCard('propolisCard')"
+                class="text-gray-700 hover:text-blue-600 font-medium">Propolis</button>
+            <button onclick="openCard('codingCard')"
+                class="text-gray-700 hover:text-blue-600 font-medium">Coding</button>
+            <button onclick="openCard('tradingCard')"
+                class="text-gray-700 hover:text-blue-600 font-medium">Trading</button>
+            <button onclick="openCard('digitalCard')" class="text-gray-700 hover:text-blue-600 font-medium">Produk
+                Digital</button>
+            <button onclick="openCard('affiliateCard')" class="text-gray-700 hover:text-blue-600 font-medium">Produk
+                Affiliate</button>
+            <button onclick="openCard('promoCard')" class="text-gray-700 hover:text-blue-600 font-medium">Promo
+                Spesial</button>
+            <button onclick="openCard('kontakCard')"
+                class="text-gray-700 hover:text-blue-600 font-medium">Kontak</button>
+        </nav>
+    </header>
+
+    <!-- Spacer agar konten tidak ketutupan header -->
+    <div class="h-20"></div>
+
+    <!-- Card Tampilan Full (Edu) -->
+    <div id="eduCard"
+        class="hidden fixed top-20 right-0 w-full sm:w-3/4 h-[calc(100vh-5rem)] bg-white border-l shadow-xl z-40 overflow-auto transition-all duration-300">
+        <div class="flex flex-col sm:flex-row h-full">
+
+            <!-- Kiri: Deskripsi (1/4 layar) -->
+            <div
+                class="w-full sm:w-1/4 p-6 border-b sm:border-b-0 sm:border-r bg-gray-50 flex flex-col justify-between">
+                <div>
+                    <h2 class="text-xl font-bold text-blue-700 mb-4">Hidup Lebih Sehat dan Nyaman Bersama Mainan Edukasi</h2>
+                    <p class="text-gray-700 text-sm leading-relaxed">
+                        Perangkat premium
+                    </p>
+                </div>
+                <!-- Tombol Klik Menuju Landing Page -->
+                <a href="coway.html" target="_blank" rel="noopener noreferrer"
+                    class="group mt-6 text-blue-700 font-semibold text-base flex items-center justify-between gap-2 hover:text-blue-900 transition-all duration-300 relative overflow-hidden"
+                    onclick="showLoading(this)">
+                    <span class="z-10">Lihat Selengkapnya</span>
+                    <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-all duration-300 z-10"
+                        fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+
+                    <!-- Layer animasi smooth -->
+                    <span
+                        class="absolute inset-0 bg-blue-100 opacity-0 group-hover:opacity-100 transition-all duration-500 z-0"></span>
+                </a>
+
+            </div>
+
+            <!-- Kanan: Submenu (1/2 layar) -->
+            <div class="w-full sm:w-1/2 p-6 flex flex-col space-y-4">
+                <a href="#coway1"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">Cara
+                    Berlangganan</a>
+                <a href="#coway1"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">Air
+                    Purifier</a>
+                <a href="#coway2"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">Water
+                    Purifier</a>
+                <a href="#coway2"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">Water
+                    Filter</a>
+                <a href="#coway3"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">Matras
+                    & Bidet</a>
+                <a href="#coway3"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">Coway
+                    Lady (Cody)</a>
+            </div>
+
+            <!-- Sisa 1/4 layar tidak digunakan secara eksplisit (otomatis sisanya) -->
+
+        </div>
+    </div>
+
+    <!-- Card Tampilan Full (Coway) -->
+    <div id="cowayCard"
+        class="hidden fixed top-20 right-0 w-full sm:w-3/4 h-[calc(100vh-5rem)] bg-white border-l shadow-xl z-40 overflow-auto transition-all duration-300">
+        <div class="flex flex-col sm:flex-row h-full">
+
+            <!-- Kiri: Deskripsi (1/4 layar) -->
+            <div
+                class="w-full sm:w-1/4 p-6 border-b sm:border-b-0 sm:border-r bg-gray-50 flex flex-col justify-between">
+                <div>
+                    <h2 class="text-xl font-bold text-blue-700 mb-4">Hidup Lebih Sehat dan Nyaman Bersama COWAY</h2>
+                    <p class="text-gray-700 text-sm leading-relaxed">
+                        Perangkat premium dari Korea untuk air minum bersih, udara sehat, dan tidur lebih nyenyak. Biaya
+                        langganan ringan, layanan Coway lady full service!
+                    </p>
+                </div>
+                <!-- Tombol Klik Menuju Landing Page -->
+                <a href="coway.html" target="_blank" rel="noopener noreferrer"
+                    class="group mt-6 text-blue-700 font-semibold text-base flex items-center justify-between gap-2 hover:text-blue-900 transition-all duration-300 relative overflow-hidden"
+                    onclick="showLoading(this)">
+                    <span class="z-10">Lihat Selengkapnya</span>
+                    <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-all duration-300 z-10"
+                        fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+
+                    <!-- Layer animasi smooth -->
+                    <span
+                        class="absolute inset-0 bg-blue-100 opacity-0 group-hover:opacity-100 transition-all duration-500 z-0"></span>
+                </a>
+
+            </div>
+
+            <!-- Kanan: Submenu (1/2 layar) -->
+            <div class="w-full sm:w-1/2 p-6 flex flex-col space-y-4">
+                <a href="#coway1"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">Cara
+                    Berlangganan</a>
+                <a href="#coway1"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">Air
+                    Purifier</a>
+                <a href="#coway2"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">Water
+                    Purifier</a>
+                <a href="#coway2"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">Water
+                    Filter</a>
+                <a href="#coway3"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">Matras
+                    & Bidet</a>
+                <a href="#coway3"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">Coway
+                    Lady (Cody)</a>
+            </div>
+
+            <!-- Sisa 1/4 layar tidak digunakan secara eksplisit (otomatis sisanya) -->
+
+        </div>
+    </div>
+
+    <!-- Card Tampilan Full (Propolis) -->
+    <div id="propolisCard"
+        class="hidden fixed top-20 right-0 w-full sm:w-3/4 h-[calc(100vh-5rem)] bg-white border-l shadow-xl z-40 overflow-auto transition-all duration-300">
+        <div class="flex flex-col sm:flex-row h-full">
+
+            <!-- Kiri: Deskripsi (1/4 layar) -->
+            <div class="w-full sm:w-1/4 p-6 border-b sm:border-b-0 sm:border-r bg-gray-50">
+                <h2 class="text-xl font-bold text-blue-700 mb-4">Tentang Propolis</h2>
+                <p class="text-gray-700 text-sm leading-relaxed">
+                    Propolis
+                </p>
+            </div>
+
+            <!-- Kanan: Submenu (1/2 layar) -->
+            <div class="w-full sm:w-1/2 p-6 flex flex-col space-y-4">
+                <a href="#coway1"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">HDI
+                    Propoelix</a>
+                <a href="#coway1"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">British
+                    Propolis</a>
+                <a href="#coway1"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">NutriMax
+                    Bee Propolis</a>
+                <a href="#coway2"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">Nature’s
+                    Plus Propolplus</a>
+                <a href="#coway3"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">Now
+                    Food Propolis Plus Extract</a>
+            </div>
+
+            <!-- Sisa 1/4 layar tidak digunakan secara eksplisit (otomatis sisanya) -->
+
+        </div>
+    </div>
+
+    <!-- Card Tampilan Full (Coding) -->
+    <div id="codingCard"
+        class="hidden fixed top-20 right-0 w-full sm:w-3/4 h-[calc(100vh-5rem)] bg-white border-l shadow-xl z-40 overflow-auto transition-all duration-300">
+        <div class="flex flex-col sm:flex-row h-full">
+
+            <!-- Kiri: Deskripsi (1/4 layar) -->
+            <div class="w-full sm:w-1/4 p-6 border-b sm:border-b-0 sm:border-r bg-gray-50">
+                <h2 class="text-xl font-bold text-blue-700 mb-4">Tentang Coding</h2>
+                <p class="text-gray-700 text-sm leading-relaxed">
+                    Coding
+                </p>
+            </div>
+
+            <!-- Kanan: Submenu (1/2 layar) -->
+            <div class="w-full sm:w-1/2 p-6 flex flex-col space-y-4">
+                <a href="#coway1"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">My
+                    CV</a>
+                <a href="#coway2"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">My
+                    Price List</a>
+                <a href="#coway3"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">Join
+                    Membership</a>
+            </div>
+
+            <!-- Sisa 1/4 layar tidak digunakan secara eksplisit (otomatis sisanya) -->
+
+        </div>
+    </div>
+
+    <!-- Card Tampilan Full (Trading) -->
+    <div id="tradingCard"
+        class="hidden fixed top-20 right-0 w-full sm:w-3/4 h-[calc(100vh-5rem)] bg-white border-l shadow-xl z-40 overflow-auto transition-all duration-300">
+        <div class="flex flex-col sm:flex-row h-full">
+
+            <!-- Kiri: Deskripsi (1/4 layar) -->
+            <div class="w-full sm:w-1/4 p-6 border-b sm:border-b-0 sm:border-r bg-gray-50">
+                <h2 class="text-xl font-bold text-blue-700 mb-4">Tentang Trading</h2>
+                <p class="text-gray-700 text-sm leading-relaxed">
+                    Trading
+                </p>
+            </div>
+
+            <!-- Kanan: Submenu (1/2 layar) -->
+            <div class="w-full sm:w-1/2 p-6 flex flex-col space-y-4">
+                <a href="#coway1"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">My
+                    CV</a>
+                <a href="#coway2"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">My
+                    Price List</a>
+                <a href="#coway3"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">Join
+                    Membership</a>
+            </div>
+
+            <!-- Sisa 1/4 layar tidak digunakan secara eksplisit (otomatis sisanya) -->
+
+        </div>
+    </div>
+
+    <!-- Card Tampilan Full (Digital) -->
+    <div id="digitalCard"
+        class="hidden fixed top-20 right-0 w-full sm:w-3/4 h-[calc(100vh-5rem)] bg-white border-l shadow-xl z-40 overflow-auto transition-all duration-300">
+        <div class="flex flex-col sm:flex-row h-full">
+
+            <!-- Kiri: Deskripsi (1/4 layar) -->
+            <div class="w-full sm:w-1/4 p-6 border-b sm:border-b-0 sm:border-r bg-gray-50">
+                <h2 class="text-xl font-bold text-blue-700 mb-4">Digital Produk</h2>
+                <p class="text-gray-700 text-sm leading-relaxed">
+                    Digital :
+                </p>
+            </div>
+
+            <!-- Kanan: Submenu (1/2 layar) -->
+            <div class="w-full sm:w-1/2 p-6 flex flex-col space-y-4">
+                <a href="#coway1"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">Shopee</a>
+                <a href="#coway2"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">Tiktok</a>
+                <a href="#coway3"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">Produk
+                    Digital</a>
+            </div>
+
+            <!-- Sisa 1/4 layar tidak digunakan secara eksplisit (otomatis sisanya) -->
+
+        </div>
+    </div>
+
+    <!-- Card Tampilan Full (Affiliate) -->
+    <div id="affiliateCard"
+        class="hidden fixed top-20 right-0 w-full sm:w-3/4 h-[calc(100vh-5rem)] bg-white border-l shadow-xl z-40 overflow-auto transition-all duration-300">
+        <div class="flex flex-col sm:flex-row h-full">
+
+            <!-- Kiri: Deskripsi (1/4 layar) -->
+            <div class="w-full sm:w-1/4 p-6 border-b sm:border-b-0 sm:border-r bg-gray-50">
+                <h2 class="text-xl font-bold text-blue-700 mb-4">Affiliate Produk</h2>
+                <p class="text-gray-700 text-sm leading-relaxed">
+                    Affiliate :
+                </p>
+            </div>
+
+            <!-- Kanan: Submenu (1/2 layar) -->
+            <div class="w-full sm:w-1/2 p-6 flex flex-col space-y-4">
+                <a href="#coway1"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">Shopee</a>
+                <a href="#coway2"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">Tiktok</a>
+                <a href="#coway3"
+                    class="block px-4 py-3 bg-blue-100 hover:bg-blue-200 rounded text-blue-800 font-semibold transition">Produk
+                    Digital</a>
+            </div>
+
+            <!-- Sisa 1/4 layar tidak digunakan secara eksplisit (otomatis sisanya) -->
+
+        </div>
+    </div>
+
+    <!-- JS Toggle -->
+    <script>
+        function openCard(id) {
+            // Tutup semua card lain
+            document.querySelectorAll('[id$="Card"]').forEach(card => {
+                if (card.id !== id) card.classList.add('hidden');
+            });
+
+            const card = document.getElementById(id);
+            card.classList.toggle('hidden');
+        }
+
+        // Tutup saat klik di luar
+        window.addEventListener('click', function (e) {
+            const isButton = e.target.closest('button');
+            const isInsideCard = e.target.closest('[id$="Card"]');
+            if (!isButton && !isInsideCard) {
+                document.querySelectorAll('[id$="Card"]').forEach(card => card.classList.add('hidden'));
+            }
+        });
+
+        // LANDING PAGE COWAY
+        function showLoading(link) {
+            link.classList.add('opacity-50', 'pointer-events-none');
+            setTimeout(() => {
+                window.open(link.href, '_blank');
+            }, 300); // Delay biar efek transisi smooth terlihat
+        }
+    </script>
+
+</body>
+
+</html>

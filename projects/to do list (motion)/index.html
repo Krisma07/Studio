@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Motion Style To-Do</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #111;
+            color: white;
+        }
+
+        .header {
+            position: relative;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .change-bg-card {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s, transform 0.2s;
+            color: white;
+            z-index: 2;
+        }
+
+        .change-bg-card:hover {
+            background: rgba(0, 240, 255, 0.4);
+            transform: scale(1.05);
+        }
+
+        .bg-menu {
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background: #222;
+            padding: 10px;
+            border-radius: 10px;
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 400px;
+            overflow-y: auto;
+            z-index: 1000;
+            width: 250px;
+        }
+
+        .bg-menu img {
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .bg-menu img:hover {
+            transform: scale(1.03);
+        }
+
+        .bg-menu .title {
+            font-weight: bold;
+            margin: 8px 0 4px;
+            color: white;
+            font-size: 14px;
+        }
+
+        .comment-section {
+            padding: 20px;
+            background-color: #1a1a1a;
+        }
+
+        .comment-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .comment-section textarea {
+            width: 100%;
+            min-height: 40px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            resize: none;
+            background-color: #333;
+            color: white;
+        }
+
+        .description {
+            padding: 20px;
+            font-size: 16px;
+            background-color: #121212;
+            line-height: 1.6;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px;
+        }
+
+        .new-week-card,
+        .save-progress-btn {
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .new-week-card {
+            background-color: #222;
+            border: 2px dashed #444;
+            text-align: center;
+        }
+
+        .new-week-card:hover {
+            background-color: #333;
+            transform: scale(1.02);
+        }
+
+        .save-progress-btn {
+            background-color: #00f0ff;
+            color: #000;
+            border: none;
+        }
+
+        .save-progress-btn:hover {
+            background-color: #00cce0;
+            transform: scale(1.02);
+        }
+
+        #toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #00f0ff;
+            color: #000;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 9999;
+        }
+
+        .week-container {
+            background-color: #1c1c1c;
+            border-radius: 10px;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        .week-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .progress-text {
+            font-size: 14px;
+            color: #00f0ff;
+        }
+
+        .week-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .days-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .day-card {
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            padding: 10px;
+            width: calc(100% / 7 - 8px);
+            box-sizing: border-box;
+        }
+
+        .todo-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 5px 0;
+            position: relative;
+        }
+
+        .todo-item .menu-icon {
+            font-size: 14px;
+            color: #ccc;
+            background: #444;
+            padding: 2px 6px;
+            border-radius: 4px;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .todo-item:hover .menu-icon {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="header">
+            <div class="change-bg-card" onclick="toggleBackgroundMenu()">Ganti Background</div>
+            <div class="bg-menu" id="bgMenu"></div>
+        </div>
+
+        <div class="comment-section">
+            <div class="comment-title" contenteditable="true" oninput="markUnsaved()">To Do List</div>
+            <textarea placeholder="Tulis komentar di sini..." oninput="markUnsaved()"></textarea>
+        </div>
+
+        <div class="description">
+            Add your weekly to-do’s. Click below to create a new week and click “Save Progress” to store your work.
+            Don’t forget!
+        </div>
+
+        <div class="controls">
+            <div class="new-week-card" onclick="addNewWeek(true)">+ New week of blank to-do’s</div>
+            <button class="save-progress-btn" onclick="saveToLocalStorage()">💾 Save Progress</button>
+        </div>
+
+        <div id="weeks"></div>
+        <div id="toast">Progress berhasil disimpan!</div>
+    </div>
+
+    <script>
+        let isDirty = false;
+
+        function markUnsaved() {
+            isDirty = true;
+        }
+
+        window.addEventListener('beforeunload', function (e) {
+            if (isDirty) {
+                e.preventDefault();
+                e.returnValue = 'Perubahan Anda belum disimpan. Apakah Anda yakin ingin keluar?';
+            }
+        });
+
+        function saveToLocalStorage() {
+            const weeks = document.querySelectorAll('.week-container');
+            const data = [];
+
+            weeks.forEach(week => {
+                const weekTitle = week.querySelector('.week-title')?.innerText || '';
+                const dayCards = week.querySelectorAll('.day-card');
+
+                const days = Array.from(dayCards).map(dayCard => {
+                    const dayName = dayCard.querySelector('h4')?.innerText || '';
+                    const todos = dayCard.querySelectorAll('.todo-item');
+                    const todoItems = Array.from(todos).map(todo => ({
+                        text: todo.querySelector('span')?.innerText || '',
+                        checked: todo.querySelector('input[type="checkbox"]')?.checked || false,
+                        color: todo.style.background || ''
+                    }));
+                    return { dayName, todos: todoItems };
+                });
+
+                data.push({ weekTitle, days });
+            });
+
+            localStorage.setItem('weeksData', JSON.stringify(data));
+            isDirty = false;
+            showToast();
+        }
+
+        function addNewWeek(isNew = false) {
+            const container = document.getElementById('weeks');
+            const week = document.createElement('div');
+            week.className = 'week-container';
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.innerText = '✖';
+            deleteBtn.style.cssText = 'float:right;background:#c00;color:white;border:none;padding:2px 6px;border-radius:4px;cursor:pointer;';
+            deleteBtn.onclick = () => {
+                week.remove();
+                markUnsaved();
+            };
+            week.appendChild(deleteBtn);
+
+            const title = document.createElement('div');
+            title.className = 'week-title';
+            title.contentEditable = true;
+            title.innerText = 'Add week dates here';
+            title.addEventListener('input', markUnsaved);
+            week.appendChild(title);
+
+            const row = document.createElement('div');
+            row.className = 'days-row';
+
+            const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+            days.forEach(day => {
+                const dayCard = document.createElement('div');
+                dayCard.className = 'day-card';
+
+                const heading = document.createElement('h4');
+                heading.innerText = day;
+                dayCard.appendChild(heading);
+
+                if (isNew) {
+                    for (let i = 0; i < 3; i++) {
+                        const todo = createTodoItem(day);
+                        dayCard.appendChild(todo);
+                    }
+                }
+
+                row.appendChild(dayCard);
+            });
+
+            week.appendChild(row);
+            container.appendChild(week);
+
+            markUnsaved();
+
+            const progress = document.createElement('div');
+            progress.className = 'progress-text';
+            progress.innerText = '☕ 0% - Yuk mulai sekarang!';
+            week.appendChild(progress);
+        }
+
+        function createTodoItem(day = '', saved = null) {
+            const todo = document.createElement('div');
+            todo.className = 'todo-item';
+
+            const controls = document.createElement('div');
+            controls.className = 'todo-controls';
+            controls.style.position = 'relative';
+
+            const menuIcon = document.createElement('div');
+            menuIcon.innerHTML = '&#8942;';
+            menuIcon.style.cursor = 'grab';
+            menuIcon.style.padding = '2px 5px';
+            menuIcon.style.fontSize = '16px';
+            menuIcon.style.background = '#555';
+            menuIcon.style.borderRadius = '4px';
+            menuIcon.style.color = 'white';
+            menuIcon.title = 'Options';
+
+            const menu = document.createElement('div');
+            menu.style.display = 'none';
+            menu.style.position = 'absolute';
+            menu.style.top = '0';
+            menu.style.left = '20px';
+            menu.style.background = '#222';
+            menu.style.padding = '8px';
+            menu.style.borderRadius = '6px';
+            menu.style.minWidth = '200px';
+            menu.style.zIndex = '999';
+
+            const actions = [
+                { label: 'Add New Below', icon: '➕' },
+                { label: 'Move Up', icon: '🔼' },
+                { label: 'Move Down', icon: '🔽' },
+                { label: 'Color', icon: '🎨' },
+                { label: 'Duplicate', icon: '📄' },
+                { label: 'Move to…', icon: '📆' },
+                { label: 'Delete', icon: '🗑️' }
+            ];
+
+            actions.forEach(({ label, icon }) => {
+                const item = document.createElement('div');
+                item.style.padding = '6px 10px';
+                item.style.cursor = 'pointer';
+                item.innerHTML = `${icon} ${label}`;
+                item.onclick = () => {
+                    if (label === 'Delete') todo.remove();
+                    if (label === 'Duplicate') {
+                        const clone = createTodoItem(day, {
+                            text: text.innerText,
+                            checked: checkbox.checked,
+                            color: todo.style.background || ''
+                        });
+                        todo.parentNode.insertBefore(clone, todo.nextSibling);
+                    }
+                    if (label === 'Color') {
+                        const color = prompt('Enter a color');
+                        if (color) todo.style.background = color;
+                    }
+                    if (label === 'Move to…') {
+                        const targetDay = prompt('Enter day (Monday, Tuesday, ...)');
+                        const allCards = document.querySelectorAll('.day-card');
+                        allCards.forEach(card => {
+                            if (card.querySelector('h4').innerText.toLowerCase() === targetDay.toLowerCase()) {
+                                card.appendChild(todo);
+                            }
+                        });
+                    }
+                    if (label === 'Add New Below') {
+                        const newTodo = createTodoItem(day, { text: 'To do list', checked: false, color: '' });
+                        todo.parentNode.insertBefore(newTodo, todo.nextSibling);
+                    }
+                    if (label === 'Move Up') {
+                        const prev = todo.previousElementSibling;
+                        if (prev && prev.classList.contains('todo-item')) {
+                            todo.parentNode.insertBefore(todo, prev);
+                        }
+                    }
+                    if (label === 'Move Down') {
+                        const next = todo.nextElementSibling;
+                        if (next && next.classList.contains('todo-item')) {
+                            todo.parentNode.insertBefore(next, todo);
+                        }
+                    }
+                    menu.style.display = 'none';
+                    markUnsaved();
+                };
+                menu.appendChild(item);
+            });
+
+            menuIcon.addEventListener('click', (e) => {
+                e.stopPropagation();
+                document.querySelectorAll('.todo-controls > div:nth-child(2)').forEach(m => {
+                    if (m !== menu) m.style.display = 'none';
+                });
+                menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!menu.contains(e.target) && !menuIcon.contains(e.target)) {
+                    menu.style.display = 'none';
+                }
+            });
+
+            controls.appendChild(menuIcon);
+            controls.appendChild(menu);
+
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.checked = saved?.checked || false;
+            checkbox.addEventListener('change', markUnsaved);
+
+            checkbox.addEventListener('change', () => {
+                markUnsaved();
+                const weekContainer = todo.closest('.week-container');
+                if (weekContainer) updateWeekProgress(weekContainer);
+            });
+
+            const text = document.createElement('span');
+            text.innerText = saved?.text || 'To do list';
+            text.contentEditable = true;
+            text.addEventListener('input', markUnsaved);
+
+            if (saved?.color) {
+                todo.style.background = saved.color;
+            }
+
+            todo.appendChild(controls);
+            todo.appendChild(checkbox);
+            todo.appendChild(text);
+
+            return todo;
+        }
+
+        function addWeekFromData(weekData) {
+            const container = document.getElementById('weeks');
+            const week = document.createElement('div');
+            week.className = 'week-container';
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.innerText = '✖';
+            deleteBtn.style.cssText = 'float:right;background:#c00;color:white;border:none;padding:2px 6px;border-radius:4px;cursor:pointer;';
+            deleteBtn.onclick = () => {
+                week.remove();
+                markUnsaved();
+            };
+            week.appendChild(deleteBtn);
+
+            const title = document.createElement('div');
+            title.className = 'week-title';
+            title.contentEditable = true;
+            title.innerText = weekData.weekTitle || 'Add week dates here';
+            title.addEventListener('input', markUnsaved);
+            week.appendChild(title);
+
+            const row = document.createElement('div');
+            row.className = 'days-row';
+
+            const progress = document.createElement('div');
+            progress.className = 'progress-text';
+            progress.innerText = '☕ 0% - Yuk mulai sekarang!';
+            week.appendChild(progress);
+
+
+            weekData.days.forEach(day => {
+                const dayCard = document.createElement('div');
+                dayCard.className = 'day-card';
+
+                const heading = document.createElement('h4');
+                heading.innerText = day.dayName;
+                dayCard.appendChild(heading);
+
+                day.todos.forEach(todoData => {
+                    const todo = createTodoItem(day.dayName, todoData);
+                    dayCard.appendChild(todo);
+                });
+
+                row.appendChild(dayCard);
+            });
+
+            week.appendChild(row);
+            updateWeekProgress(week);
+            container.appendChild(week);
+        }
+
+        function showToast(message = "Progress berhasil disimpan!") {
+            const toast = document.getElementById("toast");
+            toast.innerText = message;
+            toast.style.opacity = 1;
+            setTimeout(() => {
+                toast.style.opacity = 0;
+            }, 2500); // toast hilang otomatis dalam 2.5 detik
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedBg = localStorage.getItem('headerBg');
+            if (savedBg) {
+                document.querySelector('.header').style.backgroundImage = `url(${savedBg})`;
+            }
+
+            const saved = localStorage.getItem('weeksData');
+            if (saved) {
+                const parsed = JSON.parse(saved);
+                parsed.forEach(addWeekFromData);
+            }
+        });
+
+        function calculateProgressText(total, done) {
+            if (total === 0) return "Belum ada tugas";
+            const percent = Math.round((done / total) * 100);
+            const ranges = [0, 15, 30, 45, 60, 75, 90, 100];
+            const labels = [
+                "☕ 0% - Yuk mulai sekarang!",
+                "🌱 15% - Awal yang baik!",
+                "📘 30% - Terus bergerak!",
+                "💪 45% - Semangatnya naik!",
+                "🔥 60% - Sudah lebih dari setengah!",
+                "🚀 75% - Sedikit lagi!",
+                "🏁 90% - Hampir selesai!",
+                "✨ 100% - Yeay, kamu berhasil!"
+            ];
+            for (let i = ranges.length - 1; i >= 0; i--) {
+                if (percent >= ranges[i]) {
+                    return labels[i];
+                }
+            }
+        }
+
+        // Tambahkan ke fungsi render week
+        function updateWeekProgress(weekContainer) {
+            const checkboxes = weekContainer.querySelectorAll('input[type="checkbox"]');
+            const done = [...checkboxes].filter(cb => cb.checked).length;
+            const total = checkboxes.length;
+            const progress = calculateProgressText(total, done);
+            const progressText = weekContainer.querySelector('.progress-text');
+            if (progressText) progressText.textContent = progress;
+        }
+
+    </script>
+</body>
+
+</html>

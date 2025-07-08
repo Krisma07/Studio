@@ -1,0 +1,1893 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Coway - Hidup Sehat Modern Korea</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #ffffff);
+        }
+
+        #top-header {
+            background: #f5f5f5;
+            color: #00AEEF;
+            text-align: center;
+            padding: 16px 0;
+            font-size: 18px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            z-index: 999;
+            position: relative;
+            margin: 0;
+        }
+
+        /* Saat header disembunyikan */
+        #top-header.hide {
+            transform: translateY(-100%);
+        }
+
+        /* Navbar tetap di atas */
+        .sticky-navbar {
+            position: relative;
+            top: 0;
+            width: 100%;
+            background: #ffffff;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        /* Navbar naik menggantikan header */
+        .sticky-navbar.fixed-top {
+            position: fixed;
+            top: 0;
+        }
+
+        .sticky-navbar a {
+            color: #00AEEF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Padding untuk konten di bawah header dan navbar */
+        .content-wrapper {
+            padding-top: 120px;
+        }
+
+        header {
+            background: #f2f2f2;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            position: relative;
+        }
+
+        header h1 {
+            color: #0066cc;
+            font-size: 20px;
+        }
+
+        .cta-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 12px 0;
+            font-weight: bold;
+            z-index: 999;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            background-color: #00AEEF;
+            color: white;
+        }
+
+        .cta-banner.scrolled {
+            background-color: #2196f3;
+            color: white;
+        }
+
+        .cta-banner button {
+            margin-left: 10px;
+            background-color: #FFD700;
+            border: none;
+            font-weight: bold;
+            font-size: 16px;
+            color: #003366;
+            cursor: pointer;
+            animation: blink 1s infinite;
+        }
+
+        .cta-banner.scrolled button {
+            color: white;
+            animation: blink-blue 1s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                color: #ffeb3b;
+            }
+
+            50% {
+                color: white;
+            }
+        }
+
+        @keyframes blink-blue {
+
+            0%,
+            100% {
+                color: white;
+            }
+
+            50% {
+                color: #ffeb3b;
+            }
+        }
+
+        .content {
+            padding-top: 120px;
+            padding-bottom: 80px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .main-content {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .main-content h2 {
+            font-size: 28px;
+            color: #222;
+            margin-bottom: 10px;
+        }
+
+        .main-content img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-banner {
+            background: #ffd400;
+            color: #000;
+            padding: 15px 10px;
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            margin: 20px auto;
+            width: 80%;
+            position: relative;
+        }
+
+        .cta-banner button {
+            background: #ff4db8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin-left: 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .cta-banner button:hover {
+            background: #ff3399;
+        }
+
+        .section-2 {
+            background: #e9f8ff;
+            margin-top: 40px;
+            padding: 30px 20px;
+            border-top-left-radius: 40px;
+            border-top-right-radius: 40px;
+            text-align: center;
+        }
+
+        .section-2 h3 {
+            font-size: 22px;
+            color: #333;
+        }
+
+        .section-2 h3 span {
+            color: #0077ff;
+            font-weight: bold;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .feature-box {
+            width: 180px;
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            margin: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .feature-box h4 {
+            font-size: 16px;
+            color: #0044cc;
+        }
+
+        .feature-box p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .bonus-section {
+            margin-top: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #0066cc;
+        }
+
+        .bottom-cta {
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .bottom-cta button {
+            background: #ff4db8;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .bottom-cta button:hover {
+            background: #ff3399;
+        }
+
+        /* testimoni card */
+        .testimonial-wrapper {
+            overflow: hidden;
+            width: 100%;
+            padding: 40px 0;
+            background: #F7F7F7;
+        }
+
+        .testimonial-track {
+            display: flex;
+            width: max-content;
+            animation: scroll-left 100s linear infinite;
+        }
+
+        .testimonial-card {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 16px;
+            padding: 20px;
+            margin-right: 20px;
+            width: 230px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .testimonial-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .testimonial-card p {
+            font-size: 14px;
+            margin-top: 10px;
+            color: #444;
+        }
+
+        .testimonial-card strong {
+            display: block;
+            margin-top: 5px;
+            color: #0077aa;
+            font-weight: 600;
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Carousel */
+        .coway-carousel-wrapper {
+            overflow: hidden;
+            background: #f9f9f9;
+            padding: 40px 0;
+        }
+
+        .coway-carousel-track {
+            display: flex;
+            width: max-content;
+            animation: scroll-left 100s linear infinite;
+            gap: 20px;
+        }
+
+        .coway-feature-card {
+            width: 180px;
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            flex-shrink: 0;
+        }
+
+        .coway-feature-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .coway-feature-card p {
+            font-size: 14px;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Subject Tags (Tombol Klik + Animasi Hover) */
+        .tag-btn {
+            padding: 8px 18px;
+            border: none;
+            border-radius: 25px;
+            background-color: var(--btn-bg);
+            color: var(--btn-color);
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+        }
+
+        .tag-btn:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            opacity: 0.9;
+        }
+
+        .tag-btn:active {
+            transform: scale(0.97);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Proses Penggunaan Sistematis - Animasi Horizontal */
+        .coway-marquee-wrapper {
+            overflow: hidden;
+            width: 100%;
+            padding: 20px 0;
+            background: #f9f9f9;
+        }
+
+        .coway-marquee-track {
+            display: flex;
+            width: max-content;
+            animation: scroll-left 90s linear infinite;
+        }
+
+        .coway-marquee-group {
+            display: flex;
+        }
+
+        .coway-card {
+            width: 220px;
+            background: #e8f5e9;
+            border-radius: 15px;
+            padding: 15px;
+            margin-right: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+            flex-shrink: 0;
+        }
+
+        .coway-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .coway-card p {
+            margin-top: 10px;
+            color: #444;
+            font-size: 14px;
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Penjernih Air + Udara */
+        .animated-carousel-wrapper {
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .animated-carousel-track {
+            display: flex;
+            animation: slide-horizontal 10s linear infinite;
+            gap: 10px;
+        }
+
+        @keyframes slide-horizontal {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .coway-card {
+            min-width: 200px;
+            max-width: 220px;
+            background: #fff;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            flex-shrink: 0;
+        }
+
+        .coway-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .coway-card p {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #1a237e;
+            line-height: 1.4;
+        }
+
+        /* Bagian Footer */
+        footer {
+            background: #003366;
+            padding: 40px 20px 120px;
+            text-align: center;
+            font-size: 14px;
+            color: #ffffff;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        footer a {
+            margin: 0 10px;
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        footer .copyright {
+            margin-top: 10px;
+            color: #cccccc;
+        }
+
+        footer strong {
+            color: #00AEEF;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="top-header">
+        Smart Living Keluarga No.1 <span style="color:#0066cc">Coway</span>
+    </header>
+
+    <!-- STICKY NAV (Atas) -->
+    <nav id="main-nav" class="sticky-navbar">
+        <a href="#">Water Purifier</a>
+        <a href="#">Air Purifier</a>
+        <a href="#">Water Filter</a>
+    </nav>
+
+    <!-- STICKY CTA BANNER (Bawah) -->
+    <div class="cta-banner"
+        style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #ffeb3b; text-align: center; padding: 12px 0; font-weight: bold; z-index: 999; box-shadow: 0 -2px 5px rgba(0,0,0,0.1);">
+        Tanpa dipungut biaya
+        <button
+            style="margin-left: 10px; background-color: #e91e63; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer;">
+            Daftar Uji Coba Gratis
+        </button>
+    </div>
+
+    <!-- Main Video (Done)-->
+    <div class="main-content">
+        <h2>COWAY Solusi Hidup Sehat Keluarga Modern</h2>
+
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div
+                style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+                <!-- Container Video -->
+                <div
+                    style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); pointer-events: none;">
+                    <iframe id="cowayVideo"
+                        src="https://www.youtube.com/embed/jH6YVJUvNdw?autoplay=1&mute=1&controls=0&loop=1&playlist=jH6YVJUvNdw&modestbranding=1&showinfo=0&rel=0&disablekb=1"
+                        title="Coway Video" frameborder="0" allow="autoplay" allowfullscreen
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 15px;">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- dibawah Main Video (Done)-->
+    <section class="section-2">
+        <!-- CTA Coway -->
+        <div
+            style="background-color: #00AEEF; color: white; padding: 25px 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); max-width: 700px; margin: 30px auto; text-align: center;">
+            <h2 style="font-size: 26px; margin-bottom: 15px;">
+                Hadiahkan Wink Smart Learning Anak No.1<br>kepada Anak Anda Juga
+            </h2>
+            <div style="margin-top: 10px;">
+                <span style="font-weight: bold;">Tanpa dipungut biaya</span>
+                <button
+                    style="margin-left: 15px; background-color: #FFD700; color: white; font-weight: bold; padding: 10px 20px; border: none; border-radius: 30px; font-size: 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); cursor: pointer;">
+                    Daftar Uji Coba Gratis
+                </button>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 40px auto; max-width: 1000px; padding: 0 20px;">
+            <h3 style="font-size: 28px; color: #0077ff; margin-bottom: 30px;">
+                Daftar uji coba gratis produk Coway,<br>Air Purifier & <span style="color:#00AEEF;">Water
+                    Purifier</span>
+            </h3>
+
+            <div style="
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+                ">
+                <div
+                    style="flex: 1 1 45%; max-width: 230px; background: #e0f7fa; border-radius: 15px; padding: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); border-top: 6px solid #00AEEF;">
+                    <h4 style="font-size: 24px; color: #0077ff; margin-bottom: 10px;">Gratis</h4>
+                    <p style="font-size: 18px; color: #333;">Tanpa biaya uji coba awal</p>
+                </div>
+
+                <div
+                    style="flex: 1 1 45%; max-width: 230px; background: #e8f5e9; border-radius: 15px; padding: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); border-top: 6px solid #00AEEF;">
+                    <h4 style="font-size: 24px; color: #0077ff; margin-bottom: 10px;">Gratis</h4>
+                    <p style="font-size: 18px; color: #333;">Biaya Instalasi</p>
+                </div>
+
+                <div
+                    style="flex: 1 1 45%; max-width: 230px; background: #fffde7; border-radius: 15px; padding: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); border-top: 6px solid #00AEEF;">
+                    <h4 style="font-size: 24px; color: #0077ff; margin-bottom: 10px;">Gratis</h4>
+                    <p style="font-size: 18px; color: #333;">Biaya Layanan</p>
+                </div>
+
+                <div
+                    style="flex: 1 1 45%; max-width: 230px; background: #fce4ec; border-radius: 15px; padding: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); border-top: 6px solid #00AEEF;">
+                    <h4 style="font-size: 24px; color: #0077ff; margin-bottom: 10px;">Gratis</h4>
+                    <p style="font-size: 18px; color: #333;">Biaya Service setiap 2 bulan</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tambahan Card Hadiah Uji Coba -->
+        <div class="gift-section" style="padding: 0; margin-top: 40px; text-align: center; background: none;">
+            <img src="banner coway.jpeg" alt="Poster Uji Coba Coway"
+                style="width: 100%; height: auto; display: block; object-fit: cover;">
+
+            <div class="bottom-cta" style="margin-top: 20px; padding: 30px 20px;">
+                <button style="
+            background-color: #00AEEF;
+            color: #fffef9;
+            border: none;
+            padding: 15px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        ">
+                    Siapa cepat dia dapat!<br>Coba Gratis Sekarang
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: 1. Metode Pembelajaran Teruji (Done) -->
+    <section class="section-method" style="background: #f9f9f9; padding: 50px 20px; text-align: center;">
+        <h2 style="font-size: 28px; color: #222; margin-bottom: 20px;">
+            Kenapa <span style="color: #007bff; font-weight: bold;">Coway Smart Living No. 1</span> Dipercaya?
+        </h2>
+
+        <div style="background: #0039a6; color: white; margin-top: 30px; border-radius: 20px; padding: 30px 20px;">
+            <!-- CARD UTAMA - Dibungkus -->
+            <div
+                style="background: white; padding: 40px 30px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); max-width: 1000px; margin: 0 auto; color: #222;">
+
+                <!-- BAGIAN 1 - Layout Baru -->
+                <div style="text-align: center; margin-top: 40px; padding: 0 20px;">
+
+                    <!-- Baris 1 - Gambar Full -->
+                    <div
+                        style="background: #f1faff; padding: 20px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 30px;">
+                        <img src="Coway-x-BTS1.jpg" alt="Coway BTS"
+                            style="width: 100%; height: auto; border-radius: 12px;">
+                    </div>
+
+                    <!-- Baris 2 - 2 Kolom Gambar & Video -->
+                    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+
+                        <!-- Kiri: Card Gambar -->
+                        <div
+                            style="background: #f1faff; padding: 15px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); width: 100%; max-width: 400px;">
+                            <img src="mira filzah.jpg" alt="Mira Filzah"
+                                style="width: 100%; height: auto; border-radius: 10px;">
+                        </div>
+
+                        <!-- Kanan: Card Video -->
+                        <div
+                            style="background: #f1faff; padding: 15px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); width: 100%; max-width: 400px;">
+
+                            <video autoplay muted loop playsinline
+                                style="width: 100%; height: auto; border-radius: 10px; display: block;">
+                                <source src="mira filzah.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <!-- BAGIAN 2 -->
+                <div>
+                    <h4 style="font-size: 25px; font-weight: normal; color: #222;">Para ahli kesehatan dan teknologi pun
+                        mengakui!</h4>
+                    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 20px;">
+                        <div
+                            style="background: #f1faff; padding: 20px; border-radius: 12px; color: #222; flex: 1 1 28%; min-width: 220px;">
+                            <strong>Profesor Teknik Lingkungan<br>Universitas Oxford Inggris</strong>
+                            <p style="font-size: 14px; margin-top: 10px;">"Sebagai peneliti, saya terkesan dengan
+                                kualitas
+                                sistem pemurnian Coway."</p>
+                        </div>
+                        <div
+                            style="background: #f1faff; padding: 20px; border-radius: 12px; color: #222; flex: 1 1 28%; min-width: 220px;">
+                            <strong>Ahli Kesehatan Rumah Tangga</strong>
+                            <p style="font-size: 14px; margin-top: 10px;">"Coway menciptakan lingkungan rumah yang lebih
+                                bersih dan aman."</p>
+                        </div>
+                        <div
+                            style="background: #f1faff; padding: 20px; border-radius: 12px; color: #222; flex: 1 1 28%; min-width: 220px;">
+                            <strong>Konsultan Kesehatan Keluarga</strong>
+                            <p style="font-size: 14px; margin-top: 10px;">"Produk Coway membantu keluarga lebih sehat
+                                secara
+                                menyeluruh."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION: 2. Solusi Sehat Sejak Dini (50%)-->
+    <section class="section-optimal" style="background: #E6F7FB; padding: 50px 20px; text-align: center;">
+        <div
+            style="background: #00AEEF; color: white; border-radius: 20px; padding: 30px 20px; max-width: 1100px; margin: auto;">
+
+            <h3 style="font-size: 22px; margin-bottom: 10px;">2. Solusi Hidup Sehat Sejak Dini</h3>
+            <p style="font-size: 18px; margin-top: 10px; font-style: italic;">Hal terpenting dalam menjaga kesehatan<br>
+                <strong>“Pengalaman nyaman & berkelanjutan”</strong>
+            </p>
+
+            <!-- Card Container 2x2 -->
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px;">
+
+                <!-- Card 1 -->
+                <div style="background: #d4f1f9; border-radius: 15px; padding: 20px;">
+                    <div style="font-weight: bold; margin-bottom: 10px; color: #0077aa;">1</div>
+                    <img src="https://i.imgur.com/CkMdEbY.jpg" alt="Anak Belajar"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="margin-top: 10px; color: #00475e;">Kualitas udara dan air berpengaruh langsung terhadap
+                        konsentrasi dan perkembangan otak anak.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div style="background: #d4f1f9; border-radius: 15px; padding: 20px;">
+                    <div style="font-weight: bold; margin-bottom: 10px; color: #0077aa;">2</div>
+                    <img src="https://i.imgur.com/TJ7wQJX.jpg" alt="Otak Anak"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="margin-top: 10px; color: #00475e;">Kemampuan belajar otak akan berkembang dengan optimal
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div style="background: #d4f1f9; border-radius: 15px; padding: 20px;">
+                    <div style="font-weight: bold; margin-bottom: 10px; color: #0077aa;">3</div>
+                    <img src="https://i.imgur.com/O7tMGu1.jpg" alt="Anak Senang Belajar"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="margin-top: 10px; color: #00475e;">Saat tubuh sehat dan lingkungan mendukung, anak lebih
+                        semangat, bisa mengatur diri, dan punya dorongan belajar yang tinggi.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div style="background: #d4f1f9; border-radius: 15px; padding: 20px;">
+                    <div style="font-weight: bold; margin-bottom: 10px; color: #0077aa;">4</div>
+                    <img src="https://i.imgur.com/c9pMezR.jpg" alt="Siswa Unggul"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="margin-top: 10px; color: #00475e;">Lingkungan rumah yang sehat dari Coway bantu
+                        menumbuhkan kebiasaan positif. Anak pun tumbuh menjadi pribadi unggul, siap menghadapi masa
+                        depan.</p>
+                </div>
+
+            </div>
+
+            <!-- CTA Bawah -->
+            <div class="bottom-cta" style="margin-top: 30px;">
+                <p style="
+        background-color: #FFD700;
+        color: #222;
+        padding: 14px 25px;
+        border-radius: 25px;
+        border: none;
+        font-size: 16px;
+        font-weight: bold;
+        max-width: 700px;
+        margin: 0 auto;
+      ">
+                    Teknologi Coway membuat kebiasaan sehat jadi mudah dan menyenangkan serta meningkatkan kualitas
+                    hidup keluarga di masa depan.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: 3. 99% Orang Tua Merasa Puas (done)-->
+    <section class="section-puas" style="background: #E6F7FB; padding: 50px 20px; text-align: center;">
+        <div style="background: #a94442; color: white; border-radius: 20px; padding: 30px 20px;">
+            <h3 style="font-size: 22px; margin-bottom: 10px;">3. 99% Pengguna Merasa Puas setelah Menggunakan Coway</h3>
+
+            <!-- Bar Chart Dummy -->
+            <div style="display: flex; justify-content: center; gap: 30px; margin-top: 30px;">
+                <div>
+                    <div style="height: 80px; width: 30px; background: #d32f2f; margin-bottom: 5px;"></div>
+                    <p style="font-size: 12px;">Tidak perlu mengangkat galon lagi</p>
+                </div>
+                <div>
+                    <div style="height: 120px; width: 30px; background: #1976d2; margin-bottom: 5px;"></div>
+                    <p style="font-size: 12px;">Lebih praktis dari air galon biasa</p>
+                </div>
+                <div>
+                    <div style="height: 100px; width: 30px; background: #388e3c; margin-bottom: 5px;"></div>
+                    <p style="font-size: 12px;">Tidak khawatir kemasan tidak Higienis</p>
+                </div>
+                <div>
+                    <div style="height: 70px; width: 30px; background: #f9a825; margin-bottom: 5px;"></div>
+                    <p style="font-size: 12px;">Biayanya terjangkau</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimoni -->
+        <div class="testimonial-wrapper">
+            <h4 style="color: #0077aa; text-align: center; font-size: 22px; margin-bottom: 20px;">
+                Testimoni asli dari para keluarga di Indonesia
+            </h4>
+
+            <div class="testimonial-track">
+                <!-- Satu baris semua testimonial (tanpa wrap) -->
+
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/FWSRBo2.jpg" alt="Testimoni 1">
+                    <p>“Udara di rumah lebih segar.”<strong>Ibu Dinda, Jakarta</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/6YcK0nT.jpg" alt="Testimoni 2">
+                    <p>“Alergi berkurang setelah pakai Coway.”<strong>Pak Heri, Bandung</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 3">
+                    <p>“Sewa bulanan sangat membantu.”<strong>Ibu Rani, Surabaya</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 4">
+                    <p>"Belajar makin nyaman."<strong>Ryan, 6 tahun</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 5">
+                    <p>"Air dari Coway dingin dan enak."<strong>Ayu, 5 tahun</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 6">
+                    <p>"Tidur makin nyenyak."<strong>Hayat, 6 tahun</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 7">
+                    <p>"Batuk alergi berkurang."<strong>Ibu Winda, Bekasi</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 8">
+                    <p>"Teknisi Coway sangat membantu."<strong>Pak Aldi, Depok</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 9">
+                    <p>"Sistem sewa sangat praktis."<strong>Ibu Rara, Semarang</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 10">
+                    <p>"Semua terasa lebih teratur."<strong>Ibu Nina, Medan</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/FWSRBo2.jpg" alt="Testimoni 1">
+                    <p>“Udara di rumah lebih segar.”<strong>Ibu Dinda, Jakarta</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/6YcK0nT.jpg" alt="Testimoni 2">
+                    <p>“Alergi berkurang setelah pakai Coway.”<strong>Pak Heri, Bandung</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 3">
+                    <p>“Sewa bulanan sangat membantu.”<strong>Ibu Rani, Surabaya</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 4">
+                    <p>"Belajar makin nyaman."<strong>Ryan, 6 tahun</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 5">
+                    <p>"Air dari Coway dingin dan enak."<strong>Ayu, 5 tahun</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 6">
+                    <p>"Tidur makin nyenyak."<strong>Hayat, 6 tahun</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 7">
+                    <p>"Batuk alergi berkurang."<strong>Ibu Winda, Bekasi</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 8">
+                    <p>"Teknisi Coway sangat membantu."<strong>Pak Aldi, Depok</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 9">
+                    <p>"Sistem sewa sangat praktis."<strong>Ibu Rara, Semarang</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 10">
+                    <p>"Semua terasa lebih teratur."<strong>Ibu Nina, Medan</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/FWSRBo2.jpg" alt="Testimoni 1">
+                    <p>“Udara di rumah lebih segar.”<strong>Ibu Dinda, Jakarta</strong></p>
+                </div>
+                <!-- ...dst... (ulangi semua testimonial minimal sekali lagi) -->
+
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/FWSRBo2.jpg" alt="Testimoni 1">
+                    <p>“Udara di rumah lebih segar.”<strong>Ibu Dinda, Jakarta</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/6YcK0nT.jpg" alt="Testimoni 2">
+                    <p>“Alergi berkurang setelah pakai Coway.”<strong>Pak Heri, Bandung</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 3">
+                    <p>“Sewa bulanan sangat membantu.”<strong>Ibu Rani, Surabaya</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 4">
+                    <p>"Belajar makin nyaman."<strong>Ryan, 6 tahun</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 5">
+                    <p>"Air dari Coway dingin dan enak."<strong>Ayu, 5 tahun</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 6">
+                    <p>"Tidur makin nyenyak."<strong>Hayat, 6 tahun</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 7">
+                    <p>"Batuk alergi berkurang."<strong>Ibu Winda, Bekasi</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 8">
+                    <p>"Teknisi Coway sangat membantu."<strong>Pak Aldi, Depok</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 9">
+                    <p>"Sistem sewa sangat praktis."<strong>Ibu Rara, Semarang</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 10">
+                    <p>"Semua terasa lebih teratur."<strong>Ibu Nina, Medan</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/FWSRBo2.jpg" alt="Testimoni 1">
+                    <p>“Udara di rumah lebih segar.”<strong>Ibu Dinda, Jakarta</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/6YcK0nT.jpg" alt="Testimoni 2">
+                    <p>“Alergi berkurang setelah pakai Coway.”<strong>Pak Heri, Bandung</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 3">
+                    <p>“Sewa bulanan sangat membantu.”<strong>Ibu Rani, Surabaya</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 4">
+                    <p>"Belajar makin nyaman."<strong>Ryan, 6 tahun</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 5">
+                    <p>"Air dari Coway dingin dan enak."<strong>Ayu, 5 tahun</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 6">
+                    <p>"Tidur makin nyenyak."<strong>Hayat, 6 tahun</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 7">
+                    <p>"Batuk alergi berkurang."<strong>Ibu Winda, Bekasi</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 8">
+                    <p>"Teknisi Coway sangat membantu."<strong>Pak Aldi, Depok</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 9">
+                    <p>"Sistem sewa sangat praktis."<strong>Ibu Rara, Semarang</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/zHz8zy3.jpg" alt="Testimoni 10">
+                    <p>"Semua terasa lebih teratur."<strong>Ibu Nina, Medan</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://i.imgur.com/FWSRBo2.jpg" alt="Testimoni 1">
+                    <p>“Udara di rumah lebih segar.”<strong>Ibu Dinda, Jakarta</strong></p>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <!-- SECTION: 4. Perusahaan Edukasi Terpercaya No.1 -->
+    <section class="section-perusahaan" style="background: #e8eaf6; padding: 50px 20px; text-align: center;">
+        <div style="background: #303f9f; color: white; border-radius: 20px; padding: 30px 20px;">
+            <h3 style="font-size: 22px; margin-bottom: 25px;">4. Perusahaan Edukasi Terpercaya No.1</h3>
+
+            <!-- Video/Image -->
+            <div style="display: flex; justify-content: center;">
+                <div style="background: white; padding: 10px; border-radius: 15px;">
+                    <img src="https://i.imgur.com/pXnMNUX.png" alt="Danbi Edu"
+                        style="width: 300px; border-radius: 10px;">
+                </div>
+            </div>
+
+            <!-- Statistik -->
+            <div
+                style="display: flex; justify-content: center; gap: 30px; margin-top: 30px; flex-wrap: wrap; color: white;">
+                <div>
+                    <h2 style="font-size: 40px;">#1</h2>
+                    <p style="font-size: 13px; max-width: 150px;">Peringkat 1 Indeks Kepuasan Konsumen selama 4 tahun
+                        berturut-turut</p>
+                </div>
+                <div>
+                    <h2 style="font-size: 40px;">97%</h2>
+                    <p style="font-size: 13px; max-width: 150px;">97% Pengguna merasakan peningkatan kualitas hidup dan
+                        kebersihan</p>
+                </div>
+                <div>
+                    <h2 style="font-size: 40px;">1T</h2>
+                    <p style="font-size: 13px; max-width: 150px;">Perusahaan yang mencapai penjualan 1 triliun dalam
+                        waktu singkat</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Mengenal Lebih Jauh - Peringkat #1 Coway (done)-->
+    <section style="background: #fff3e0; padding: 50px 20px; text-align: center;">
+        <div style="background: #6d1b7b; color: white; border-radius: 20px 20px 0 0; padding: 20px;">
+            <h3 style="font-size: 22px;">Mengenal Lebih Jauh</h3>
+            <h2 style="font-size: 26px; font-weight: bold;">Peringkat #1 Coway</h2>
+        </div>
+
+        <div style="background: white; padding: 30px 20px; border-radius: 0 0 20px 20px;">
+            <h3 style="color: #333; margin-bottom: 10px;">Menyediakan alat khusus untuk menjaga kualitas air minum dan
+                udara bersih</h3>
+            <p style="color: #666; font-size: 14px; margin-bottom: 30px;">
+                disertai tombol yang mudah digunakan sendiri<br>
+                <strong>Keunikan produk Coway terletak pada desain khusus dan fungsional,</strong> sesuai kebutuhan
+                rumah tangga modern
+            </p>
+
+            <!-- Bagian isi mengenal lebih jauh -->
+            <div class="coway-carousel-wrapper">
+                <div class="coway-carousel-track">
+                    <!-- Semua card dari Air Purifier, Water Purifier, Mattress, Cody -->
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>Air Langsung Siap Minum Tidak perlu dimasak atau didinginkan.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/52bZ2Uj.png" alt="Fitur">
+                        <p>Tangki Air Higienis Anti jamur dan bakteri, aman untuk keluarga.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/6xmiUnJ.png" alt="Fitur">
+                        <p>Pilihan Suhu Air Air panas, dingin, dan suhu normal.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/kcDhguS.png" alt="Fitur">
+                        <p>Eco Mode Hemat listrik saat malam hari.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/6xmiUnJ.png" alt="Fitur">
+                        <p>Child Safety Lock Mencegah anak menekan air panas secara tidak sengaja.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/kcDhguS.png" alt="Fitur">
+                        <p>Desain Minimalis Hemat ruang dan estetik untuk dapur modern.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>HEPA Filter & Carbon Filter Menyaring debu, asap, alergen, bulu hewan, dan bau tidak sedap.
+                        </p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>Sensor Kualitas Udara Otomatis Menyesuaikan kekuatan penyaringan secara real-time.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>Indikator Kualitas Udara LED Warna indikator menunjukkan tingkat kebersihan udara.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>Mode Hening / Sleep Mode Tidak berisik, cocok digunakan saat tidur.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>Cocok untuk Berbagai Ukuran Ruangan Mulai dari kamar tidur hingga ruang keluarga.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>Desain Stylish & Portabel Bisa dipindah dengan mudah.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>Servis Berkala Setiap Bulan Pembersihan, pengecekan, dan penggantian filter.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>Gratis Selama Masa Uji Coba & Berlangganan.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>Tenaga Terlatih & Ramah Membantu edukasi pelanggan soal kesehatan air/udara.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>UV Sterilizer Membunuh bakteri dan tungau penyebab alergi.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>Sensor Debu Otomatis Lampu indikator menyala jika masih ada debu/kotoran.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>Sistem Getar + Sedot Kuat Efektif menarik debu yang menumpuk di dalam kasur.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>Cocok untuk Anak & Bayi Membantu mengurangi risiko alergi kulit dan pernapasan.</p>
+                    </div>
+                    <!-- ... Lanjutkan dengan semua card lain -->
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>Air Langsung Siap Minum Tidak perlu dimasak atau didinginkan.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/52bZ2Uj.png" alt="Fitur">
+                        <p>Tangki Air Higienis Anti jamur dan bakteri, aman untuk keluarga.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/6xmiUnJ.png" alt="Fitur">
+                        <p>Pilihan Suhu Air Air panas, dingin, dan suhu normal.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/kcDhguS.png" alt="Fitur">
+                        <p>Eco Mode Hemat listrik saat malam hari.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/6xmiUnJ.png" alt="Fitur">
+                        <p>Child Safety Lock Mencegah anak menekan air panas secara tidak sengaja.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/kcDhguS.png" alt="Fitur">
+                        <p>Desain Minimalis Hemat ruang dan estetik untuk dapur modern.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>HEPA Filter & Carbon Filter Menyaring debu, asap, alergen, bulu hewan, dan bau tidak sedap.
+                        </p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>Sensor Kualitas Udara Otomatis Menyesuaikan kekuatan penyaringan secara real-time.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>Indikator Kualitas Udara LED Warna indikator menunjukkan tingkat kebersihan udara.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>Mode Hening / Sleep Mode Tidak berisik, cocok digunakan saat tidur.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>Cocok untuk Berbagai Ukuran Ruangan Mulai dari kamar tidur hingga ruang keluarga.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>Desain Stylish & Portabel Bisa dipindah dengan mudah.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>Servis Berkala Setiap Bulan Pembersihan, pengecekan, dan penggantian filter.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>Gratis Selama Masa Uji Coba & Berlangganan.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>Tenaga Terlatih & Ramah Membantu edukasi pelanggan soal kesehatan air/udara.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>UV Sterilizer Membunuh bakteri dan tungau penyebab alergi.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>Sensor Debu Otomatis Lampu indikator menyala jika masih ada debu/kotoran.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>Sistem Getar + Sedot Kuat Efektif menarik debu yang menumpuk di dalam kasur.</p>
+                    </div>
+                    <div class="coway-feature-card">
+                        <img src="https://i.imgur.com/bQqlMrg.png" alt="Fitur">
+                        <p>Cocok untuk Anak & Bayi Membantu mengurangi risiko alergi kulit dan pernapasan.</p>
+                    </div>
+                    <!-- dst... (duplikat semua) -->
+                </div>
+            </div>
+
+
+            <!-- Video CTA -->
+            <div style="margin-top: 40px;">
+                <h4 style="color: #1e88e5; font-size: 18px; margin-bottom: 15px;">Lihat Video Pengenalan Coway</h4>
+                <video width="320" controls style="border-radius: 15px;">
+                    <source src="winkbot-video.mp4" type="video/mp4">
+                    Video tidak dapat diputar di browser Anda.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Konten Pembelajaran Efektif (Done)-->
+    <section style="background: #e0f7fa; padding: 50px 20px; text-align: center;">
+        <div style="background: #004d40; color: white; padding: 20px 10px; border-radius: 20px 20px 0 0;">
+            <h2 style="font-size: 24px; margin: 0;">Solusi lengkap untuk air minum sehat</h2>
+            <p style="font-size: 16px; margin-top: 5px;"> udara bersih, dan perawatan rumah sekaligus</p>
+        </div>
+
+        <div style="background: white; padding: 30px 20px; border-radius: 0 0 20px 20px;">
+            <h3 style="color: #00796b; font-size: 18px; margin-bottom: 30px;">
+                Berbagai fitur modern<br><strong>(sensor otomatis, suhu air, filter HEPA, child lock, dan
+                    lainnya)</strong>
+            </h3>
+
+            <!-- 3 Feature Cards -->
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+                <!-- Card 1 -->
+                <div style="width: 220px; background: #f1f8e9; border-radius: 15px; padding: 15px;">
+                    <img src="https://i.imgur.com/rms7T5L.png" alt="Solusi Belajar 3 Bahasa"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="margin-top: 10px; color: #444;">Water Purifier
+                        Penyaring Air</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div style="width: 220px; background: #e3f2fd; border-radius: 15px; padding: 15px;">
+                    <img src="https://i.imgur.com/VcEADae.png" alt="Format Interaktif"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="margin-top: 10px; color: #444;">Air Purifier
+                        Penyaring Udara</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div style="width: 220px; background: #fce4ec; border-radius: 15px; padding: 15px;">
+                    <img src="https://i.imgur.com/HqR8Ktw.png" alt="Konten Terbanyak"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="margin-top: 10px; color: #444;">Mattress / Bidet
+                        Produk Tambahan</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div style="width: 220px; background: #fce4ec; border-radius: 15px; padding: 15px;">
+                    <img src="https://i.imgur.com/HqR8Ktw.png" alt="Konten Terbanyak"
+                        style="width: 100%; border-radius: 10px;">
+                    <p style="margin-top: 10px; color: #444;">Cody (Coway Lady / Teknisi)</p>
+                </div>
+            </div>
+
+            <!-- Subject Tags (Tombol Klik + Animasi Hover) -->
+            <div style="margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+                <button class="tag-btn" style="--btn-bg: #f3e5f5; --btn-color: #6a1b9a;">Water Purifier</button>
+                <button class="tag-btn" style="--btn-bg: #e1f5fe; --btn-color: #0277bd;">Air Purifier</button>
+                <button class="tag-btn" style="--btn-bg: #fff3e0; --btn-color: #ef6c00;">Layanan Cody</button>
+                <button class="tag-btn" style="--btn-bg: #fff3e0; --btn-color: #ec331a;">Mattress / Bidet</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Proses Pembelajaran Sistematis (Done) -->
+    <section style="background: #e3f2fd; padding: 50px 20px; text-align: center;">
+        <div style="background: #3f51b5; color: white; padding: 20px 10px; border-radius: 20px 20px 0 0;">
+            <h2 style="font-size: 24px; margin: 0;">Proses Penggunaan Sistematis</h2>
+            <p style="font-size: 16px; margin-top: 5px;">menyempurnakan kenyamanan</p>
+        </div>
+
+        <div style="background: white; padding: 30px 20px; border-radius: 0 0 20px 20px;">
+            <h3 style="color: #0d47a1; font-size: 18px; margin-bottom: 30px;">
+                Maksimalkan kualitas hidup dengan perawatan berkala<br>dan penggunaan yang mudah dan menyenangkan
+            </h3>
+
+            <!-- Proses Penggunaan Sistematis -->
+            <div class="coway-marquee-wrapper">
+                <div class="coway-marquee-track">
+                    <!-- Semua card diulang 2x untuk looping -->
+                    <div class="coway-marquee-group">
+                        <!-- Card water purifier -->
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/Ec0voPS.png" alt="Langkah" />
+                            <p>Isi Tangki Awal Air dimasukkan melalui sistem tangki</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Filtrasi 6 Tahap Menyaring bakteri, logam berat, dan bau</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Pemilihan Suhu: Pilih air panas, dingin, atau normal</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Penggunaan: Cukup tekan tombol, air langsung keluar</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Pembersihan Otomatis: Beberapa unit memiliki fitur pembersihan otomatis</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Perawatan Berkala: Teknisi Coway datang rutin setiap 2 bulan</p>
+                        </div>
+
+                        <!-- Card Air purifier -->
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/Ec0voPS.png" alt="Langkah" />
+                            <p>Pre-Filter: Menyaring debu kasar & rambut</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Deodorization Filter Menghilangkan bau tidak sedap</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>HEPA Filter : Menyaring partikel mikro 0.01 mikron</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Ionizer Menjaga udara tetap segar</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Sensor Udara Deteksi kualitas udara otomatis</p>
+                        </div>
+
+                        <!-- Card Matress Cleaner -->
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/Ec0voPS.png" alt="Langkah" />
+                            <p>UV Sterilizer: Membunuh kuman & tungau Meningkatkan kesehatan kulit</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Getaran 3D Mengangkat debu tersembunyi Kasur lebih bersih total</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Sensor Debu Deteksi area kotor Penggunaan jadi lebih efisien</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p></p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Tangki Debu Besar Menampung kotoran lebih banyak Tidak perlu sering dibersihkan</p>
+                        </div>
+
+                        <!-- Card Manfaat Coway di Rumah -->
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/Ec0voPS.png" alt="Langkah" />
+                            <p>Dapur : Water Purifier Air siap minum, hemat galon</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Kamar : Air Purifier Udara bersih, tidur nyenyak</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Ruang Tamu : Air Purifier Sirkulasi udara sehat</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Kasur : Mattress Cleaner Tidur bersih, bebas tungau</p>
+                        </div>
+                        <!-- ...lanjut semua card lainnya -->
+                    </div>
+
+                    <!-- Duplikat untuk animasi looping -->
+                    <div class="coway-marquee-group">
+                        <!-- Card water purifier -->
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/Ec0voPS.png" alt="Langkah" />
+                            <p>Isi Tangki Awal Air dimasukkan melalui sistem tangki</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Filtrasi 6 Tahap Menyaring bakteri, logam berat, dan bau</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Pemilihan Suhu: Pilih air panas, dingin, atau normal</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Penggunaan: Cukup tekan tombol, air langsung keluar</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Pembersihan Otomatis: Beberapa unit memiliki fitur pembersihan otomatis</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Perawatan Berkala: Teknisi Coway datang rutin setiap 2 bulan</p>
+                        </div>
+
+                        <!-- Card Air purifier -->
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/Ec0voPS.png" alt="Langkah" />
+                            <p>Pre-Filter: Menyaring debu kasar & rambut</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Deodorization Filter Menghilangkan bau tidak sedap</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>HEPA Filter : Menyaring partikel mikro 0.01 mikron</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Ionizer Menjaga udara tetap segar</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Sensor Udara Deteksi kualitas udara otomatis</p>
+                        </div>
+
+                        <!-- Card Matress Cleaner -->
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/Ec0voPS.png" alt="Langkah" />
+                            <p>UV Sterilizer: Membunuh kuman & tungau Meningkatkan kesehatan kulit</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Getaran 3D Mengangkat debu tersembunyi Kasur lebih bersih total</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Sensor Debu Deteksi area kotor Penggunaan jadi lebih efisien</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p></p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Tangki Debu Besar Menampung kotoran lebih banyak Tidak perlu sering dibersihkan</p>
+                        </div>
+
+                        <!-- Card Manfaat Coway di Rumah -->
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/Ec0voPS.png" alt="Langkah" />
+                            <p>Dapur : Water Purifier Air siap minum, hemat galon</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Kamar : Air Purifier Udara bersih, tidur nyenyak</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Ruang Tamu : Air Purifier Sirkulasi udara sehat</p>
+                        </div>
+                        <div class="coway-card">
+                            <img src="https://i.imgur.com/8uacgWs.png" alt="Langkah" />
+                            <p>Kasur : Mattress Cleaner Tidur bersih, bebas tungau</p>
+                        </div>
+                        <!-- ...lanjut semua card lainnya -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION: 4X Lingkungan Belajar -->
+    <section style="background: #fff3e0; padding: 50px 20px; text-align: center;">
+        <div style="background: #ef5350; color: white; padding: 20px 10px; border-radius: 20px 20px 0 0;">
+            <h2 style="font-size: 24px; margin: 0;">Menerapkan 4X lipat kenyamanan</h2>
+            <p style="font-size: 16px; margin-top: 5px;">untuk meningkatkan pengalaman penggunaan harian</p>
+        </div>
+
+        <div style="background: white; padding: 40px 20px; border-radius: 0 0 20px 20px;">
+            <div style="max-width: 800px; margin: auto; position: relative;">
+                <!-- Gaya grid lingkaran -->
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+
+                    <!-- Kotak 1 -->
+                    <div style="width: 180px; background: #ffccbc; border-radius: 15px; padding: 15px;">
+                        <img src="https://i.imgur.com/N0vUR8V.png" alt="Blokir konten negatif"
+                            style="width: 100%; border-radius: 10px;">
+                        <p style="margin-top: 10px; color: #333; font-size: 14px;">Nyaman Digunakan Setiap Hari</p>
+                    </div>
+
+                    <!-- Kotak 2 -->
+                    <div style="width: 180px; background: #ffe082; border-radius: 15px; padding: 15px;">
+                        <img src="https://i.imgur.com/jBJvO9L.png" alt="Belajar tanpa internet"
+                            style="width: 100%; border-radius: 10px;">
+                        <p style="margin-top: 10px; color: #333; font-size: 14px;">Kenyamanan Air dan Udara Lebih Bersih
+                        </p>
+                    </div>
+
+                    <!-- Kotak 3 -->
+                    <div style="width: 180px; background: #c8e6c9; border-radius: 15px; padding: 15px;">
+                        <img src="https://i.imgur.com/3nVRSc9.png" alt="Karakter Wink"
+                            style="width: 100%; border-radius: 10px;">
+                        <p style="margin-top: 10px; color: #333; font-size: 14px;">Nyaman Karena Selalu Terawat</p>
+                    </div>
+
+                    <!-- Kotak Tengah -->
+                    <div style="width: 180px; background: #b3e5fc; border-radius: 15px; padding: 15px;">
+                        <img src="https://i.imgur.com/ohxStCr.png" alt="Alat belajar sendiri"
+                            style="width: 100%; border-radius: 10px;">
+                        <p style="margin-top: 10px; color: #333; font-size: 14px;">Kenyamanan untuk Kesehatan Jangka
+                            Panjang</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Pengetahuan Latar (done) -->
+    <section style="background: #e3f2fd; padding: 50px 20px; text-align: center;">
+        <div style="max-width: 800px; margin: auto;">
+            <h2 style="font-size: 24px; color: #0d47a1; margin-bottom: 10px;">
+                Tersedia Lengkap hingga Pengetahuan Latar
+            </h2>
+            <p style="font-size: 16px; font-weight: bold; color: #263238; margin-bottom: 5px;">
+                Tidak hanya air dan udara bersih,
+            </p>
+            <p style="font-size: 15px; color: #37474f; margin-bottom: 40px;">
+                Coway <br>
+                juga menghadirkan teknologi pintar untuk meningkatkan gaya hidup sehat seluruh keluarga.
+            </p>
+
+            <!-- Coway -->
+            <div class="animated-carousel-wrapper">
+                <div class="animated-carousel-track">
+                    <!-- Loop card 1 -->
+                    <div class="coway-card">
+                        <img src="pengetahuan latar 1.jpg">
+                        <p>Menyaring zat berbahaya, mendukung tumbuh kembang anak</p>
+                    </div>
+                    <div class="coway-card">
+                        <img src="pengetahuan latar 2.png">
+                        <p>Menyesuaikan pembersihan udara secara cerdas</p>
+                    </div>
+                    <div class="coway-card">
+                        <img src="pengetahuan latar 3.jpg">
+                        <p>Memberikan wawasan soal lingkungan rumah</p>
+                    </div>
+                    <div class="coway-card">
+                        <img src="pengetahuan latar 4.jpg">
+                        <p>Edukasi keluarga soal perlindungan dari partikel mikroskopis</p>
+                    </div>
+                    <div class="coway-card">
+                        <img src="pengetahuan latar 5.jpeg">
+                        <p>Kebiasaan Positif yang Terbentuk</p>
+                    </div>
+                    <div class="coway-card">
+                        <img src="pengetahuan latar 6.jpg">
+                        <p>Membiasakan minum air bersih langsung dari dispenser</p>
+                    </div>
+                    <div class="coway-card">
+                        <img src="pengetahuan latar 7.jpeg">
+                        <p>Tidur dalam udara bersih, cegah alergi</p>
+                    </div>
+                    <div class="coway-card">
+                        <img src="pengetahuan latar 8.jpeg">
+                        <p>Rajin membersihkan kasur → tidur lebih nyenyak</p>
+                    </div>
+                    <div class="coway-card">
+                        <img src="pengetahuan latar 9.png">
+                        <p>Edukasi keluarga tentang kebersihan alat secara konsisten</p>
+                    </div>
+                    <div class="coway-card">
+                        <img src="pengetahuan latar 10.jpg">
+                        <p>Monitoring kualitas udara via aplikasi Bisa dikontrol dari HP</p>
+                    </div>
+                    <div class="coway-card">
+                        <img src="pengetahuan latar 11.jpg">
+                        <p>Notifikasi filter & suhu air Praktis untuk orang tua aktif</p>
+                    </div>
+                    <div class="coway-card">
+                        <img src="pengetahuan latar 12.jpg">
+                        <p>Tips digital via WA & media sosial Selalu update & ramah keluarga</p>
+                    </div>
+
+                    <!-- Loop card 2 -->
+                    <div class="coway-card">
+                        <img src="pengetahuan latar 1.jpg">
+                        <p>Menyaring zat berbahaya, mendukung tumbuh kembang anak</p>
+                    </div>
+                    <div class="coway-card">
+                        <img src="pengetahuan latar 2.png">
+                        <p>Menyesuaikan pembersihan udara secara cerdas</p>
+                    </div>
+                    <div class="coway-card">
+                        <img src="pengetahuan latar 3.jpg">
+                        <p>Memberikan wawasan soal lingkungan rumah</p>
+                    </div>
+                    <div class="coway-card">
+                        <img src="pengetahuan latar 4.jpg">
+                        <p>Edukasi keluarga soal perlindungan dari partikel mikroskopis</p>
+                    </div>
+                    <div class="coway-card">
+                        <img src="pengetahuan latar 5.jpeg">
+                        <p>Kebiasaan Positif yang Terbentuk</p>
+                    </div>
+                    <div class="coway-card">
+                        <img src="pengetahuan latar 6.jpg">
+                        <p>Membiasakan minum air bersih langsung dari dispenser</p>
+                    </div>
+                    <div class="coway-card">
+                        <img src="pengetahuan latar 7.jpeg">
+                        <p>Tidur dalam udara bersih, cegah alergi</p>
+                    </div>
+                    <div class="coway-card">
+                        <img src="pengetahuan latar 8.jpeg">
+                        <p>Rajin membersihkan kasur → tidur lebih nyenyak</p>
+                    </div>
+                    <div class="coway-card">
+                        <img src="pengetahuan latar 9.png">
+                        <p>Edukasi keluarga tentang kebersihan alat secara konsisten</p>
+                    </div>
+                    <div class="coway-card">
+                        <img src="pengetahuan latar 10.jpg">
+                        <p>Monitoring kualitas udara via aplikasi Bisa dikontrol dari HP</p>
+                    </div>
+                    <div class="coway-card">
+                        <img src="pengetahuan latar 11.jpg">
+                        <p>Notifikasi filter & suhu air Praktis untuk orang tua aktif</p>
+                    </div>
+                    <div class="coway-card">
+                        <img src="pengetahuan latar 12.jpg">
+                        <p>Tips digital via WA & media sosial Selalu update & ramah keluarga</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <p style="font-size: 12px; color: #607d8b; margin-top: 30px;">
+                *Konten yang lebih beragam dapat digunakan saat terhubung ke Wi-Fi
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION: Keuntungan Uji Coba Gratis -->
+    <section style="background: #fff3e0; padding: 50px 20px;">
+        <div style="max-width: 900px; margin: auto; text-align: center;">
+            <h2 style="font-size: 24px; color: #d84315; margin-bottom: 10px;">
+                Keuntungan Mendaftar <br>
+                <span style="color: #c2185b;">Uji Coba Gratis <strong>Coway</strong></span>
+            </h2>
+
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; margin-top: 40px; gap: 30px;">
+
+                <!-- Left Column -->
+                <div style="flex: 1 1 300px; text-align: left;">
+                    <ul style="list-style: none; padding: 0; font-size: 15px; color: #4e342e;">
+                        <li style="margin-bottom: 20px;">
+                            ✅ Kesempatan mencoba <strong>produk pemurni air dan udara 100% gratis!</strong>
+                        </li>
+                        <li style="margin-bottom: 20px;">
+                            ✅ Kesempatan bagi keluarga Anda untuk merasakan <strong>teknologi hidup sehat dari Korea.
+                                Negara dengan standar kualitas tertinggi di dunia.
+                        </li>
+                        <li style="margin-bottom: 20px;">
+                            ✅ Solusi pintar yang membantu keluarga <strong>berhenti bergantung pada air galon &
+                                menghirup udara kotor, dan beralih ke gaya hidup sehat secara mandiri.</strong>.
+                        </li>
+                        <li style="margin-bottom: 20px;">
+                            ✅ Merasakan langsung manfaat produk <strong>(Coway)</strong> satu-satunya merek dengan hak
+                            paten sistem pemurnian dan layanan rutin oleh teknisi profesional (Cody).
+                        </li>
+                        <li style="margin-bottom: 20px;">
+                            ✅ Dan yang terpenting adalah, kesempatan bagi keluarga Anda untuk merasakan
+                            <strong>kualitas hidup yang lebih sehat dan nyaman setiap hari!</strong>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Maskot -->
+            <div style="margin-top: 30px;">
+                <img src="maskot coway.png" alt="Maskot Wink" style="width: 140px;">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Kapan Memulai Belajar -->
+    <section style="background: #e3f2fd; padding: 50px 20px;">
+        <div style="max-width: 900px; margin: auto; text-align: center;">
+            <h2 style="font-size: 24px; color: #0d47a1; margin-bottom: 30px;">
+                📘 Kapan dan bagaimana sebaiknya <br> memulai perlindungan kesehatan keluarga Anda?
+            </h2>
+
+            <div style="text-align: left; margin: 0 auto 40px auto; max-width: 720px; font-size: 15px; color: #37474f;">
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 20px;">✅ 90% sistem kekebalan tubuh dan kesehatan jangka panjang terbentuk
+                        sejak masa kanak-kanak</li>
+                    <li style="margin-bottom: 20px;">✅ Kualitas hidup keluarga yang menggunakan pemurni air & udara
+                        sejak dini meningkat hingga 27% dalam hal kesehatan & produktivitas</li>
+                    <li style="margin-bottom: 20px;">✅ Keluarga yang mulai menggunakan teknologi penjernih udara & air
+                        sebelum anak berusia 5 tahun menunjukkan peningkatan kesehatan hingga 39 poin</li>
+                </ul>
+                <p style="font-size: 13px; color: #607d8b;">
+                    (Laporan analisis kesehatan rumah tangga oleh Scamon Growth Curve & Global Consulting Group McKinsey
+                    / JoongAng Ilbo, Korea Health & Wellness Institute)
+                </p>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="background: #fff3e0; padding: 25px; border-radius: 12px; display: inline-block;">
+                <p style="font-size: 18px; color: #ef6c00; font-weight: bold;">
+                    Anak Anda berusia 3–6 tahun? <br>
+                    <span style="color: #d32f2f;">Inilah saatnya memulai gaya hidup sehat di rumah!</span>
+                </p>
+                <a href="#daftar"
+                    style="display: inline-block; margin-top: 15px; padding: 12px 25px; background: #0288d1; color: white; font-weight: bold; border-radius: 8px; text-decoration: none;">
+                    Ayo, daftar uji coba gratis
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Daftar Uji Coba dan Hadiah -->
+    <section style="background: #fff8e1; padding: 50px 20px;">
+        <div style="max-width: 900px; margin: auto; text-align: center;">
+            <h2 style="font-size: 22px; color: #d84315; font-weight: bold;">
+                Daftar uji coba gratis Coway sekarang <br> dan dapatkan <span style="color: #fbc02d;">Uji coba
+                    gratis</span> untuk keluarga Anda
+            </h2>
+
+            <div style="margin-top: 40px; display: flex; justify-content: center; flex-wrap: wrap; gap: 40px;">
+                <!-- Poster Alphabet -->
+                <div style="max-width: 250px; position: relative;">
+                    <img src="poster alphabet.jpg" alt="Poster Alphabet"
+                        style="width: 100%; border: 2px solid #90caf9; border-radius: 8px;">
+                    <p style="color: #ab47bc; font-size: 14px; margin-top: 8px;">Dapatkan Tanpa Beban Untuk Uji Cobanya</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Ajakan Daftar -->
+    <section style="background: linear-gradient(to bottom, #ffe082, #fff3e0); padding: 50px 20px; text-align: center;">
+        <div style="max-width: 700px; margin: auto;">
+            <h2 style="color: #4e342e; font-size: 24px; font-weight: bold; margin-bottom: 10px;">
+                Pendaftar melonjak, uji coba gratis akan segera ditutup bulan ini!
+            </h2>
+            <p style="font-size: 18px; margin-bottom: 30px;">Ayo daftar sekarang!</p>
+
+            <!-- Tombol CTA -->
+            <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;">
+                <a href="#form-daftar"
+                    style="background-color: #d81b60; color: white; padding: 14px 26px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 16px;">
+                    Daftar Uji Coba Gratis
+                </a>
+                <a href="#materi"
+                    style="background-color: #0288d1; color: white; padding: 14px 26px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 16px;">
+                    Lihat Materi Pembelajaran
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Q&A Pendaftaran -->
+    <section style="background: #e1f5fe; padding: 50px 20px;">
+        <div style="max-width: 800px; margin: auto;">
+            <h2 style="text-align: center; color: #0d47a1;">Q&amp;A Pendaftaran<br><span style="color: #d32f2f;">Uji
+                    Coba Gratis Wink</span></h2>
+            <div style="margin-top: 30px;">
+                <details style="margin-bottom: 10px;">
+                    <summary
+                        style="background: #fff; padding: 15px; font-weight: bold; border-radius: 8px; cursor: pointer;">
+                        Apa yang terjadi setelah saya mendaftar uji coba gratis Coway?</summary>
+                    <p style="padding: 15px; background: #fafafa; border-radius: 0 0 8px 8px;">Jika Anda mendaftar, unit
+                        produk Coway (pemurni air atau udara) akan dikirimkan ke alamat Anda dalam waktu 3 hingga 5 hari
+                        kerja. Anda dapat mencoba produk Coway secara gratis selama 7 hari sejak hari kedatangan, dan
+                        memutuskan apakah ingin melanjutkan layanan berlangganan atau tidak.
+
+                        Namun, bila jumlah pendaftar membludak, jadwal pengiriman masa uji coba gratis Anda bisa berubah
+                        atau disesuaikan kembali. Dalam hal ini, tim kami akan menginformasikan lebih dulu.</p>
+                </details>
+
+                <details style="margin-bottom: 10px;">
+                    <summary
+                        style="background: #fff; padding: 15px; font-weight: bold; border-radius: 8px; cursor: pointer;">
+                        Apakah uji coba gratis itu benar-benar tidak berbayar?</summary>
+                    <p style="padding: 15px; background: #fafafa; border-radius: 0 0 8px 8px;">Benar, 100% gratis.
+                        Benar, 100% gratis. Setelah masa uji coba gratis selama seminggu berakhir, pembayaran hanya
+                        dilakukan jika Anda memutuskan untuk tetap menggunakan produk Coway.
+
+                        Jika Anda memilih untuk tidak melanjutkan layanan, pengambilan unit Coway akan dijadwalkan tanpa
+                        biaya tambahan, asalkan permintaan pengembalian dilakukan dalam waktu 5 hari setelah masa uji
+                        coba selesai. Dengan begitu, seluruh proses uji coba gratis Coway benar-benar tanpa beban biaya.
+                    </p>
+                </details>
+
+                <details style="margin-bottom: 10px;">
+                    <summary
+                        style="background: #fff; padding: 15px; font-weight: bold; border-radius: 8px; cursor: pointer;">
+                        Apakah memerlukan koneksi internet untuk menggunakan Coway?</summary>
+                    <p style="padding: 15px; background: #fafafa; border-radius: 0 0 8px 8px;">Sebagian besar produk
+                        Coway, seperti pemurni air dan udara, dapat digunakan tanpa koneksi internet. Namun, beberapa
+                        fitur tambahan (seperti monitoring kualitas udara real-time) akan aktif jika tersambung ke
+                        Wi-Fi.</p>
+                </details>
+
+                <details style="margin-bottom: 10px;">
+                    <summary
+                        style="background: #fff; padding: 15px; font-weight: bold; border-radius: 8px; cursor: pointer;">
+                        Apakah saya harus membeli unit Coway juga untuk menggunakannya?</summary>
+                    <p style="padding: 15px; background: #fafafa; border-radius: 0 0 8px 8px;">Tidak perlu. Unit Coway
+                        sudah termasuk dalam layanan berlangganan. Anda tidak perlu membelinya secara terpisah.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: #e0e0e0; padding: 20px; text-align: center; font-size: 14px;">
+        <div>
+            <a href="#">Syarat dan Ketentuan</a> | <a href="#">Bantuan</a>
+        </div>
+        <div class="copyright">
+            Copyright © 2025 <strong>Coway</strong>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Pause Observer
+        const videoIframe = document.getElementById('cowayVideo');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const iframe = videoIframe.contentWindow;
+                if (iframe) {
+                    if (entry.isIntersecting) {
+                        iframe.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+                    } else {
+                        iframe.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(videoIframe);
+
+        // Enable JS API after iframe load
+        videoIframe.addEventListener('load', () => {
+            videoIframe.contentWindow.postMessage('{"event":"listening","id":1}', '*');
+        });
+
+        // sticky scroll
+        const header = document.getElementById("top-header");
+        const navbar = document.getElementById("main-nav");
+        let lastScrollTop = 0;
+
+        window.addEventListener("scroll", () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop && scrollTop > 50) {
+                // Scroll ke bawah
+                header.classList.add("hide");
+                navbar.classList.add("fixed-top");
+            } else if (scrollTop < lastScrollTop) {
+                // Scroll ke atas
+                header.classList.remove("hide");
+                navbar.classList.add("fixed-top");
+            }
+
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // mencegah scroll negatif
+        });
+    </script>
+
+</body>
+
+</html>
